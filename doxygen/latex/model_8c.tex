@@ -1,0 +1,394 @@
+\hypertarget{model_8c}{}\doxysection{model.\+c File Reference}
+\label{model_8c}\index{model.c@{model.c}}
+{\ttfamily \#include \char`\"{}model.\+h\char`\"{}}\newline
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{model_8c_a8d858df51ea437a8ef4d98ed4681f468}{GENOMIKON\+\_\+\+MODEL\+\_\+C}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+double \mbox{\hyperlink{model_8c_ada6943e46eb9551b6a0db082c36cf9b3}{gkn\+\_\+p2s}} (double p)
+\item 
+void \mbox{\hyperlink{model_8c_aae8dec0447ba81cba271c90904ea6c12}{gkn\+\_\+pwm\+\_\+free}} (\mbox{\hyperlink{model_8h_a9ee1ddb4a0909f01e579ce8b5a531780}{gkn\+\_\+pwm}} pwm)
+\item 
+\mbox{\hyperlink{model_8h_a9ee1ddb4a0909f01e579ce8b5a531780}{gkn\+\_\+pwm}} \mbox{\hyperlink{model_8c_aa71de83c663e797b6f3c1fe0e67e30f3}{gkn\+\_\+pwm\+\_\+read}} (\mbox{\hyperlink{toolbox_8h_af57de20432b2b556411681893aec320e}{gkn\+\_\+pipe}} io)
+\item 
+double \mbox{\hyperlink{model_8c_a842526d042cec7ecee9dc7b9b9eeb378}{gkn\+\_\+pwm\+\_\+score}} (const \mbox{\hyperlink{model_8h_a9ee1ddb4a0909f01e579ce8b5a531780}{gkn\+\_\+pwm}} pwm, const char $\ast$seq, int pos)
+\item 
+void \mbox{\hyperlink{model_8c_af3d950f7e0fea37b69df12bd1ba73f89}{gkn\+\_\+mm\+\_\+free}} (\mbox{\hyperlink{model_8h_a4b7c7fb094dc6e6ab9607102ec4c0ff5}{gkn\+\_\+mm}} mm)
+\item 
+\mbox{\hyperlink{model_8h_a4b7c7fb094dc6e6ab9607102ec4c0ff5}{gkn\+\_\+mm}} \mbox{\hyperlink{model_8c_ac2907ad5d6b55c468848d42d8f3f43e2}{gkn\+\_\+mm\+\_\+read}} (\mbox{\hyperlink{toolbox_8h_af57de20432b2b556411681893aec320e}{gkn\+\_\+pipe}} io)
+\item 
+double \mbox{\hyperlink{model_8c_a3c9efda0b683c5ad5315d4259b83b03b}{gkn\+\_\+mm\+\_\+score}} (const \mbox{\hyperlink{model_8h_a4b7c7fb094dc6e6ab9607102ec4c0ff5}{gkn\+\_\+mm}} mm, const char $\ast$seq, int pos, int end)
+\item 
+double $\ast$ \mbox{\hyperlink{model_8c_a5efd9cf4f885f3809d9635ef333de292}{gkn\+\_\+mm\+\_\+cache}} (const \mbox{\hyperlink{model_8h_a4b7c7fb094dc6e6ab9607102ec4c0ff5}{gkn\+\_\+mm}} mm, const char $\ast$seq)
+\item 
+double \mbox{\hyperlink{model_8c_a3de94739516c7ac19613a5f2cafd6bc0}{gkn\+\_\+mm\+\_\+score\+\_\+cache}} (const \mbox{\hyperlink{model_8h_a4b7c7fb094dc6e6ab9607102ec4c0ff5}{gkn\+\_\+mm}} mm, const double $\ast$v, int beg, int end)
+\item 
+void \mbox{\hyperlink{model_8c_ad8d29e83f2b2cc12e7a29b3e4d991ad2}{gkn\+\_\+len\+\_\+free}} (\mbox{\hyperlink{model_8h_a1126d58e4f2405aa08f1f2cd98421db3}{gkn\+\_\+len}} model)
+\item 
+\mbox{\hyperlink{model_8h_a1126d58e4f2405aa08f1f2cd98421db3}{gkn\+\_\+len}} \mbox{\hyperlink{model_8c_af4fe9a0d7f8a5bcfab9830778330cdc8}{gkn\+\_\+len\+\_\+read}} (\mbox{\hyperlink{toolbox_8h_af57de20432b2b556411681893aec320e}{gkn\+\_\+pipe}} io)
+\item 
+double \mbox{\hyperlink{model_8c_a57125ce75365c1d62d398badd4617a60}{gkn\+\_\+len\+\_\+score}} (const \mbox{\hyperlink{model_8h_a1126d58e4f2405aa08f1f2cd98421db3}{gkn\+\_\+len}} len, int x)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{model_8c_a8d858df51ea437a8ef4d98ed4681f468}\label{model_8c_a8d858df51ea437a8ef4d98ed4681f468}} 
+\index{model.c@{model.c}!GENOMIKON\_MODEL\_C@{GENOMIKON\_MODEL\_C}}
+\index{GENOMIKON\_MODEL\_C@{GENOMIKON\_MODEL\_C}!model.c@{model.c}}
+\doxysubsubsection{\texorpdfstring{GENOMIKON\_MODEL\_C}{GENOMIKON\_MODEL\_C}}
+{\footnotesize\ttfamily \#define GENOMIKON\+\_\+\+MODEL\+\_\+C}
+
+
+
+Definition at line \mbox{\hyperlink{model_8c_source_l00007}{7}} of file \mbox{\hyperlink{model_8c_source}{model.\+c}}.
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{model_8c_ad8d29e83f2b2cc12e7a29b3e4d991ad2}\label{model_8c_ad8d29e83f2b2cc12e7a29b3e4d991ad2}} 
+\index{model.c@{model.c}!gkn\_len\_free@{gkn\_len\_free}}
+\index{gkn\_len\_free@{gkn\_len\_free}!model.c@{model.c}}
+\doxysubsubsection{\texorpdfstring{gkn\_len\_free()}{gkn\_len\_free()}}
+{\footnotesize\ttfamily void gkn\+\_\+len\+\_\+free (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{model_8h_a1126d58e4f2405aa08f1f2cd98421db3}{gkn\+\_\+len}}}]{model }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{model_8c_source_l00162}{162}} of file \mbox{\hyperlink{model_8c_source}{model.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00162                                  \{}
+\DoxyCodeLine{00163     free(model-\/>\mbox{\hyperlink{structgkn__LEN_a16e5f93a01dc508e9b3498b746a421e9}{name}});}
+\DoxyCodeLine{00164     free(model-\/>\mbox{\hyperlink{structgkn__LEN_a61967f1877af225429415a24c9ca014d}{score}});}
+\DoxyCodeLine{00165     free(model);}
+\DoxyCodeLine{00166 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{model_8c_af4fe9a0d7f8a5bcfab9830778330cdc8}\label{model_8c_af4fe9a0d7f8a5bcfab9830778330cdc8}} 
+\index{model.c@{model.c}!gkn\_len\_read@{gkn\_len\_read}}
+\index{gkn\_len\_read@{gkn\_len\_read}!model.c@{model.c}}
+\doxysubsubsection{\texorpdfstring{gkn\_len\_read()}{gkn\_len\_read()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{model_8h_a1126d58e4f2405aa08f1f2cd98421db3}{gkn\+\_\+len}} gkn\+\_\+len\+\_\+read (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{toolbox_8h_af57de20432b2b556411681893aec320e}{gkn\+\_\+pipe}}}]{io }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{model_8c_source_l00168}{168}} of file \mbox{\hyperlink{model_8c_source}{model.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00168                                   \{}
+\DoxyCodeLine{00169     \textcolor{keywordtype}{char}    *line = NULL;}
+\DoxyCodeLine{00170     \textcolor{keywordtype}{double}  *score = NULL;}
+\DoxyCodeLine{00171     \textcolor{keywordtype}{double}   p;}
+\DoxyCodeLine{00172     \textcolor{keywordtype}{int}      idx = 0;}
+\DoxyCodeLine{00173     \textcolor{keywordtype}{int}      size;}
+\DoxyCodeLine{00174     \textcolor{keywordtype}{char}     name[64];}
+\DoxyCodeLine{00175 }
+\DoxyCodeLine{00176     \textcolor{comment}{// read probabilities}}
+\DoxyCodeLine{00177     \textcolor{keywordflow}{while} ((line = \mbox{\hyperlink{toolbox_8c_a5eb43545be45c926be046bcff9049e76}{gkn\_readline}}(io)) != NULL) \{}
+\DoxyCodeLine{00178         \textcolor{keywordflow}{if} (line[0] == \textcolor{charliteral}{'\%'}) \{}
+\DoxyCodeLine{00179             assert(sscanf(line, \textcolor{stringliteral}{"{}\%\% LEN \%s \%d"{}}, name, \&size) == 2);}
+\DoxyCodeLine{00180             score = malloc(\textcolor{keyword}{sizeof}(\textcolor{keywordtype}{double}) * size);}
+\DoxyCodeLine{00181             free(line);}
+\DoxyCodeLine{00182         \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (sscanf(line, \textcolor{stringliteral}{"{}\%lf"{}}, \&p) == 1) \{}
+\DoxyCodeLine{00183             score[idx] = p;}
+\DoxyCodeLine{00184             idx++;}
+\DoxyCodeLine{00185             free(line);}
+\DoxyCodeLine{00186         \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{00187             free(line);}
+\DoxyCodeLine{00188         \}}
+\DoxyCodeLine{00189     \}}
+\DoxyCodeLine{00190 }
+\DoxyCodeLine{00191     \mbox{\hyperlink{structgkn__LEN}{gkn\_len}} model = malloc(\textcolor{keyword}{sizeof}(\textcolor{keyword}{struct} \mbox{\hyperlink{structgkn__LEN}{gkn\_LEN}}));}
+\DoxyCodeLine{00192     model-\/>\mbox{\hyperlink{structgkn__LEN_a16e5f93a01dc508e9b3498b746a421e9}{name}} = malloc(strlen(name)+1);}
+\DoxyCodeLine{00193     strcpy(model-\/>\mbox{\hyperlink{structgkn__LEN_a16e5f93a01dc508e9b3498b746a421e9}{name}}, name);}
+\DoxyCodeLine{00194     model-\/>\mbox{\hyperlink{structgkn__LEN_a61967f1877af225429415a24c9ca014d}{score}} = score;}
+\DoxyCodeLine{00195     model-\/>\mbox{\hyperlink{structgkn__LEN_a8ed15b0f36036636667d6387dbb94be9}{size}} = size;}
+\DoxyCodeLine{00196     model-\/>\mbox{\hyperlink{structgkn__LEN_ab41d183988b3ea3f369a8897aeb86c4c}{tail}} = find\_tail(score[size-\/1], size);}
+\DoxyCodeLine{00197 }
+\DoxyCodeLine{00198     \textcolor{comment}{// convert probabilities to scores}}
+\DoxyCodeLine{00199     \textcolor{keywordtype}{double} expect = (double) 1 / model-\/>\mbox{\hyperlink{structgkn__LEN_a8ed15b0f36036636667d6387dbb94be9}{size}};}
+\DoxyCodeLine{00200     for (\textcolor{keywordtype}{int} i = 0; i < size; i++) \{}
+\DoxyCodeLine{00201         score[i] = log(score[i]/expect) / log(2); \textcolor{comment}{// divide by zero?}}
+\DoxyCodeLine{00202     \}}
+\DoxyCodeLine{00203 }
+\DoxyCodeLine{00204     \textcolor{keywordflow}{return} model;}
+\DoxyCodeLine{00205 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{model_8c_a57125ce75365c1d62d398badd4617a60}\label{model_8c_a57125ce75365c1d62d398badd4617a60}} 
+\index{model.c@{model.c}!gkn\_len\_score@{gkn\_len\_score}}
+\index{gkn\_len\_score@{gkn\_len\_score}!model.c@{model.c}}
+\doxysubsubsection{\texorpdfstring{gkn\_len\_score()}{gkn\_len\_score()}}
+{\footnotesize\ttfamily double gkn\+\_\+len\+\_\+score (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{model_8h_a1126d58e4f2405aa08f1f2cd98421db3}{gkn\+\_\+len}}}]{len,  }\item[{int}]{x }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{model_8c_source_l00207}{207}} of file \mbox{\hyperlink{model_8c_source}{model.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00207                                                \{}
+\DoxyCodeLine{00208     assert(x >= 0);}
+\DoxyCodeLine{00209     \textcolor{keywordflow}{if} (x >= len-\/>\mbox{\hyperlink{structgkn__LEN_a8ed15b0f36036636667d6387dbb94be9}{size}}) \{}
+\DoxyCodeLine{00210         \textcolor{keywordtype}{double} p = 1 / len-\/>\mbox{\hyperlink{structgkn__LEN_ab41d183988b3ea3f369a8897aeb86c4c}{tail}};}
+\DoxyCodeLine{00211         \textcolor{keywordtype}{double} q = pow(1-\/p, x-\/1) * p;}
+\DoxyCodeLine{00212         \textcolor{keywordtype}{double} expect = (double)1 / len-\/>\mbox{\hyperlink{structgkn__LEN_a8ed15b0f36036636667d6387dbb94be9}{size}};}
+\DoxyCodeLine{00213         \textcolor{keywordtype}{double} s = log(q/expect) / log(2);}
+\DoxyCodeLine{00214         \textcolor{keywordflow}{return} s;}
+\DoxyCodeLine{00215     \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{00216         \textcolor{keywordflow}{return} len-\/>\mbox{\hyperlink{structgkn__LEN_a61967f1877af225429415a24c9ca014d}{score}}[x];}
+\DoxyCodeLine{00217     \}}
+\DoxyCodeLine{00218 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{model_8c_a5efd9cf4f885f3809d9635ef333de292}\label{model_8c_a5efd9cf4f885f3809d9635ef333de292}} 
+\index{model.c@{model.c}!gkn\_mm\_cache@{gkn\_mm\_cache}}
+\index{gkn\_mm\_cache@{gkn\_mm\_cache}!model.c@{model.c}}
+\doxysubsubsection{\texorpdfstring{gkn\_mm\_cache()}{gkn\_mm\_cache()}}
+{\footnotesize\ttfamily double $\ast$ gkn\+\_\+mm\+\_\+cache (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{model_8h_a4b7c7fb094dc6e6ab9607102ec4c0ff5}{gkn\+\_\+mm}}}]{mm,  }\item[{const char $\ast$}]{seq }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{model_8c_source_l00128}{128}} of file \mbox{\hyperlink{model_8c_source}{model.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00128                                                         \{}
+\DoxyCodeLine{00129     \textcolor{keywordtype}{int} len = strlen(seq);}
+\DoxyCodeLine{00130     \textcolor{keywordtype}{double} *score = malloc(\textcolor{keyword}{sizeof}(\textcolor{keywordtype}{double}) * len);}
+\DoxyCodeLine{00131     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < mm-\/>\mbox{\hyperlink{structgkn__MM_a8435c8b9d9129697a30e62fa2c72d927}{k}}; i++) score[i] = 0;}
+\DoxyCodeLine{00132     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = mm-\/>\mbox{\hyperlink{structgkn__MM_a8435c8b9d9129697a30e62fa2c72d927}{k}}; i < len; i++) \{}
+\DoxyCodeLine{00133         \textcolor{keywordtype}{int} idx = \mbox{\hyperlink{sequence_8c_a35f042ed2c8bf230cbbc50bb5e1fcd7a}{gkn\_ntindex}}(seq, i, mm-\/>\mbox{\hyperlink{structgkn__MM_a8435c8b9d9129697a30e62fa2c72d927}{k}});}
+\DoxyCodeLine{00134         \textcolor{keywordflow}{if} (idx == -\/1) score[i] = score[i-\/1];}
+\DoxyCodeLine{00135         \textcolor{keywordflow}{else}           score[i] = score[i-\/1] + mm-\/>\mbox{\hyperlink{structgkn__MM_a7d7cbaae29c43506263b5daa94d91ad5}{score}}[idx];}
+\DoxyCodeLine{00136     \}}
+\DoxyCodeLine{00137     \textcolor{keywordflow}{return} score;}
+\DoxyCodeLine{00138 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{model_8c_af3d950f7e0fea37b69df12bd1ba73f89}\label{model_8c_af3d950f7e0fea37b69df12bd1ba73f89}} 
+\index{model.c@{model.c}!gkn\_mm\_free@{gkn\_mm\_free}}
+\index{gkn\_mm\_free@{gkn\_mm\_free}!model.c@{model.c}}
+\doxysubsubsection{\texorpdfstring{gkn\_mm\_free()}{gkn\_mm\_free()}}
+{\footnotesize\ttfamily void gkn\+\_\+mm\+\_\+free (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{model_8h_a4b7c7fb094dc6e6ab9607102ec4c0ff5}{gkn\+\_\+mm}}}]{mm }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{model_8c_source_l00079}{79}} of file \mbox{\hyperlink{model_8c_source}{model.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00079                             \{}
+\DoxyCodeLine{00080     free(mm-\/>\mbox{\hyperlink{structgkn__MM_a4ea79c23d04a58b661569ce86b0993e3}{name}});}
+\DoxyCodeLine{00081     free(mm-\/>\mbox{\hyperlink{structgkn__MM_a7d7cbaae29c43506263b5daa94d91ad5}{score}});}
+\DoxyCodeLine{00082     free(mm);}
+\DoxyCodeLine{00083 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{model_8c_ac2907ad5d6b55c468848d42d8f3f43e2}\label{model_8c_ac2907ad5d6b55c468848d42d8f3f43e2}} 
+\index{model.c@{model.c}!gkn\_mm\_read@{gkn\_mm\_read}}
+\index{gkn\_mm\_read@{gkn\_mm\_read}!model.c@{model.c}}
+\doxysubsubsection{\texorpdfstring{gkn\_mm\_read()}{gkn\_mm\_read()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{model_8h_a4b7c7fb094dc6e6ab9607102ec4c0ff5}{gkn\+\_\+mm}} gkn\+\_\+mm\+\_\+read (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{toolbox_8h_af57de20432b2b556411681893aec320e}{gkn\+\_\+pipe}}}]{io }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{model_8c_source_l00085}{85}} of file \mbox{\hyperlink{model_8c_source}{model.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00085                                 \{}
+\DoxyCodeLine{00086     \textcolor{keywordtype}{char}    *line = NULL;}
+\DoxyCodeLine{00087     \textcolor{keywordtype}{double}  *score = NULL;}
+\DoxyCodeLine{00088     \textcolor{keywordtype}{char}     kmer[16];}
+\DoxyCodeLine{00089     \textcolor{keywordtype}{char}     name[256];}
+\DoxyCodeLine{00090     \textcolor{keywordtype}{int}      size;}
+\DoxyCodeLine{00091     \textcolor{keywordtype}{double}   p;}
+\DoxyCodeLine{00092 }
+\DoxyCodeLine{00093     \textcolor{keywordflow}{while} ((line = \mbox{\hyperlink{toolbox_8c_a5eb43545be45c926be046bcff9049e76}{gkn\_readline}}(io)) != NULL) \{}
+\DoxyCodeLine{00094         \textcolor{keywordflow}{if} (line[0] == \textcolor{charliteral}{'\%'}) \{}
+\DoxyCodeLine{00095             assert(sscanf(line, \textcolor{stringliteral}{"{}\%\% MM \%s \%d"{}}, name, \&size) == 2);}
+\DoxyCodeLine{00096             score = malloc(\textcolor{keyword}{sizeof}(\textcolor{keywordtype}{double}) * size);}
+\DoxyCodeLine{00097             free(line);}
+\DoxyCodeLine{00098         \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (sscanf(line, \textcolor{stringliteral}{"{}\%s \%lf"{}}, kmer, \&p) == 2) \{}
+\DoxyCodeLine{00099             \textcolor{keywordtype}{int} idx = \mbox{\hyperlink{sequence_8c_a35f042ed2c8bf230cbbc50bb5e1fcd7a}{gkn\_ntindex}}(kmer, 0, strlen(kmer));}
+\DoxyCodeLine{00100             \textcolor{keywordflow}{if} (idx == -\/1) \mbox{\hyperlink{toolbox_8c_afc3a337fdac9b2ac6bb3135b0cc5789b}{gkn\_exit}}(\textcolor{stringliteral}{"{}alphabet error in: \%s"{}}, kmer);}
+\DoxyCodeLine{00101             score[idx] = \mbox{\hyperlink{model_8c_ada6943e46eb9551b6a0db082c36cf9b3}{gkn\_p2s}}(p);}
+\DoxyCodeLine{00102             free(line);}
+\DoxyCodeLine{00103         \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{00104             free(line);}
+\DoxyCodeLine{00105         \}}
+\DoxyCodeLine{00106     \}}
+\DoxyCodeLine{00107 }
+\DoxyCodeLine{00108     \mbox{\hyperlink{structgkn__MM}{gkn\_mm}} model = malloc(\textcolor{keyword}{sizeof}(\textcolor{keyword}{struct} \mbox{\hyperlink{structgkn__MM}{gkn\_MM}}));}
+\DoxyCodeLine{00109     model-\/>\mbox{\hyperlink{structgkn__MM_a4ea79c23d04a58b661569ce86b0993e3}{name}} = malloc(strlen(name)+1);}
+\DoxyCodeLine{00110     strcpy(model-\/>\mbox{\hyperlink{structgkn__MM_a4ea79c23d04a58b661569ce86b0993e3}{name}}, name);}
+\DoxyCodeLine{00111     model-\/>\mbox{\hyperlink{structgkn__MM_a8435c8b9d9129697a30e62fa2c72d927}{k}} = strlen(kmer);}
+\DoxyCodeLine{00112     model-\/>\mbox{\hyperlink{structgkn__MM_a09abb0546e576f406657b8bf30f3461b}{size}} = size;}
+\DoxyCodeLine{00113     model-\/>\mbox{\hyperlink{structgkn__MM_a7d7cbaae29c43506263b5daa94d91ad5}{score}} = score;}
+\DoxyCodeLine{00114 }
+\DoxyCodeLine{00115     \textcolor{keywordflow}{return} model;}
+\DoxyCodeLine{00116 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{model_8c_a3c9efda0b683c5ad5315d4259b83b03b}\label{model_8c_a3c9efda0b683c5ad5315d4259b83b03b}} 
+\index{model.c@{model.c}!gkn\_mm\_score@{gkn\_mm\_score}}
+\index{gkn\_mm\_score@{gkn\_mm\_score}!model.c@{model.c}}
+\doxysubsubsection{\texorpdfstring{gkn\_mm\_score()}{gkn\_mm\_score()}}
+{\footnotesize\ttfamily double gkn\+\_\+mm\+\_\+score (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{model_8h_a4b7c7fb094dc6e6ab9607102ec4c0ff5}{gkn\+\_\+mm}}}]{mm,  }\item[{const char $\ast$}]{seq,  }\item[{int}]{pos,  }\item[{int}]{end }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{model_8c_source_l00118}{118}} of file \mbox{\hyperlink{model_8c_source}{model.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00118                                                                         \{}
+\DoxyCodeLine{00119     \textcolor{keywordtype}{double} p = 0;}
+\DoxyCodeLine{00120     \textcolor{keywordflow}{if} (pos < mm-\/>k) pos = mm-\/>\mbox{\hyperlink{structgkn__MM_a8435c8b9d9129697a30e62fa2c72d927}{k}};}
+\DoxyCodeLine{00121     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = pos; i < end -\/ mm-\/>\mbox{\hyperlink{structgkn__MM_a8435c8b9d9129697a30e62fa2c72d927}{k}} +2; i++) \{}
+\DoxyCodeLine{00122         \textcolor{keywordtype}{int} idx = \mbox{\hyperlink{sequence_8c_a35f042ed2c8bf230cbbc50bb5e1fcd7a}{gkn\_ntindex}}(seq, i, mm-\/>\mbox{\hyperlink{structgkn__MM_a8435c8b9d9129697a30e62fa2c72d927}{k}});}
+\DoxyCodeLine{00123         \textcolor{keywordflow}{if} (idx != -\/1) p += mm-\/>\mbox{\hyperlink{structgkn__MM_a7d7cbaae29c43506263b5daa94d91ad5}{score}}[idx];}
+\DoxyCodeLine{00124     \}}
+\DoxyCodeLine{00125     \textcolor{keywordflow}{return} p;}
+\DoxyCodeLine{00126 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{model_8c_a3de94739516c7ac19613a5f2cafd6bc0}\label{model_8c_a3de94739516c7ac19613a5f2cafd6bc0}} 
+\index{model.c@{model.c}!gkn\_mm\_score\_cache@{gkn\_mm\_score\_cache}}
+\index{gkn\_mm\_score\_cache@{gkn\_mm\_score\_cache}!model.c@{model.c}}
+\doxysubsubsection{\texorpdfstring{gkn\_mm\_score\_cache()}{gkn\_mm\_score\_cache()}}
+{\footnotesize\ttfamily double gkn\+\_\+mm\+\_\+score\+\_\+cache (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{model_8h_a4b7c7fb094dc6e6ab9607102ec4c0ff5}{gkn\+\_\+mm}}}]{mm,  }\item[{const double $\ast$}]{v,  }\item[{int}]{beg,  }\item[{int}]{end }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{model_8c_source_l00140}{140}} of file \mbox{\hyperlink{model_8c_source}{model.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00140                                                                               \{}
+\DoxyCodeLine{00141     \textcolor{keywordflow}{return} v[end -\/ mm-\/>\mbox{\hyperlink{structgkn__MM_a8435c8b9d9129697a30e62fa2c72d927}{k}} +1] -\/ v[beg -\/1];}
+\DoxyCodeLine{00142 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{model_8c_ada6943e46eb9551b6a0db082c36cf9b3}\label{model_8c_ada6943e46eb9551b6a0db082c36cf9b3}} 
+\index{model.c@{model.c}!gkn\_p2s@{gkn\_p2s}}
+\index{gkn\_p2s@{gkn\_p2s}!model.c@{model.c}}
+\doxysubsubsection{\texorpdfstring{gkn\_p2s()}{gkn\_p2s()}}
+{\footnotesize\ttfamily double gkn\+\_\+p2s (\begin{DoxyParamCaption}\item[{double}]{p }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{model_8c_source_l00011}{11}} of file \mbox{\hyperlink{model_8c_source}{model.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00011                          \{}
+\DoxyCodeLine{00012     \textcolor{keywordflow}{if} (p == 0) \textcolor{keywordflow}{return} -\/100; \textcolor{comment}{// umm...}}
+\DoxyCodeLine{00013     \textcolor{keywordflow}{return} log(p/0.25) / log(2);}
+\DoxyCodeLine{00014 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{model_8c_aae8dec0447ba81cba271c90904ea6c12}\label{model_8c_aae8dec0447ba81cba271c90904ea6c12}} 
+\index{model.c@{model.c}!gkn\_pwm\_free@{gkn\_pwm\_free}}
+\index{gkn\_pwm\_free@{gkn\_pwm\_free}!model.c@{model.c}}
+\doxysubsubsection{\texorpdfstring{gkn\_pwm\_free()}{gkn\_pwm\_free()}}
+{\footnotesize\ttfamily void gkn\+\_\+pwm\+\_\+free (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{model_8h_a9ee1ddb4a0909f01e579ce8b5a531780}{gkn\+\_\+pwm}}}]{pwm }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{model_8c_source_l00018}{18}} of file \mbox{\hyperlink{model_8c_source}{model.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00018                                \{}
+\DoxyCodeLine{00019     free(pwm-\/>\mbox{\hyperlink{structgkn__PWM_a79c8f337af264421d6c37b73a4aeedb5}{name}});}
+\DoxyCodeLine{00020     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < pwm-\/>\mbox{\hyperlink{structgkn__PWM_a4b3b21bc2becb673e17c4eac4aac9a47}{size}}; i++) \{}
+\DoxyCodeLine{00021         free(pwm-\/>\mbox{\hyperlink{structgkn__PWM_a9c93114077c71be048f24720361633db}{score}}[i]);}
+\DoxyCodeLine{00022     \}}
+\DoxyCodeLine{00023     free(pwm-\/>\mbox{\hyperlink{structgkn__PWM_a9c93114077c71be048f24720361633db}{score}});}
+\DoxyCodeLine{00024     free(pwm);}
+\DoxyCodeLine{00025 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{model_8c_aa71de83c663e797b6f3c1fe0e67e30f3}\label{model_8c_aa71de83c663e797b6f3c1fe0e67e30f3}} 
+\index{model.c@{model.c}!gkn\_pwm\_read@{gkn\_pwm\_read}}
+\index{gkn\_pwm\_read@{gkn\_pwm\_read}!model.c@{model.c}}
+\doxysubsubsection{\texorpdfstring{gkn\_pwm\_read()}{gkn\_pwm\_read()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{model_8h_a9ee1ddb4a0909f01e579ce8b5a531780}{gkn\+\_\+pwm}} gkn\+\_\+pwm\+\_\+read (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{toolbox_8h_af57de20432b2b556411681893aec320e}{gkn\+\_\+pipe}}}]{io }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{model_8c_source_l00027}{27}} of file \mbox{\hyperlink{model_8c_source}{model.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00027                                   \{}
+\DoxyCodeLine{00028     \textcolor{keywordtype}{char}    *line;}
+\DoxyCodeLine{00029     \textcolor{keywordtype}{char}     name[256];}
+\DoxyCodeLine{00030     \textcolor{keywordtype}{int}      size;}
+\DoxyCodeLine{00031     \textcolor{keywordtype}{double} **score = NULL;}
+\DoxyCodeLine{00032     \textcolor{keywordtype}{double}   a, c, g, t;}
+\DoxyCodeLine{00033     \textcolor{keywordtype}{int}      row = 0;}
+\DoxyCodeLine{00034 }
+\DoxyCodeLine{00035     \textcolor{keywordflow}{while} ((line = \mbox{\hyperlink{toolbox_8c_a5eb43545be45c926be046bcff9049e76}{gkn\_readline}}(io)) != NULL) \{}
+\DoxyCodeLine{00036         \textcolor{keywordflow}{if} (line[0] == \textcolor{charliteral}{'\%'}) \{}
+\DoxyCodeLine{00037             assert(sscanf(line, \textcolor{stringliteral}{"{}\%\% PWM \%s \%d"{}}, name, \&size) == 2);}
+\DoxyCodeLine{00038             score = malloc(\textcolor{keyword}{sizeof}(\textcolor{keywordtype}{double}*) * size);}
+\DoxyCodeLine{00039             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < size; i++) \{}
+\DoxyCodeLine{00040                 score[i] = malloc(\textcolor{keyword}{sizeof}(\textcolor{keywordtype}{double}) * 4);}
+\DoxyCodeLine{00041             \}}
+\DoxyCodeLine{00042             free(line);}
+\DoxyCodeLine{00043         \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (sscanf(line, \textcolor{stringliteral}{"{}\%lf \%lf \%lf \%lf"{}}, \&a, \&c, \&g, \&t) == 4) \{}
+\DoxyCodeLine{00044             score[row][0] = \mbox{\hyperlink{model_8c_ada6943e46eb9551b6a0db082c36cf9b3}{gkn\_p2s}}(a);}
+\DoxyCodeLine{00045             score[row][1] = \mbox{\hyperlink{model_8c_ada6943e46eb9551b6a0db082c36cf9b3}{gkn\_p2s}}(c);}
+\DoxyCodeLine{00046             score[row][2] = \mbox{\hyperlink{model_8c_ada6943e46eb9551b6a0db082c36cf9b3}{gkn\_p2s}}(g);}
+\DoxyCodeLine{00047             score[row][3] = \mbox{\hyperlink{model_8c_ada6943e46eb9551b6a0db082c36cf9b3}{gkn\_p2s}}(t);}
+\DoxyCodeLine{00048             row++;}
+\DoxyCodeLine{00049             free(line);}
+\DoxyCodeLine{00050         \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{00051             free(line);}
+\DoxyCodeLine{00052         \}}
+\DoxyCodeLine{00053     \}}
+\DoxyCodeLine{00054 }
+\DoxyCodeLine{00055     \mbox{\hyperlink{structgkn__PWM}{gkn\_pwm}} model = malloc(\textcolor{keyword}{sizeof}(\textcolor{keyword}{struct} \mbox{\hyperlink{structgkn__PWM}{gkn\_PWM}}));}
+\DoxyCodeLine{00056     model-\/>\mbox{\hyperlink{structgkn__PWM_a79c8f337af264421d6c37b73a4aeedb5}{name}} = malloc(strlen(name)+1);}
+\DoxyCodeLine{00057     strcpy(model-\/>\mbox{\hyperlink{structgkn__PWM_a79c8f337af264421d6c37b73a4aeedb5}{name}}, name);}
+\DoxyCodeLine{00058     model-\/>\mbox{\hyperlink{structgkn__PWM_a4b3b21bc2becb673e17c4eac4aac9a47}{size}} = size;}
+\DoxyCodeLine{00059     model-\/>\mbox{\hyperlink{structgkn__PWM_a9c93114077c71be048f24720361633db}{score}} = score;}
+\DoxyCodeLine{00060 }
+\DoxyCodeLine{00061     \textcolor{keywordflow}{return} model;}
+\DoxyCodeLine{00062 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{model_8c_a842526d042cec7ecee9dc7b9b9eeb378}\label{model_8c_a842526d042cec7ecee9dc7b9b9eeb378}} 
+\index{model.c@{model.c}!gkn\_pwm\_score@{gkn\_pwm\_score}}
+\index{gkn\_pwm\_score@{gkn\_pwm\_score}!model.c@{model.c}}
+\doxysubsubsection{\texorpdfstring{gkn\_pwm\_score()}{gkn\_pwm\_score()}}
+{\footnotesize\ttfamily double gkn\+\_\+pwm\+\_\+score (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{model_8h_a9ee1ddb4a0909f01e579ce8b5a531780}{gkn\+\_\+pwm}}}]{pwm,  }\item[{const char $\ast$}]{seq,  }\item[{int}]{pos }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{model_8c_source_l00064}{64}} of file \mbox{\hyperlink{model_8c_source}{model.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00064                                                                   \{}
+\DoxyCodeLine{00065     \textcolor{keywordtype}{double} p = 0;}
+\DoxyCodeLine{00066     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < pwm-\/>\mbox{\hyperlink{structgkn__PWM_a4b3b21bc2becb673e17c4eac4aac9a47}{size}}; i++) \{}
+\DoxyCodeLine{00067         \textcolor{keywordflow}{switch} (seq[i+pos]) \{}
+\DoxyCodeLine{00068             \textcolor{keywordflow}{case} \textcolor{charliteral}{'A'}: \textcolor{keywordflow}{case} \textcolor{charliteral}{'a'}: p += pwm-\/>\mbox{\hyperlink{structgkn__PWM_a9c93114077c71be048f24720361633db}{score}}[i][0]; \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00069             \textcolor{keywordflow}{case} \textcolor{charliteral}{'C'}: \textcolor{keywordflow}{case} \textcolor{charliteral}{'c'}: p += pwm-\/>\mbox{\hyperlink{structgkn__PWM_a9c93114077c71be048f24720361633db}{score}}[i][1]; \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00070             \textcolor{keywordflow}{case} \textcolor{charliteral}{'G'}: \textcolor{keywordflow}{case} \textcolor{charliteral}{'g'}: p += pwm-\/>\mbox{\hyperlink{structgkn__PWM_a9c93114077c71be048f24720361633db}{score}}[i][2]; \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00071             \textcolor{keywordflow}{case} \textcolor{charliteral}{'T'}: \textcolor{keywordflow}{case} \textcolor{charliteral}{'t'}: p += pwm-\/>\mbox{\hyperlink{structgkn__PWM_a9c93114077c71be048f24720361633db}{score}}[i][3]; \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00072         \}}
+\DoxyCodeLine{00073     \}}
+\DoxyCodeLine{00074     \textcolor{keywordflow}{return} p;}
+\DoxyCodeLine{00075 \}}
+
+\end{DoxyCode}

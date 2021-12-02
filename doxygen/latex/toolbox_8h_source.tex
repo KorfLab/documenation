@@ -1,0 +1,162 @@
+\hypertarget{toolbox_8h_source}{}\doxysection{toolbox.\+h}
+\mbox{\hyperlink{toolbox_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00001}00001 \textcolor{comment}{/******************************************************************************\(\backslash\)}}
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00002}00002 \textcolor{comment}{ toolbox.h}}
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00003}00003 \textcolor{comment}{ Copyright (C) Ian Korf}}
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00004}00004 \textcolor{comment}{\(\backslash\)******************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00005}00005 }
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00006}00006 \textcolor{preprocessor}{\#ifndef GENOMIKON\_TOOLBOX\_H}}
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00007}00007 \textcolor{preprocessor}{\#define GENOMIKON\_TOOLBOX\_H}}
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00008}00008 }
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00009}00009 \textcolor{preprocessor}{\#include <assert.h>}}
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00010}00010 \textcolor{preprocessor}{\#include <ctype.h>}}
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00011}00011 \textcolor{preprocessor}{\#include <errno.h>}}
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00012}00012 \textcolor{preprocessor}{\#include <float.h>}}
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00013}00013 \textcolor{preprocessor}{\#include <limits.h>}}
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00014}00014 \textcolor{preprocessor}{\#include <math.h>}}
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00015}00015 \textcolor{preprocessor}{\#include <stdarg.h>}}
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00016}00016 \textcolor{preprocessor}{\#include <stdlib.h>}}
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00017}00017 \textcolor{preprocessor}{\#include <stdio.h>}}
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00018}00018 \textcolor{preprocessor}{\#include <string.h>}}
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00019}00019 }
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00020}00020 \textcolor{comment}{// library and program info}}
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00021}00021 \textcolor{keywordtype}{char} * \mbox{\hyperlink{toolbox_8h_a545230a46903d703d2d9206500cb5533}{gkn\_get\_version\_number}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00022}00022 \textcolor{keywordtype}{void}   \mbox{\hyperlink{toolbox_8h_ae27b0229bb6695ec90ff62a095b320bb}{gkn\_set\_program\_name}}(\textcolor{keyword}{const} \textcolor{keywordtype}{char} *);}
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00023}00023 \textcolor{keywordtype}{char} * \mbox{\hyperlink{toolbox_8h_a7a3975f547595b72958f7dd9783b9cfe}{gkn\_get\_program\_name}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00024}00024 }
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00025}00025 \textcolor{comment}{// memory}}
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00026}00026 \textcolor{keywordtype}{void} * \mbox{\hyperlink{toolbox_8h_a3da8324df3911eef1c4e331aee382651}{gkn\_malloc}}(\textcolor{keywordtype}{size\_t});}
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00027}00027 \textcolor{keywordtype}{void} * \mbox{\hyperlink{toolbox_8h_ad5c9cf14fd2be11ade5b4c4da7a2f252}{gkn\_calloc}}(\textcolor{keywordtype}{size\_t}, \textcolor{keywordtype}{size\_t});}
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00028}00028 \textcolor{keywordtype}{void} * \mbox{\hyperlink{toolbox_8h_a437338f141f00f3b708e6eec770484ee}{gkn\_realloc}}(\textcolor{keywordtype}{void} *, \textcolor{keywordtype}{size\_t});}
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00029}00029 }
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00030}00030 \textcolor{comment}{// integer vector}}
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00031}\mbox{\hyperlink{structgkn__IVEC}{00031}} \textcolor{keyword}{struct }\mbox{\hyperlink{structgkn__IVEC}{gkn\_IVEC}} \{}
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00032}\mbox{\hyperlink{structgkn__IVEC_adb4d6fa4ed7f6b4b666ba080d14f4c27}{00032}}     \textcolor{keywordtype}{int} * \mbox{\hyperlink{structgkn__IVEC_adb4d6fa4ed7f6b4b666ba080d14f4c27}{elem}};}
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00033}\mbox{\hyperlink{structgkn__IVEC_a842fce6f95f145674af5ae4419aa3e45}{00033}}     \textcolor{keywordtype}{int}   \mbox{\hyperlink{structgkn__IVEC_a842fce6f95f145674af5ae4419aa3e45}{size}};}
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00034}\mbox{\hyperlink{structgkn__IVEC_a478eacfb42ec3436c97a48e0a33e7870}{00034}}     \textcolor{keywordtype}{int}   \mbox{\hyperlink{structgkn__IVEC_a478eacfb42ec3436c97a48e0a33e7870}{limit}};}
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00035}\mbox{\hyperlink{structgkn__IVEC_a1b2627d6e6e2f37ba935e194f8c5ec54}{00035}}     \textcolor{keywordtype}{int}   \mbox{\hyperlink{structgkn__IVEC_a1b2627d6e6e2f37ba935e194f8c5ec54}{last}};}
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00036}00036 \};}
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00037}\mbox{\hyperlink{toolbox_8h_ac0053a54962346f9c8ae9511a7f61dfe}{00037}} \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{structgkn__IVEC}{gkn\_IVEC}} * \mbox{\hyperlink{toolbox_8h_ac0053a54962346f9c8ae9511a7f61dfe}{gkn\_ivec}};}
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00038}00038 \textcolor{keywordtype}{void}     \mbox{\hyperlink{toolbox_8h_a456b629d3d6e284b974e225899200752}{gkn\_ivec\_free}}(\mbox{\hyperlink{structgkn__IVEC}{gkn\_ivec}});}
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00039}00039 \mbox{\hyperlink{structgkn__IVEC}{gkn\_ivec}} \mbox{\hyperlink{toolbox_8h_a90d4d0e46edf1471f8bea2394bca2561}{gkn\_ivec\_new}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00040}00040 \textcolor{keywordtype}{void}     \mbox{\hyperlink{toolbox_8h_aacf30db1d75709343dcc04689e70f36d}{gkn\_ivec\_push}}(\mbox{\hyperlink{structgkn__IVEC}{gkn\_ivec}}, \textcolor{keywordtype}{int});}
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00041}00041 \textcolor{keywordtype}{int}      \mbox{\hyperlink{toolbox_8h_a570b557eac185c6a1945871860555fc4}{gkn\_ivec\_pop}}(\mbox{\hyperlink{structgkn__IVEC}{gkn\_ivec}});}
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00042}00042 }
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00043}00043 \textcolor{comment}{// float vector}}
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00044}\mbox{\hyperlink{structgkn__FVEC}{00044}} \textcolor{keyword}{struct }\mbox{\hyperlink{structgkn__FVEC}{gkn\_FVEC}} \{}
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00045}\mbox{\hyperlink{structgkn__FVEC_a632981460f72cc34523866ab471584d3}{00045}}     \textcolor{keywordtype}{double} * \mbox{\hyperlink{structgkn__FVEC_a632981460f72cc34523866ab471584d3}{elem}};}
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00046}\mbox{\hyperlink{structgkn__FVEC_a17643cae16a8495d89e28db718ed844c}{00046}}     \textcolor{keywordtype}{int}      \mbox{\hyperlink{structgkn__FVEC_a17643cae16a8495d89e28db718ed844c}{size}};}
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00047}\mbox{\hyperlink{structgkn__FVEC_abcead3008dd0412cef134fc86bc71357}{00047}}     \textcolor{keywordtype}{int}      \mbox{\hyperlink{structgkn__FVEC_abcead3008dd0412cef134fc86bc71357}{limit}};}
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00048}\mbox{\hyperlink{structgkn__FVEC_a4a12af1b60bb413b0df9094c19648996}{00048}}     \textcolor{keywordtype}{int}      \mbox{\hyperlink{structgkn__FVEC_a4a12af1b60bb413b0df9094c19648996}{last}};}
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00049}00049 \};}
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00050}\mbox{\hyperlink{toolbox_8h_addfeb5b28beac1c22d9eb8de54a898dc}{00050}} \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{structgkn__FVEC}{gkn\_FVEC}} * \mbox{\hyperlink{toolbox_8h_addfeb5b28beac1c22d9eb8de54a898dc}{gkn\_fvec}};}
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00051}00051 \textcolor{keywordtype}{void}     \mbox{\hyperlink{toolbox_8h_a96090150694bee34b74cb11fbbbf9965}{gkn\_fvec\_free}}(\mbox{\hyperlink{structgkn__FVEC}{gkn\_fvec}});}
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00052}00052 \mbox{\hyperlink{structgkn__FVEC}{gkn\_fvec}} \mbox{\hyperlink{toolbox_8h_abf0dad2c126248bd7aaf8ac2381e932d}{gkn\_fvec\_new}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00053}00053 \textcolor{keywordtype}{void}     \mbox{\hyperlink{toolbox_8h_a97c5abfc4ab2db4b7a54aaf79cc1ff4e}{gkn\_fvec\_push}}(\mbox{\hyperlink{structgkn__FVEC}{gkn\_fvec}}, \textcolor{keywordtype}{double});}
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00054}00054 \textcolor{keywordtype}{double}   \mbox{\hyperlink{toolbox_8h_aa3c23cf677a8989d5e50524d8eddf573}{gkn\_fvec\_pop}}(\mbox{\hyperlink{structgkn__FVEC}{gkn\_fvec}});}
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00055}00055 }
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00056}00056 \textcolor{comment}{// text vector}}
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00057}\mbox{\hyperlink{structgkn__TVEC}{00057}} \textcolor{keyword}{struct }\mbox{\hyperlink{structgkn__TVEC}{gkn\_TVEC}} \{}
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00058}\mbox{\hyperlink{structgkn__TVEC_aa2efc4387dc92af21bb746872d0863df}{00058}}     \textcolor{keywordtype}{char} ** \mbox{\hyperlink{structgkn__TVEC_aa2efc4387dc92af21bb746872d0863df}{elem}};}
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00059}\mbox{\hyperlink{structgkn__TVEC_a30fe9aa087e75d03828bb891986a80ee}{00059}}     \textcolor{keywordtype}{int}     \mbox{\hyperlink{structgkn__TVEC_a30fe9aa087e75d03828bb891986a80ee}{size}};}
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00060}\mbox{\hyperlink{structgkn__TVEC_a2b187cbb5302378b99932dbdbc50dc95}{00060}}     \textcolor{keywordtype}{int}     \mbox{\hyperlink{structgkn__TVEC_a2b187cbb5302378b99932dbdbc50dc95}{limit}};}
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00061}\mbox{\hyperlink{structgkn__TVEC_aebb397efa028e1af8991b795dad61e02}{00061}}     \textcolor{keywordtype}{char}  * \mbox{\hyperlink{structgkn__TVEC_aebb397efa028e1af8991b795dad61e02}{last}};}
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00062}00062 \};}
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00063}\mbox{\hyperlink{toolbox_8h_acb1bede957ddfed2bc46ad2366440582}{00063}} \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{structgkn__TVEC}{gkn\_TVEC}} * \mbox{\hyperlink{toolbox_8h_acb1bede957ddfed2bc46ad2366440582}{gkn\_tvec}};}
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00064}00064 \textcolor{keywordtype}{void}     \mbox{\hyperlink{toolbox_8h_a1032ba98f2d43d5c13093999d6e5e563}{gkn\_tvec\_free}}(\mbox{\hyperlink{structgkn__TVEC}{gkn\_tvec}});}
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00065}00065 \mbox{\hyperlink{structgkn__TVEC}{gkn\_tvec}} \mbox{\hyperlink{toolbox_8h_acbe3324adee70e6e3cba788e8c8f3c57}{gkn\_tvec\_new}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00066}00066 \textcolor{keywordtype}{void}     \mbox{\hyperlink{toolbox_8h_a553a8af01ca184c30abb697f14111b91}{gkn\_tvec\_push}}(\mbox{\hyperlink{structgkn__TVEC}{gkn\_tvec}}, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *);}
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00067}00067 \textcolor{keywordtype}{char} *   \mbox{\hyperlink{toolbox_8h_a2546424abb5e35d959ea5f67a1d5a6bf}{gkn\_tvec\_pop}}(\mbox{\hyperlink{structgkn__TVEC}{gkn\_tvec}});}
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00068}00068 }
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00069}00069 \textcolor{comment}{// generic void * vector}}
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00070}\mbox{\hyperlink{structgkn__VEC}{00070}} \textcolor{keyword}{struct }\mbox{\hyperlink{structgkn__VEC}{gkn\_VEC}} \{}
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00071}\mbox{\hyperlink{structgkn__VEC_a67c9dce69b4a112228cc5ca451f2cf0b}{00071}}     \textcolor{keywordtype}{void} ** \mbox{\hyperlink{structgkn__VEC_a67c9dce69b4a112228cc5ca451f2cf0b}{elem}};}
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00072}\mbox{\hyperlink{structgkn__VEC_a888441c54cf7085fd338e80a0553d098}{00072}}     \textcolor{keywordtype}{int}     \mbox{\hyperlink{structgkn__VEC_a888441c54cf7085fd338e80a0553d098}{size}};}
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00073}\mbox{\hyperlink{structgkn__VEC_ae5f23384d9dc6b7785743efc7b926f4e}{00073}}     \textcolor{keywordtype}{int}     \mbox{\hyperlink{structgkn__VEC_ae5f23384d9dc6b7785743efc7b926f4e}{limit}};}
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00074}\mbox{\hyperlink{structgkn__VEC_a952c3af3042ad04f89f5b2d40aac8014}{00074}}     \textcolor{keywordtype}{void}  * \mbox{\hyperlink{structgkn__VEC_a952c3af3042ad04f89f5b2d40aac8014}{last}};}
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00075}00075 \};}
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00076}\mbox{\hyperlink{toolbox_8h_ac5a20c8ef2b86c672c4e9d67c947351f}{00076}} \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{structgkn__VEC}{gkn\_VEC}} * \mbox{\hyperlink{toolbox_8h_ac5a20c8ef2b86c672c4e9d67c947351f}{gkn\_vec}};}
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00077}00077 \textcolor{keywordtype}{void}    \mbox{\hyperlink{toolbox_8h_a6ab06fff63304229ac5a944879581700}{gkn\_vec\_free}}(\mbox{\hyperlink{structgkn__VEC}{gkn\_vec}});}
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00078}00078 \mbox{\hyperlink{structgkn__VEC}{gkn\_vec}} \mbox{\hyperlink{toolbox_8h_a36f281202cd2c19564cab711eb676e2e}{gkn\_vec\_new}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00079}00079 \textcolor{keywordtype}{void}    \mbox{\hyperlink{toolbox_8h_a7f6d08f9075452b0d8748a8e17cb4896}{gkn\_vec\_push}}(\mbox{\hyperlink{structgkn__VEC}{gkn\_vec}}, \textcolor{keywordtype}{void} *);}
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00080}00080 \textcolor{keywordtype}{void} *  \mbox{\hyperlink{toolbox_8h_adc089d53a5b718692befd74570ef7d24}{gkn\_vec\_pop}}(\mbox{\hyperlink{structgkn__VEC}{gkn\_vec}});}
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00081}00081 }
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00082}00082 \textcolor{comment}{// generic map (text key, void * value)}}
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00083}\mbox{\hyperlink{structgkn__MAP}{00083}} \textcolor{keyword}{struct }\mbox{\hyperlink{structgkn__MAP}{gkn\_MAP}} \{}
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00084}\mbox{\hyperlink{structgkn__MAP_a3c5ab709b359d969c101fa8545797a9d}{00084}}     \textcolor{keywordtype}{int}      \mbox{\hyperlink{structgkn__MAP_a3c5ab709b359d969c101fa8545797a9d}{level}};}
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00085}\mbox{\hyperlink{structgkn__MAP_a49f4997426f0602d54af21e9d429ecd1}{00085}}     \textcolor{keywordtype}{int}      \mbox{\hyperlink{structgkn__MAP_a49f4997426f0602d54af21e9d429ecd1}{slots}};}
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00086}\mbox{\hyperlink{structgkn__MAP_a68b9c05e6e96f2c4301b8f275840ae8f}{00086}}     \mbox{\hyperlink{structgkn__TVEC}{gkn\_tvec}} \mbox{\hyperlink{structgkn__MAP_a68b9c05e6e96f2c4301b8f275840ae8f}{keys}};}
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00087}\mbox{\hyperlink{structgkn__MAP_a4499484ff796b275ebf92e1da2203710}{00087}}     \mbox{\hyperlink{structgkn__VEC}{gkn\_vec}}   \mbox{\hyperlink{structgkn__MAP_a4499484ff796b275ebf92e1da2203710}{vals}};}
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00088}\mbox{\hyperlink{structgkn__MAP_a3bc7aab449242126e6d210cbb986132e}{00088}}     \mbox{\hyperlink{structgkn__VEC}{gkn\_vec}} * \mbox{\hyperlink{structgkn__MAP_a3bc7aab449242126e6d210cbb986132e}{key}};}
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00089}\mbox{\hyperlink{structgkn__MAP_a96b6c4be49afc5bd8fd6e1cb0b57bc17}{00089}}     \mbox{\hyperlink{structgkn__VEC}{gkn\_vec}} * \mbox{\hyperlink{structgkn__MAP_a96b6c4be49afc5bd8fd6e1cb0b57bc17}{val}};}
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00090}00090 \};}
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00091}\mbox{\hyperlink{toolbox_8h_ae5441164da154468e4b66888b03014b6}{00091}} \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{structgkn__MAP}{gkn\_MAP}} * \mbox{\hyperlink{toolbox_8h_ae5441164da154468e4b66888b03014b6}{gkn\_map}};}
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00092}00092 \textcolor{keywordtype}{void}     \mbox{\hyperlink{toolbox_8h_a7accd8305db1ca7fc4392bba224952dd}{gkn\_map\_free}}(\mbox{\hyperlink{structgkn__MAP}{gkn\_map}});}
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00093}00093 \mbox{\hyperlink{structgkn__MAP}{gkn\_map}}   \mbox{\hyperlink{toolbox_8h_ab233f0425faaae8cb5244d948cb99f9c}{gkn\_map\_new}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00094}00094 \textcolor{keywordtype}{void}     \mbox{\hyperlink{toolbox_8h_a95f7bb8cb2806ae245bc918fd8adaf3e}{gkn\_map\_set}}(\mbox{\hyperlink{structgkn__MAP}{gkn\_map}}, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *, \textcolor{keywordtype}{void} *);}
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00095}00095 \textcolor{keywordtype}{void} *   \mbox{\hyperlink{toolbox_8h_a5cadc7adf145a669ea1e31a5431b8242}{gkn\_map\_get}}(\textcolor{keyword}{const} \mbox{\hyperlink{structgkn__MAP}{gkn\_map}}, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *);}
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00096}00096 \mbox{\hyperlink{structgkn__TVEC}{gkn\_tvec}} \mbox{\hyperlink{toolbox_8h_a8f9d987565171e361e9f2a9abcccb3c7}{gkn\_map\_keys}}(\textcolor{keyword}{const} \mbox{\hyperlink{structgkn__MAP}{gkn\_map}});}
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00097}00097 \mbox{\hyperlink{structgkn__VEC}{gkn\_vec}}   \mbox{\hyperlink{toolbox_8h_a45d3285f55a65343677beaf22b769a7a}{gkn\_map\_vals}}(\textcolor{keyword}{const} \mbox{\hyperlink{structgkn__MAP}{gkn\_map}});}
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00098}00098 \textcolor{keywordtype}{void}     \mbox{\hyperlink{toolbox_8h_a69bfcbfa9efe52a09901757a7f4b9a48}{gkn\_map\_stat}}(\textcolor{keyword}{const} \mbox{\hyperlink{structgkn__MAP}{gkn\_map}});}
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00099}00099 }
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00100}00100 \textcolor{comment}{// text map}}
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00101}\mbox{\hyperlink{structgkn__TMAP}{00101}} \textcolor{keyword}{struct }\mbox{\hyperlink{structgkn__TMAP}{gkn\_TMAP}} \{}
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00102}\mbox{\hyperlink{structgkn__TMAP_aa3ecac0176b0a1b55a8e009d313d8658}{00102}}     \mbox{\hyperlink{structgkn__MAP}{gkn\_map}}  \mbox{\hyperlink{structgkn__TMAP_aa3ecac0176b0a1b55a8e009d313d8658}{hash}};}
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00103}\mbox{\hyperlink{structgkn__TMAP_ad80d9e3a948906714855e4f8b7ba348c}{00103}}     \mbox{\hyperlink{structgkn__TVEC}{gkn\_tvec}} \mbox{\hyperlink{structgkn__TMAP_ad80d9e3a948906714855e4f8b7ba348c}{tvec}};}
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00104}00104 \};}
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00105}\mbox{\hyperlink{toolbox_8h_abbbd4a1c08955a64705a99e82f9b3233}{00105}} \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{structgkn__TMAP}{gkn\_TMAP}} * \mbox{\hyperlink{toolbox_8h_abbbd4a1c08955a64705a99e82f9b3233}{gkn\_tmap}};}
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00106}00106 \textcolor{keywordtype}{void}     \mbox{\hyperlink{toolbox_8h_a66b9150b24dff0b8bd50828c12fd6dcf}{gkn\_tmap\_free}}(\mbox{\hyperlink{structgkn__TMAP}{gkn\_tmap}});}
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00107}00107 \mbox{\hyperlink{structgkn__TMAP}{gkn\_tmap}} \mbox{\hyperlink{toolbox_8h_a61c77d03c03dedd23bcb84354f4e1842}{gkn\_tmap\_new}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00108}00108 \textcolor{keywordtype}{void}     \mbox{\hyperlink{toolbox_8h_ad93825e113c83f7e5bf25d2276c12ea1}{gkn\_tmap\_set}}(\mbox{\hyperlink{structgkn__TMAP}{gkn\_tmap}}, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *);}
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00109}00109 \textcolor{keywordtype}{char} *   \mbox{\hyperlink{toolbox_8h_a876d7cb97bd62faf3ed04001ef2434ed}{gkn\_tmap\_get}}(\textcolor{keyword}{const} \mbox{\hyperlink{structgkn__TMAP}{gkn\_tmap}}, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *);}
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00110}00110 \textcolor{keywordtype}{int}      \mbox{\hyperlink{toolbox_8h_afc23a1b14e916ad075f4288d8dca9a8a}{gkn\_tmap\_exists}}(\textcolor{keyword}{const} \mbox{\hyperlink{structgkn__TMAP}{gkn\_tmap}}, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *);}
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00111}00111 \mbox{\hyperlink{structgkn__TVEC}{gkn\_tvec}} \mbox{\hyperlink{toolbox_8h_a178a7a50f373f17038070d10ec8f519c}{gkn\_tmap\_keys}}(\textcolor{keyword}{const} \mbox{\hyperlink{structgkn__TMAP}{gkn\_tmap}});}
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00112}00112 }
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00113}00113 \textcolor{comment}{/* generic suffix tree */}}
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00114}\mbox{\hyperlink{structgkn__XNODE}{00114}} \textcolor{keyword}{struct }\mbox{\hyperlink{structgkn__XNODE}{gkn\_XNODE}} \{}
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00115}\mbox{\hyperlink{structgkn__XNODE_a061788aeba306d8ad14325111c22a9f5}{00115}}     \mbox{\hyperlink{structgkn__VEC}{gkn\_vec}} \mbox{\hyperlink{structgkn__XNODE_a061788aeba306d8ad14325111c22a9f5}{children}};}
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00116}\mbox{\hyperlink{structgkn__XNODE_aeff402c351fa8245d3b0c9fdc301c167}{00116}}     \textcolor{keywordtype}{void}  *\mbox{\hyperlink{structgkn__XNODE_aeff402c351fa8245d3b0c9fdc301c167}{data}};}
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00117}\mbox{\hyperlink{structgkn__XNODE_adbcddda7e9465e168e07a69b6a36e3fb}{00117}}     \textcolor{keywordtype}{char}   \mbox{\hyperlink{structgkn__XNODE_adbcddda7e9465e168e07a69b6a36e3fb}{c}};}
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00118}00118 \};}
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00119}\mbox{\hyperlink{toolbox_8h_a6a560e6b02894a6737863314c17e1311}{00119}} \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{structgkn__XNODE}{gkn\_XNODE}} * \mbox{\hyperlink{toolbox_8h_a6a560e6b02894a6737863314c17e1311}{gkn\_xnode}};}
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00120}00120 \textcolor{keywordtype}{void}      \mbox{\hyperlink{toolbox_8h_a9f27ac09c79945eb7327c372edb7b74a}{gkn\_xnode\_free}}(\mbox{\hyperlink{structgkn__XNODE}{gkn\_xnode}});}
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00121}00121 \mbox{\hyperlink{structgkn__XNODE}{gkn\_xnode}} \mbox{\hyperlink{toolbox_8h_a52af75a64e24e313c5de89dc9ce16bd8}{gkn\_xnode\_new}}(\textcolor{keywordtype}{char});}
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00122}00122 \mbox{\hyperlink{structgkn__XNODE}{gkn\_xnode}} \mbox{\hyperlink{toolbox_8h_a5d22209d1a22142563264c0eee86aa19}{gkn\_xnode\_search}}(\textcolor{keyword}{const} \mbox{\hyperlink{structgkn__XNODE}{gkn\_xnode}}, \textcolor{keywordtype}{char} \mbox{\hyperlink{structgkn__XNODE_adbcddda7e9465e168e07a69b6a36e3fb}{c}});}
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00123}00123 }
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00124}\mbox{\hyperlink{structgkn__xtree}{00124}} \textcolor{keyword}{struct }\mbox{\hyperlink{structgkn__xtree}{gkn\_xtree}} \{}
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00125}\mbox{\hyperlink{structgkn__xtree_ac8320d3bf23561c0098184329a5e7ccb}{00125}}     \mbox{\hyperlink{structgkn__XNODE}{gkn\_xnode}} \mbox{\hyperlink{structgkn__xtree_ac8320d3bf23561c0098184329a5e7ccb}{head}};}
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00126}\mbox{\hyperlink{structgkn__xtree_a58ad174017161d8cedd985fce98e814a}{00126}}     \mbox{\hyperlink{structgkn__VEC}{gkn\_vec}}   \mbox{\hyperlink{structgkn__xtree_a58ad174017161d8cedd985fce98e814a}{alloc}};}
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00127}00127 \};}
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00128}\mbox{\hyperlink{toolbox_8h_aa9dadb0dfa66b0fb3702af918ab6a78d}{00128}} \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{structgkn__xtree}{gkn\_xtree}} * \mbox{\hyperlink{toolbox_8h_aa9dadb0dfa66b0fb3702af918ab6a78d}{gkn\_xtree}};}
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00129}00129 \textcolor{keywordtype}{void}      \mbox{\hyperlink{toolbox_8h_abdaa4a03403e54ad546bcbe1624e86e4}{gkn\_xtree\_free}}(\mbox{\hyperlink{structgkn__xtree}{gkn\_xtree}});}
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00130}00130 \mbox{\hyperlink{structgkn__xtree}{gkn\_xtree}} \mbox{\hyperlink{toolbox_8h_ac37b73f95e6eb2e1d89addd15f91e585}{gkn\_xtree\_new}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00131}00131 \textcolor{keywordtype}{void} *    \mbox{\hyperlink{toolbox_8h_a946e61ff7a45443edf94bef34e93fcb5}{gkn\_xtree\_get}}(\textcolor{keyword}{const} \mbox{\hyperlink{structgkn__xtree}{gkn\_xtree}}, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *);}
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00132}00132 \textcolor{keywordtype}{int}       \mbox{\hyperlink{toolbox_8h_a02b898b9b0356fc6297dd1f01fb7b4cf}{gkn\_xtree\_check}}(\textcolor{keyword}{const} \mbox{\hyperlink{structgkn__xtree}{gkn\_xtree}}, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *);}
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00133}00133 \mbox{\hyperlink{structgkn__XNODE}{gkn\_xnode}} \mbox{\hyperlink{toolbox_8h_a17362fba064d67b6b4d11025fd39bc6a}{gkn\_xtree\_node}}(\textcolor{keyword}{const} \mbox{\hyperlink{structgkn__xtree}{gkn\_xtree}}, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *);}
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00134}00134 \textcolor{keywordtype}{void}      \mbox{\hyperlink{toolbox_8h_a7208b60c95e2e9895c4e7556395a9356}{gkn\_xtree\_set}}(\mbox{\hyperlink{structgkn__xtree}{gkn\_xtree}}, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *, \textcolor{keywordtype}{void} *);}
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00135}00135 \mbox{\hyperlink{structgkn__TVEC}{gkn\_tvec}}  \mbox{\hyperlink{toolbox_8h_a3fd94e131a8afe97f4eb4e04a427c5c0}{gkn\_xtree\_keys}}(\textcolor{keyword}{const} \mbox{\hyperlink{structgkn__xtree}{gkn\_xtree}});}
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00136}00136 }
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00137}00137 \textcolor{comment}{// command line processing}}
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00138}00138 \textcolor{keywordtype}{void}   \mbox{\hyperlink{toolbox_8h_ac0d6581e876b5f5d77e4ff5d86e86e28}{gkn\_register\_option}}(\textcolor{keyword}{const} \textcolor{keywordtype}{char} *, \textcolor{keywordtype}{int});}
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00139}00139 \textcolor{keywordtype}{void}   \mbox{\hyperlink{toolbox_8h_a2e0b019b1445ffaf2e73d8014f349855}{gkn\_parse\_options}}(\textcolor{keywordtype}{int} *, \textcolor{keywordtype}{char} **);}
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00140}00140 \textcolor{keywordtype}{char} * \mbox{\hyperlink{toolbox_8h_a3357486a40af0b79bbb410fc631c54b1}{gkn\_option}}(\textcolor{keyword}{const} \textcolor{keywordtype}{char} *);}
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00141}00141 }
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00142}00142 \textcolor{comment}{// pipe}}
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00143}\mbox{\hyperlink{structgkn__PIPE}{00143}} \textcolor{keyword}{struct }\mbox{\hyperlink{structgkn__PIPE}{gkn\_PIPE}} \{}
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00144}\mbox{\hyperlink{structgkn__PIPE_aa6ce1288de7d028d544caa6ad7336f5b}{00144}}     \textcolor{keywordtype}{int}    \mbox{\hyperlink{structgkn__PIPE_aa6ce1288de7d028d544caa6ad7336f5b}{mode}}; \textcolor{comment}{// 0 = read, 1 = write, 2 = r+}}
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00145}\mbox{\hyperlink{structgkn__PIPE_acca08178e91509c04db5e4427b690763}{00145}}     \textcolor{keywordtype}{char} * \mbox{\hyperlink{structgkn__PIPE_acca08178e91509c04db5e4427b690763}{name}};}
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00146}\mbox{\hyperlink{structgkn__PIPE_ae01ce257bda6df46bece5ceb99d93416}{00146}}     \textcolor{keywordtype}{int}    \mbox{\hyperlink{structgkn__PIPE_ae01ce257bda6df46bece5ceb99d93416}{gzip}};}
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00147}\mbox{\hyperlink{structgkn__PIPE_a70cf373460970197d589c81ee35b09d3}{00147}}     FILE * \mbox{\hyperlink{structgkn__PIPE_a70cf373460970197d589c81ee35b09d3}{stream}};}
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00148}00148 \};}
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00149}\mbox{\hyperlink{toolbox_8h_af57de20432b2b556411681893aec320e}{00149}} \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{structgkn__PIPE}{gkn\_PIPE}} * \mbox{\hyperlink{toolbox_8h_af57de20432b2b556411681893aec320e}{gkn\_pipe}};}
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00150}00150 \mbox{\hyperlink{structgkn__PIPE}{gkn\_pipe}} \mbox{\hyperlink{toolbox_8h_aa4127cabab46d4e576ba6054dd643af2}{gkn\_pipe\_open}}(\textcolor{keyword}{const} \textcolor{keywordtype}{char} *, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *);}
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00151}00151 \textcolor{keywordtype}{void}     \mbox{\hyperlink{toolbox_8h_aa0a84fe361471887701dafae8efcae63}{gkn\_pipe\_close}}(\mbox{\hyperlink{structgkn__PIPE}{gkn\_pipe}});}
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00152}00152 }
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00153}00153 \textcolor{comment}{// input/output}}
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00154}00154 \textcolor{keywordtype}{char} * \mbox{\hyperlink{toolbox_8h_a4d2785c75c8f8313773164050b2ad822}{gkn\_readline}}(\mbox{\hyperlink{structgkn__PIPE}{gkn\_pipe}});}
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00155}00155 \textcolor{keywordtype}{void}   \mbox{\hyperlink{toolbox_8h_a36808cd2fc6ee7e1244b5970debaa981}{gkn\_exit}}(\textcolor{keyword}{const} \textcolor{keywordtype}{char} *, ...);}
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00156}00156 }
+\DoxyCodeLine{\Hypertarget{toolbox_8h_source_l00157}00157 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

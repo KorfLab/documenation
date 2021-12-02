@@ -1,0 +1,225 @@
+\hypertarget{model_8c_source}{}\doxysection{model.\+c}
+\mbox{\hyperlink{model_8c}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00001}00001 \textcolor{comment}{/******************************************************************************\(\backslash\)}}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00002}00002 \textcolor{comment}{ model.c}}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00003}00003 \textcolor{comment}{ Copyright (C) Ian Korf}}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00004}00004 \textcolor{comment}{\(\backslash\)******************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00005}00005 }
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00006}00006 \textcolor{preprocessor}{\#ifndef GENOMIKON\_MODEL\_C}}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00007}\mbox{\hyperlink{model_8c_a8d858df51ea437a8ef4d98ed4681f468}{00007}} \textcolor{preprocessor}{\#define GENOMIKON\_MODEL\_C}}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00008}00008 }
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00009}00009 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{model_8h}{model.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00010}00010 }
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00011}\mbox{\hyperlink{model_8c_ada6943e46eb9551b6a0db082c36cf9b3}{00011}} \textcolor{keywordtype}{double} \mbox{\hyperlink{model_8c_ada6943e46eb9551b6a0db082c36cf9b3}{gkn\_p2s}}(\textcolor{keywordtype}{double} p) \{}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00012}00012     \textcolor{keywordflow}{if} (p == 0) \textcolor{keywordflow}{return} -\/100; \textcolor{comment}{// umm...}}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00013}00013     \textcolor{keywordflow}{return} log(p/0.25) / log(2);}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00014}00014 \}}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00015}00015 }
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00016}00016 \textcolor{comment}{// PWM}}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00017}00017 }
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00018}\mbox{\hyperlink{model_8c_aae8dec0447ba81cba271c90904ea6c12}{00018}} \textcolor{keywordtype}{void} \mbox{\hyperlink{model_8c_aae8dec0447ba81cba271c90904ea6c12}{gkn\_pwm\_free}}(\mbox{\hyperlink{structgkn__PWM}{gkn\_pwm}} pwm) \{}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00019}00019     free(pwm-\/>\mbox{\hyperlink{structgkn__PWM_a79c8f337af264421d6c37b73a4aeedb5}{name}});}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00020}00020     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < pwm-\/>\mbox{\hyperlink{structgkn__PWM_a4b3b21bc2becb673e17c4eac4aac9a47}{size}}; i++) \{}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00021}00021         free(pwm-\/>\mbox{\hyperlink{structgkn__PWM_a9c93114077c71be048f24720361633db}{score}}[i]);}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00022}00022     \}}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00023}00023     free(pwm-\/>\mbox{\hyperlink{structgkn__PWM_a9c93114077c71be048f24720361633db}{score}});}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00024}00024     free(pwm);}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00025}00025 \}}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00026}00026 }
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00027}\mbox{\hyperlink{model_8c_aa71de83c663e797b6f3c1fe0e67e30f3}{00027}} \mbox{\hyperlink{structgkn__PWM}{gkn\_pwm}} \mbox{\hyperlink{model_8c_aa71de83c663e797b6f3c1fe0e67e30f3}{gkn\_pwm\_read}}(\mbox{\hyperlink{structgkn__PIPE}{gkn\_pipe}} io) \{}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00028}00028     \textcolor{keywordtype}{char}    *line;}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00029}00029     \textcolor{keywordtype}{char}     name[256];}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00030}00030     \textcolor{keywordtype}{int}      size;}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00031}00031     \textcolor{keywordtype}{double} **score = NULL;}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00032}00032     \textcolor{keywordtype}{double}   a, c, g, t;}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00033}00033     \textcolor{keywordtype}{int}      row = 0;}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00034}00034 }
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00035}00035     \textcolor{keywordflow}{while} ((line = \mbox{\hyperlink{toolbox_8c_a5eb43545be45c926be046bcff9049e76}{gkn\_readline}}(io)) != NULL) \{}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00036}00036         \textcolor{keywordflow}{if} (line[0] == \textcolor{charliteral}{'\%'}) \{}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00037}00037             assert(sscanf(line, \textcolor{stringliteral}{"{}\%\% PWM \%s \%d"{}}, name, \&size) == 2);}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00038}00038             score = malloc(\textcolor{keyword}{sizeof}(\textcolor{keywordtype}{double}*) * size);}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00039}00039             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < size; i++) \{}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00040}00040                 score[i] = malloc(\textcolor{keyword}{sizeof}(\textcolor{keywordtype}{double}) * 4);}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00041}00041             \}}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00042}00042             free(line);}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00043}00043         \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (sscanf(line, \textcolor{stringliteral}{"{}\%lf \%lf \%lf \%lf"{}}, \&a, \&c, \&g, \&t) == 4) \{}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00044}00044             score[row][0] = \mbox{\hyperlink{model_8c_ada6943e46eb9551b6a0db082c36cf9b3}{gkn\_p2s}}(a);}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00045}00045             score[row][1] = \mbox{\hyperlink{model_8c_ada6943e46eb9551b6a0db082c36cf9b3}{gkn\_p2s}}(c);}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00046}00046             score[row][2] = \mbox{\hyperlink{model_8c_ada6943e46eb9551b6a0db082c36cf9b3}{gkn\_p2s}}(g);}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00047}00047             score[row][3] = \mbox{\hyperlink{model_8c_ada6943e46eb9551b6a0db082c36cf9b3}{gkn\_p2s}}(t);}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00048}00048             row++;}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00049}00049             free(line);}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00050}00050         \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00051}00051             free(line);}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00052}00052         \}}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00053}00053     \}}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00054}00054 }
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00055}00055     \mbox{\hyperlink{structgkn__PWM}{gkn\_pwm}} model = malloc(\textcolor{keyword}{sizeof}(\textcolor{keyword}{struct} \mbox{\hyperlink{structgkn__PWM}{gkn\_PWM}}));}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00056}00056     model-\/>\mbox{\hyperlink{structgkn__PWM_a79c8f337af264421d6c37b73a4aeedb5}{name}} = malloc(strlen(name)+1);}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00057}00057     strcpy(model-\/>\mbox{\hyperlink{structgkn__PWM_a79c8f337af264421d6c37b73a4aeedb5}{name}}, name);}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00058}00058     model-\/>\mbox{\hyperlink{structgkn__PWM_a4b3b21bc2becb673e17c4eac4aac9a47}{size}} = size;}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00059}00059     model-\/>\mbox{\hyperlink{structgkn__PWM_a9c93114077c71be048f24720361633db}{score}} = score;}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00060}00060 }
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00061}00061     \textcolor{keywordflow}{return} model;}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00062}00062 \}}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00063}00063 }
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00064}\mbox{\hyperlink{model_8c_a842526d042cec7ecee9dc7b9b9eeb378}{00064}} \textcolor{keywordtype}{double} \mbox{\hyperlink{model_8c_a842526d042cec7ecee9dc7b9b9eeb378}{gkn\_pwm\_score}}(\textcolor{keyword}{const} \mbox{\hyperlink{structgkn__PWM}{gkn\_pwm}} pwm, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *seq, \textcolor{keywordtype}{int} pos) \{}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00065}00065     \textcolor{keywordtype}{double} p = 0;}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00066}00066     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < pwm-\/>\mbox{\hyperlink{structgkn__PWM_a4b3b21bc2becb673e17c4eac4aac9a47}{size}}; i++) \{}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00067}00067         \textcolor{keywordflow}{switch} (seq[i+pos]) \{}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00068}00068             \textcolor{keywordflow}{case} \textcolor{charliteral}{'A'}: \textcolor{keywordflow}{case} \textcolor{charliteral}{'a'}: p += pwm-\/>\mbox{\hyperlink{structgkn__PWM_a9c93114077c71be048f24720361633db}{score}}[i][0]; \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00069}00069             \textcolor{keywordflow}{case} \textcolor{charliteral}{'C'}: \textcolor{keywordflow}{case} \textcolor{charliteral}{'c'}: p += pwm-\/>\mbox{\hyperlink{structgkn__PWM_a9c93114077c71be048f24720361633db}{score}}[i][1]; \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00070}00070             \textcolor{keywordflow}{case} \textcolor{charliteral}{'G'}: \textcolor{keywordflow}{case} \textcolor{charliteral}{'g'}: p += pwm-\/>\mbox{\hyperlink{structgkn__PWM_a9c93114077c71be048f24720361633db}{score}}[i][2]; \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00071}00071             \textcolor{keywordflow}{case} \textcolor{charliteral}{'T'}: \textcolor{keywordflow}{case} \textcolor{charliteral}{'t'}: p += pwm-\/>\mbox{\hyperlink{structgkn__PWM_a9c93114077c71be048f24720361633db}{score}}[i][3]; \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00072}00072         \}}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00073}00073     \}}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00074}00074     \textcolor{keywordflow}{return} p;}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00075}00075 \}}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00076}00076 }
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00077}00077 \textcolor{comment}{// Markov model}}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00078}00078 }
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00079}\mbox{\hyperlink{model_8c_af3d950f7e0fea37b69df12bd1ba73f89}{00079}} \textcolor{keywordtype}{void} \mbox{\hyperlink{model_8c_af3d950f7e0fea37b69df12bd1ba73f89}{gkn\_mm\_free}}(\mbox{\hyperlink{structgkn__MM}{gkn\_mm}} mm) \{}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00080}00080     free(mm-\/>\mbox{\hyperlink{structgkn__MM_a4ea79c23d04a58b661569ce86b0993e3}{name}});}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00081}00081     free(mm-\/>\mbox{\hyperlink{structgkn__MM_a7d7cbaae29c43506263b5daa94d91ad5}{score}});}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00082}00082     free(mm);}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00083}00083 \}}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00084}00084 }
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00085}\mbox{\hyperlink{model_8c_ac2907ad5d6b55c468848d42d8f3f43e2}{00085}} \mbox{\hyperlink{structgkn__MM}{gkn\_mm}} \mbox{\hyperlink{model_8c_ac2907ad5d6b55c468848d42d8f3f43e2}{gkn\_mm\_read}}(\mbox{\hyperlink{structgkn__PIPE}{gkn\_pipe}} io) \{}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00086}00086     \textcolor{keywordtype}{char}    *line = NULL;}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00087}00087     \textcolor{keywordtype}{double}  *score = NULL;}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00088}00088     \textcolor{keywordtype}{char}     kmer[16];}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00089}00089     \textcolor{keywordtype}{char}     name[256];}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00090}00090     \textcolor{keywordtype}{int}      size;}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00091}00091     \textcolor{keywordtype}{double}   p;}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00092}00092 }
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00093}00093     \textcolor{keywordflow}{while} ((line = \mbox{\hyperlink{toolbox_8c_a5eb43545be45c926be046bcff9049e76}{gkn\_readline}}(io)) != NULL) \{}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00094}00094         \textcolor{keywordflow}{if} (line[0] == \textcolor{charliteral}{'\%'}) \{}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00095}00095             assert(sscanf(line, \textcolor{stringliteral}{"{}\%\% MM \%s \%d"{}}, name, \&size) == 2);}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00096}00096             score = malloc(\textcolor{keyword}{sizeof}(\textcolor{keywordtype}{double}) * size);}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00097}00097             free(line);}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00098}00098         \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (sscanf(line, \textcolor{stringliteral}{"{}\%s \%lf"{}}, kmer, \&p) == 2) \{}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00099}00099             \textcolor{keywordtype}{int} idx = \mbox{\hyperlink{sequence_8c_a35f042ed2c8bf230cbbc50bb5e1fcd7a}{gkn\_ntindex}}(kmer, 0, strlen(kmer));}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00100}00100             \textcolor{keywordflow}{if} (idx == -\/1) \mbox{\hyperlink{toolbox_8c_afc3a337fdac9b2ac6bb3135b0cc5789b}{gkn\_exit}}(\textcolor{stringliteral}{"{}alphabet error in: \%s"{}}, kmer);}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00101}00101             score[idx] = \mbox{\hyperlink{model_8c_ada6943e46eb9551b6a0db082c36cf9b3}{gkn\_p2s}}(p);}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00102}00102             free(line);}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00103}00103         \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00104}00104             free(line);}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00105}00105         \}}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00106}00106     \}}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00107}00107 }
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00108}00108     \mbox{\hyperlink{structgkn__MM}{gkn\_mm}} model = malloc(\textcolor{keyword}{sizeof}(\textcolor{keyword}{struct} \mbox{\hyperlink{structgkn__MM}{gkn\_MM}}));}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00109}00109     model-\/>\mbox{\hyperlink{structgkn__MM_a4ea79c23d04a58b661569ce86b0993e3}{name}} = malloc(strlen(name)+1);}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00110}00110     strcpy(model-\/>\mbox{\hyperlink{structgkn__MM_a4ea79c23d04a58b661569ce86b0993e3}{name}}, name);}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00111}00111     model-\/>\mbox{\hyperlink{structgkn__MM_a8435c8b9d9129697a30e62fa2c72d927}{k}} = strlen(kmer);}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00112}00112     model-\/>\mbox{\hyperlink{structgkn__MM_a09abb0546e576f406657b8bf30f3461b}{size}} = size;}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00113}00113     model-\/>\mbox{\hyperlink{structgkn__MM_a7d7cbaae29c43506263b5daa94d91ad5}{score}} = score;}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00114}00114 }
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00115}00115     \textcolor{keywordflow}{return} model;}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00116}00116 \}}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00117}00117 }
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00118}\mbox{\hyperlink{model_8c_a3c9efda0b683c5ad5315d4259b83b03b}{00118}} \textcolor{keywordtype}{double} \mbox{\hyperlink{model_8c_a3c9efda0b683c5ad5315d4259b83b03b}{gkn\_mm\_score}}(\textcolor{keyword}{const} \mbox{\hyperlink{structgkn__MM}{gkn\_mm}} mm, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *seq, \textcolor{keywordtype}{int} pos, \textcolor{keywordtype}{int} end) \{}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00119}00119     \textcolor{keywordtype}{double} p = 0;}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00120}00120     \textcolor{keywordflow}{if} (pos < mm-\/>k) pos = mm-\/>\mbox{\hyperlink{structgkn__MM_a8435c8b9d9129697a30e62fa2c72d927}{k}};}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00121}00121     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = pos; i < end -\/ mm-\/>\mbox{\hyperlink{structgkn__MM_a8435c8b9d9129697a30e62fa2c72d927}{k}} +2; i++) \{}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00122}00122         \textcolor{keywordtype}{int} idx = \mbox{\hyperlink{sequence_8c_a35f042ed2c8bf230cbbc50bb5e1fcd7a}{gkn\_ntindex}}(seq, i, mm-\/>\mbox{\hyperlink{structgkn__MM_a8435c8b9d9129697a30e62fa2c72d927}{k}});}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00123}00123         \textcolor{keywordflow}{if} (idx != -\/1) p += mm-\/>\mbox{\hyperlink{structgkn__MM_a7d7cbaae29c43506263b5daa94d91ad5}{score}}[idx];}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00124}00124     \}}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00125}00125     \textcolor{keywordflow}{return} p;}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00126}00126 \}}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00127}00127 }
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00128}\mbox{\hyperlink{model_8c_a5efd9cf4f885f3809d9635ef333de292}{00128}} \textcolor{keywordtype}{double} * \mbox{\hyperlink{model_8c_a5efd9cf4f885f3809d9635ef333de292}{gkn\_mm\_cache}}(\textcolor{keyword}{const} \mbox{\hyperlink{structgkn__MM}{gkn\_mm}} mm, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *seq) \{}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00129}00129     \textcolor{keywordtype}{int} len = strlen(seq);}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00130}00130     \textcolor{keywordtype}{double} *score = malloc(\textcolor{keyword}{sizeof}(\textcolor{keywordtype}{double}) * len);}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00131}00131     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < mm-\/>\mbox{\hyperlink{structgkn__MM_a8435c8b9d9129697a30e62fa2c72d927}{k}}; i++) score[i] = 0;}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00132}00132     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = mm-\/>\mbox{\hyperlink{structgkn__MM_a8435c8b9d9129697a30e62fa2c72d927}{k}}; i < len; i++) \{}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00133}00133         \textcolor{keywordtype}{int} idx = \mbox{\hyperlink{sequence_8c_a35f042ed2c8bf230cbbc50bb5e1fcd7a}{gkn\_ntindex}}(seq, i, mm-\/>\mbox{\hyperlink{structgkn__MM_a8435c8b9d9129697a30e62fa2c72d927}{k}});}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00134}00134         \textcolor{keywordflow}{if} (idx == -\/1) score[i] = score[i-\/1];}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00135}00135         \textcolor{keywordflow}{else}           score[i] = score[i-\/1] + mm-\/>\mbox{\hyperlink{structgkn__MM_a7d7cbaae29c43506263b5daa94d91ad5}{score}}[idx];}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00136}00136     \}}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00137}00137     \textcolor{keywordflow}{return} score;}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00138}00138 \}}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00139}00139 }
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00140}\mbox{\hyperlink{model_8c_a3de94739516c7ac19613a5f2cafd6bc0}{00140}} \textcolor{keywordtype}{double} \mbox{\hyperlink{model_8c_a3de94739516c7ac19613a5f2cafd6bc0}{gkn\_mm\_score\_cache}}(\textcolor{keyword}{const} \mbox{\hyperlink{structgkn__MM}{gkn\_mm}} mm, \textcolor{keyword}{const} \textcolor{keywordtype}{double} *v, \textcolor{keywordtype}{int} beg, \textcolor{keywordtype}{int} end) \{}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00141}00141     \textcolor{keywordflow}{return} v[end -\/ mm-\/>\mbox{\hyperlink{structgkn__MM_a8435c8b9d9129697a30e62fa2c72d927}{k}} +1] -\/ v[beg -\/1];}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00142}00142 \}}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00143}00143 }
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00144}00144 \textcolor{comment}{// Length model}}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00145}00145 }
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00146}00146 \textcolor{keyword}{static} \textcolor{keywordtype}{double} find\_tail(\textcolor{keywordtype}{double} val, \textcolor{keywordtype}{int} x) \{}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00147}00147     \textcolor{keywordtype}{double} lo = 0;}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00148}00148     \textcolor{keywordtype}{double} hi = 1000;}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00149}00149     \textcolor{keywordtype}{double} m;}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00150}00150 }
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00151}00151     \textcolor{keywordflow}{while} (hi -\/ lo > 1) \{}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00152}00152         m = (hi + lo) / 2;}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00153}00153         \textcolor{keywordtype}{double} p = 1 / m;}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00154}00154         \textcolor{keywordtype}{double} f = pow(1-\/p, x-\/1) * p;}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00155}00155         \textcolor{keywordflow}{if} (f < val) lo += (m -\/ lo) / 2;}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00156}00156         \textcolor{keywordflow}{else}         hi -\/= (hi -\/ m) / 2;}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00157}00157     \}}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00158}00158 }
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00159}00159     \textcolor{keywordflow}{return} m;}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00160}00160 \}}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00161}00161 }
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00162}\mbox{\hyperlink{model_8c_ad8d29e83f2b2cc12e7a29b3e4d991ad2}{00162}} \textcolor{keywordtype}{void} \mbox{\hyperlink{model_8c_ad8d29e83f2b2cc12e7a29b3e4d991ad2}{gkn\_len\_free}}(\mbox{\hyperlink{structgkn__LEN}{gkn\_len}} model) \{}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00163}00163     free(model-\/>\mbox{\hyperlink{structgkn__LEN_a16e5f93a01dc508e9b3498b746a421e9}{name}});}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00164}00164     free(model-\/>\mbox{\hyperlink{structgkn__LEN_a61967f1877af225429415a24c9ca014d}{score}});}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00165}00165     free(model);}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00166}00166 \}}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00167}00167 }
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00168}\mbox{\hyperlink{model_8c_af4fe9a0d7f8a5bcfab9830778330cdc8}{00168}} \mbox{\hyperlink{structgkn__LEN}{gkn\_len}} \mbox{\hyperlink{model_8c_af4fe9a0d7f8a5bcfab9830778330cdc8}{gkn\_len\_read}}(\mbox{\hyperlink{structgkn__PIPE}{gkn\_pipe}} io) \{}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00169}00169     \textcolor{keywordtype}{char}    *line = NULL;}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00170}00170     \textcolor{keywordtype}{double}  *score = NULL;}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00171}00171     \textcolor{keywordtype}{double}   p;}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00172}00172     \textcolor{keywordtype}{int}      idx = 0;}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00173}00173     \textcolor{keywordtype}{int}      size;}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00174}00174     \textcolor{keywordtype}{char}     name[64];}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00175}00175 }
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00176}00176     \textcolor{comment}{// read probabilities}}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00177}00177     \textcolor{keywordflow}{while} ((line = \mbox{\hyperlink{toolbox_8c_a5eb43545be45c926be046bcff9049e76}{gkn\_readline}}(io)) != NULL) \{}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00178}00178         \textcolor{keywordflow}{if} (line[0] == \textcolor{charliteral}{'\%'}) \{}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00179}00179             assert(sscanf(line, \textcolor{stringliteral}{"{}\%\% LEN \%s \%d"{}}, name, \&size) == 2);}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00180}00180             score = malloc(\textcolor{keyword}{sizeof}(\textcolor{keywordtype}{double}) * size);}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00181}00181             free(line);}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00182}00182         \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (sscanf(line, \textcolor{stringliteral}{"{}\%lf"{}}, \&p) == 1) \{}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00183}00183             score[idx] = p;}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00184}00184             idx++;}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00185}00185             free(line);}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00186}00186         \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00187}00187             free(line);}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00188}00188         \}}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00189}00189     \}}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00190}00190 }
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00191}00191     \mbox{\hyperlink{structgkn__LEN}{gkn\_len}} model = malloc(\textcolor{keyword}{sizeof}(\textcolor{keyword}{struct} \mbox{\hyperlink{structgkn__LEN}{gkn\_LEN}}));}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00192}00192     model-\/>\mbox{\hyperlink{structgkn__LEN_a16e5f93a01dc508e9b3498b746a421e9}{name}} = malloc(strlen(name)+1);}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00193}00193     strcpy(model-\/>\mbox{\hyperlink{structgkn__LEN_a16e5f93a01dc508e9b3498b746a421e9}{name}}, name);}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00194}00194     model-\/>\mbox{\hyperlink{structgkn__LEN_a61967f1877af225429415a24c9ca014d}{score}} = score;}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00195}00195     model-\/>\mbox{\hyperlink{structgkn__LEN_a8ed15b0f36036636667d6387dbb94be9}{size}} = size;}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00196}00196     model-\/>\mbox{\hyperlink{structgkn__LEN_ab41d183988b3ea3f369a8897aeb86c4c}{tail}} = find\_tail(score[size-\/1], size);}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00197}00197 }
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00198}00198     \textcolor{comment}{// convert probabilities to scores}}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00199}00199     \textcolor{keywordtype}{double} expect = (double) 1 / model-\/>\mbox{\hyperlink{structgkn__LEN_a8ed15b0f36036636667d6387dbb94be9}{size}};}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00200}00200     for (\textcolor{keywordtype}{int} i = 0; i < size; i++) \{}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00201}00201         score[i] = log(score[i]/expect) / log(2); \textcolor{comment}{// divide by zero?}}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00202}00202     \}}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00203}00203 }
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00204}00204     \textcolor{keywordflow}{return} model;}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00205}00205 \}}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00206}00206 }
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00207}\mbox{\hyperlink{model_8c_a57125ce75365c1d62d398badd4617a60}{00207}} \textcolor{keywordtype}{double} \mbox{\hyperlink{model_8c_a57125ce75365c1d62d398badd4617a60}{gkn\_len\_score}}(\textcolor{keyword}{const} \mbox{\hyperlink{structgkn__LEN}{gkn\_len}} len, \textcolor{keywordtype}{int} x) \{}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00208}00208     assert(x >= 0);}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00209}00209     \textcolor{keywordflow}{if} (x >= len-\/>\mbox{\hyperlink{structgkn__LEN_a8ed15b0f36036636667d6387dbb94be9}{size}}) \{}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00210}00210         \textcolor{keywordtype}{double} p = 1 / len-\/>\mbox{\hyperlink{structgkn__LEN_ab41d183988b3ea3f369a8897aeb86c4c}{tail}};}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00211}00211         \textcolor{keywordtype}{double} q = pow(1-\/p, x-\/1) * p;}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00212}00212         \textcolor{keywordtype}{double} expect = (double)1 / len-\/>\mbox{\hyperlink{structgkn__LEN_a8ed15b0f36036636667d6387dbb94be9}{size}};}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00213}00213         \textcolor{keywordtype}{double} s = log(q/expect) / log(2);}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00214}00214         \textcolor{keywordflow}{return} s;}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00215}00215     \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00216}00216         \textcolor{keywordflow}{return} len-\/>\mbox{\hyperlink{structgkn__LEN_a61967f1877af225429415a24c9ca014d}{score}}[x];}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00217}00217     \}}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00218}00218 \}}
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00219}00219 }
+\DoxyCodeLine{\Hypertarget{model_8c_source_l00220}00220 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

@@ -1,0 +1,292 @@
+\hypertarget{sequence_8h}{}\doxysection{sequence.\+h File Reference}
+\label{sequence_8h}\index{sequence.h@{sequence.h}}
+{\ttfamily \#include \char`\"{}model.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}toolbox.\+h\char`\"{}}\newline
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structgkn__FASTA}{gkn\+\_\+\+FASTA}}
+\begin{DoxyCompactList}\small\item\em struct contains the sequence length, sequence name, and the sequence as a string \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \mbox{\hyperlink{structgkn__FASTA}{gkn\+\_\+\+FASTA}} $\ast$ \mbox{\hyperlink{sequence_8h_a7f4838662ec4fa20fdb539a6e84cd130}{gkn\+\_\+fasta}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{sequence_8h_aa3a75eb56628c4275848f0895d39ed10}{gkn\+\_\+ntindex}} (const char $\ast$, int, int)
+\item 
+char $\ast$ \mbox{\hyperlink{sequence_8h_a5121f5d5ff188e27ad65e5295100962c}{gkn\+\_\+revcomp}} (const char $\ast$)
+\item 
+void \mbox{\hyperlink{sequence_8h_a8f7c418f3227af7abbe6211634e38861}{gkn\+\_\+fasta\+\_\+free}} (\mbox{\hyperlink{sequence_8h_a7f4838662ec4fa20fdb539a6e84cd130}{gkn\+\_\+fasta}})
+\begin{DoxyCompactList}\small\item\em free the memory of gkn\+\_\+fasta \end{DoxyCompactList}\item 
+\mbox{\hyperlink{sequence_8h_a7f4838662ec4fa20fdb539a6e84cd130}{gkn\+\_\+fasta}} \mbox{\hyperlink{sequence_8h_a1a4644a5cafb7931f963a9da85e08c81}{gkn\+\_\+fasta\+\_\+new}} (const char $\ast$, const char $\ast$)
+\begin{DoxyCompactList}\small\item\em create a new gkn\+\_\+fasta with parameter(sequence name, sequence itself) \end{DoxyCompactList}\item 
+\mbox{\hyperlink{sequence_8h_a7f4838662ec4fa20fdb539a6e84cd130}{gkn\+\_\+fasta}} \mbox{\hyperlink{sequence_8h_ab520a768fc1b900b2cd094529e810c71}{gkn\+\_\+fasta\+\_\+read}} (\mbox{\hyperlink{toolbox_8h_af57de20432b2b556411681893aec320e}{gkn\+\_\+pipe}})
+\begin{DoxyCompactList}\small\item\em read the gkn\+\_\+pipe and construct a gkn\+\_\+fasta \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{sequence_8h_a47a712fdbc735b58c3a3e816f484cb95}{gkn\+\_\+fasta\+\_\+write}} (FILE $\ast$, const \mbox{\hyperlink{sequence_8h_a7f4838662ec4fa20fdb539a6e84cd130}{gkn\+\_\+fasta}})
+\item 
+void \mbox{\hyperlink{sequence_8h_a1f181f7a801ebe5b88252226781235c8}{gkn\+\_\+fasta\+\_\+set\+\_\+line\+\_\+length}} (int)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Typedef Documentation}
+\mbox{\Hypertarget{sequence_8h_a7f4838662ec4fa20fdb539a6e84cd130}\label{sequence_8h_a7f4838662ec4fa20fdb539a6e84cd130}} 
+\index{sequence.h@{sequence.h}!gkn\_fasta@{gkn\_fasta}}
+\index{gkn\_fasta@{gkn\_fasta}!sequence.h@{sequence.h}}
+\doxysubsubsection{\texorpdfstring{gkn\_fasta}{gkn\_fasta}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{structgkn__FASTA}{gkn\+\_\+\+FASTA}}$\ast$ \mbox{\hyperlink{sequence_8h_a7f4838662ec4fa20fdb539a6e84cd130}{gkn\+\_\+fasta}}}
+
+
+
+Definition at line \mbox{\hyperlink{sequence_8h_source_l00025}{25}} of file \mbox{\hyperlink{sequence_8h_source}{sequence.\+h}}.
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{sequence_8h_a8f7c418f3227af7abbe6211634e38861}\label{sequence_8h_a8f7c418f3227af7abbe6211634e38861}} 
+\index{sequence.h@{sequence.h}!gkn\_fasta\_free@{gkn\_fasta\_free}}
+\index{gkn\_fasta\_free@{gkn\_fasta\_free}!sequence.h@{sequence.h}}
+\doxysubsubsection{\texorpdfstring{gkn\_fasta\_free()}{gkn\_fasta\_free()}}
+{\footnotesize\ttfamily void gkn\+\_\+fasta\+\_\+free (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{sequence_8h_a7f4838662ec4fa20fdb539a6e84cd130}{gkn\+\_\+fasta}}}]{ff }\end{DoxyParamCaption})}
+
+
+
+free the memory of gkn\+\_\+fasta 
+
+
+
+Definition at line \mbox{\hyperlink{sequence_8c_source_l00073}{73}} of file \mbox{\hyperlink{sequence_8c_source}{sequence.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00073                                   \{}
+\DoxyCodeLine{00074     free(ff-\/>\mbox{\hyperlink{structgkn__FASTA_a69c8b85db932e42edeb6f9214a72c1be}{def}});}
+\DoxyCodeLine{00075     free(ff-\/>\mbox{\hyperlink{structgkn__FASTA_addc6dea3219927f99433030834b3c911}{seq}});}
+\DoxyCodeLine{00076     free(ff);}
+\DoxyCodeLine{00077 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{sequence_8h_a1a4644a5cafb7931f963a9da85e08c81}\label{sequence_8h_a1a4644a5cafb7931f963a9da85e08c81}} 
+\index{sequence.h@{sequence.h}!gkn\_fasta\_new@{gkn\_fasta\_new}}
+\index{gkn\_fasta\_new@{gkn\_fasta\_new}!sequence.h@{sequence.h}}
+\doxysubsubsection{\texorpdfstring{gkn\_fasta\_new()}{gkn\_fasta\_new()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{sequence_8h_a7f4838662ec4fa20fdb539a6e84cd130}{gkn\+\_\+fasta}} gkn\+\_\+fasta\+\_\+new (\begin{DoxyParamCaption}\item[{const char $\ast$}]{def,  }\item[{const char $\ast$}]{seq }\end{DoxyParamCaption})}
+
+
+
+create a new gkn\+\_\+fasta with parameter(sequence name, sequence itself) 
+
+
+
+Definition at line \mbox{\hyperlink{sequence_8c_source_l00079}{79}} of file \mbox{\hyperlink{sequence_8c_source}{sequence.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00079                                                            \{}
+\DoxyCodeLine{00080     \mbox{\hyperlink{structgkn__FASTA}{gkn\_fasta}} ff = \mbox{\hyperlink{toolbox_8c_a615441eab38bc9f6edb874295a11cf3f}{gkn\_malloc}}(\textcolor{keyword}{sizeof}(\textcolor{keyword}{struct} \mbox{\hyperlink{structgkn__FASTA}{gkn\_FASTA}}));}
+\DoxyCodeLine{00081     ff-\/>\mbox{\hyperlink{structgkn__FASTA_a69c8b85db932e42edeb6f9214a72c1be}{def}}  = \mbox{\hyperlink{toolbox_8c_a615441eab38bc9f6edb874295a11cf3f}{gkn\_malloc}}(strlen(def) +1);}
+\DoxyCodeLine{00082     ff-\/>\mbox{\hyperlink{structgkn__FASTA_addc6dea3219927f99433030834b3c911}{seq}}  = \mbox{\hyperlink{toolbox_8c_a615441eab38bc9f6edb874295a11cf3f}{gkn\_malloc}}(strlen(seq) +1);}
+\DoxyCodeLine{00083     ff-\/>\mbox{\hyperlink{structgkn__FASTA_a9ffb745a0ad337fa4438f29466ea9b3e}{length}} = strlen(seq);}
+\DoxyCodeLine{00084     strcpy(ff-\/>\mbox{\hyperlink{structgkn__FASTA_a69c8b85db932e42edeb6f9214a72c1be}{def}}, def);}
+\DoxyCodeLine{00085     strcpy(ff-\/>\mbox{\hyperlink{structgkn__FASTA_addc6dea3219927f99433030834b3c911}{seq}}, seq);}
+\DoxyCodeLine{00086     \textcolor{keywordflow}{return} ff;}
+\DoxyCodeLine{00087 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{sequence_8h_ab520a768fc1b900b2cd094529e810c71}\label{sequence_8h_ab520a768fc1b900b2cd094529e810c71}} 
+\index{sequence.h@{sequence.h}!gkn\_fasta\_read@{gkn\_fasta\_read}}
+\index{gkn\_fasta\_read@{gkn\_fasta\_read}!sequence.h@{sequence.h}}
+\doxysubsubsection{\texorpdfstring{gkn\_fasta\_read()}{gkn\_fasta\_read()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{sequence_8h_a7f4838662ec4fa20fdb539a6e84cd130}{gkn\+\_\+fasta}} gkn\+\_\+fasta\+\_\+read (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{toolbox_8h_af57de20432b2b556411681893aec320e}{gkn\+\_\+pipe}}}]{io }\end{DoxyParamCaption})}
+
+
+
+read the gkn\+\_\+pipe and construct a gkn\+\_\+fasta 
+
+
+
+Definition at line \mbox{\hyperlink{sequence_8c_source_l00089}{89}} of file \mbox{\hyperlink{sequence_8c_source}{sequence.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00089                                       \{}
+\DoxyCodeLine{00090 }
+\DoxyCodeLine{00091     \textcolor{comment}{// check for fasta header}}
+\DoxyCodeLine{00092     \textcolor{keywordtype}{char} c = fgetc(io-\/>\mbox{\hyperlink{structgkn__PIPE_a70cf373460970197d589c81ee35b09d3}{stream}});}
+\DoxyCodeLine{00093     ungetc(c, io-\/>\mbox{\hyperlink{structgkn__PIPE_a70cf373460970197d589c81ee35b09d3}{stream}});}
+\DoxyCodeLine{00094     \textcolor{keywordflow}{if} (c == EOF || (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char})c == 255) \textcolor{keywordflow}{return} NULL;}
+\DoxyCodeLine{00095     \textcolor{keywordflow}{if} (c != \textcolor{charliteral}{'>'}) \mbox{\hyperlink{toolbox_8c_afc3a337fdac9b2ac6bb3135b0cc5789b}{gkn\_exit}}(\textcolor{stringliteral}{"{}fasta? \%c \%d"{}}, c, (\textcolor{keywordtype}{int})c);}
+\DoxyCodeLine{00096 }
+\DoxyCodeLine{00097     \textcolor{comment}{// def}}
+\DoxyCodeLine{00098     \textcolor{keywordtype}{char} *def = \mbox{\hyperlink{toolbox_8c_a5eb43545be45c926be046bcff9049e76}{gkn\_readline}}(io);}
+\DoxyCodeLine{00099 }
+\DoxyCodeLine{00100     \textcolor{comment}{// seq}}
+\DoxyCodeLine{00101     \mbox{\hyperlink{structgkn__VEC}{gkn\_vec}} lines = \mbox{\hyperlink{toolbox_8c_a36f281202cd2c19564cab711eb676e2e}{gkn\_vec\_new}}();}
+\DoxyCodeLine{00102     \textcolor{keywordflow}{while} (1) \{}
+\DoxyCodeLine{00103         \textcolor{keywordtype}{char} c = fgetc(io-\/>\mbox{\hyperlink{structgkn__PIPE_a70cf373460970197d589c81ee35b09d3}{stream}});}
+\DoxyCodeLine{00104         ungetc(c, io-\/>\mbox{\hyperlink{structgkn__PIPE_a70cf373460970197d589c81ee35b09d3}{stream}});}
+\DoxyCodeLine{00105         \textcolor{keywordflow}{if} (c == EOF || (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char})c == 255 || c == \textcolor{charliteral}{'>'} ) \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00106         \textcolor{keywordtype}{char} *line = \mbox{\hyperlink{toolbox_8c_a5eb43545be45c926be046bcff9049e76}{gkn\_readline}}(io);}
+\DoxyCodeLine{00107         \textcolor{keywordflow}{if} (line == NULL) \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00108         \mbox{\hyperlink{toolbox_8c_a678ed9ec14381e2cb1b932bb81a99f16}{gkn\_vec\_push}}(lines, line);}
+\DoxyCodeLine{00109     \}}
+\DoxyCodeLine{00110 }
+\DoxyCodeLine{00111     \textcolor{keywordtype}{int} letters = 0;}
+\DoxyCodeLine{00112     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < lines-\/>\mbox{\hyperlink{structgkn__VEC_a888441c54cf7085fd338e80a0553d098}{size}}; i++) \{}
+\DoxyCodeLine{00113         \textcolor{keywordtype}{char} *line = lines-\/>\mbox{\hyperlink{structgkn__VEC_a67c9dce69b4a112228cc5ca451f2cf0b}{elem}}[i];}
+\DoxyCodeLine{00114         letters += strlen(line);}
+\DoxyCodeLine{00115     \}}
+\DoxyCodeLine{00116 }
+\DoxyCodeLine{00117     \textcolor{keywordtype}{char} *seq = malloc(letters + 1);}
+\DoxyCodeLine{00118     \textcolor{keywordtype}{int} off = 0;}
+\DoxyCodeLine{00119     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < lines-\/>\mbox{\hyperlink{structgkn__VEC_a888441c54cf7085fd338e80a0553d098}{size}}; i++) \{}
+\DoxyCodeLine{00120         \textcolor{keywordtype}{char} *line = lines-\/>\mbox{\hyperlink{structgkn__VEC_a67c9dce69b4a112228cc5ca451f2cf0b}{elem}}[i];}
+\DoxyCodeLine{00121         strcpy(seq + off, line);}
+\DoxyCodeLine{00122         off += strlen(line);}
+\DoxyCodeLine{00123     \}}
+\DoxyCodeLine{00124 }
+\DoxyCodeLine{00125     \textcolor{comment}{// clean up}}
+\DoxyCodeLine{00126     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < lines-\/>\mbox{\hyperlink{structgkn__VEC_a888441c54cf7085fd338e80a0553d098}{size}}; i++) \{}
+\DoxyCodeLine{00127         free(lines-\/>\mbox{\hyperlink{structgkn__VEC_a67c9dce69b4a112228cc5ca451f2cf0b}{elem}}[i]);}
+\DoxyCodeLine{00128     \}}
+\DoxyCodeLine{00129     \mbox{\hyperlink{toolbox_8c_af5bad93f51fdf2738a5b02322774c32d}{gkn\_vec\_free}}(lines);}
+\DoxyCodeLine{00130 }
+\DoxyCodeLine{00131     \textcolor{comment}{// return object}}
+\DoxyCodeLine{00132     \mbox{\hyperlink{structgkn__FASTA}{gkn\_fasta}} ff = malloc(\textcolor{keyword}{sizeof}(\textcolor{keyword}{struct} \mbox{\hyperlink{structgkn__FASTA}{gkn\_FASTA}}));}
+\DoxyCodeLine{00133     ff-\/>\mbox{\hyperlink{structgkn__FASTA_a69c8b85db932e42edeb6f9214a72c1be}{def}} = def;}
+\DoxyCodeLine{00134     ff-\/>\mbox{\hyperlink{structgkn__FASTA_addc6dea3219927f99433030834b3c911}{seq}} = seq;}
+\DoxyCodeLine{00135     ff-\/>\mbox{\hyperlink{structgkn__FASTA_a9ffb745a0ad337fa4438f29466ea9b3e}{length}} = strlen(seq);}
+\DoxyCodeLine{00136 }
+\DoxyCodeLine{00137     \textcolor{keywordflow}{return} ff;}
+\DoxyCodeLine{00138 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{sequence_8h_a1f181f7a801ebe5b88252226781235c8}\label{sequence_8h_a1f181f7a801ebe5b88252226781235c8}} 
+\index{sequence.h@{sequence.h}!gkn\_fasta\_set\_line\_length@{gkn\_fasta\_set\_line\_length}}
+\index{gkn\_fasta\_set\_line\_length@{gkn\_fasta\_set\_line\_length}!sequence.h@{sequence.h}}
+\doxysubsubsection{\texorpdfstring{gkn\_fasta\_set\_line\_length()}{gkn\_fasta\_set\_line\_length()}}
+{\footnotesize\ttfamily void gkn\+\_\+fasta\+\_\+set\+\_\+line\+\_\+length (\begin{DoxyParamCaption}\item[{int}]{length }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{sequence_8c_source_l00155}{155}} of file \mbox{\hyperlink{sequence_8c_source}{sequence.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00155                                             \{}
+\DoxyCodeLine{00156     FASTA\_LINE\_LENGTH = length;}
+\DoxyCodeLine{00157 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{sequence_8h_a47a712fdbc735b58c3a3e816f484cb95}\label{sequence_8h_a47a712fdbc735b58c3a3e816f484cb95}} 
+\index{sequence.h@{sequence.h}!gkn\_fasta\_write@{gkn\_fasta\_write}}
+\index{gkn\_fasta\_write@{gkn\_fasta\_write}!sequence.h@{sequence.h}}
+\doxysubsubsection{\texorpdfstring{gkn\_fasta\_write()}{gkn\_fasta\_write()}}
+{\footnotesize\ttfamily void gkn\+\_\+fasta\+\_\+write (\begin{DoxyParamCaption}\item[{FILE $\ast$}]{stream,  }\item[{const}]{gkn\+\_\+fasta }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{sequence_8c_source_l00142}{142}} of file \mbox{\hyperlink{sequence_8c_source}{sequence.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00142                                                        \{}
+\DoxyCodeLine{00143     \textcolor{keywordflow}{if} (ff-\/>def[0] != \textcolor{charliteral}{'>'}) fprintf(stream, \textcolor{stringliteral}{"{}>"{}});}
+\DoxyCodeLine{00144     fprintf(stream, \textcolor{stringliteral}{"{}\%s"{}}, ff-\/>def);}
+\DoxyCodeLine{00145     \textcolor{keywordflow}{if} (ff-\/>def[strlen(ff-\/>def) -\/1] != \textcolor{charliteral}{'\(\backslash\)n'}) fprintf(stream, \textcolor{stringliteral}{"{}\(\backslash\)n"{}});}
+\DoxyCodeLine{00146 }
+\DoxyCodeLine{00147     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < ff-\/>length; i++) \{}
+\DoxyCodeLine{00148         fputc(ff-\/>seq[i], stream);}
+\DoxyCodeLine{00149         \textcolor{keywordflow}{if} ((i+1) \% FASTA\_LINE\_LENGTH == 0) fprintf(stream, \textcolor{stringliteral}{"{}\(\backslash\)n"{}});}
+\DoxyCodeLine{00150     \}}
+\DoxyCodeLine{00151 }
+\DoxyCodeLine{00152     fprintf(stream, \textcolor{stringliteral}{"{}\(\backslash\)n"{}});}
+\DoxyCodeLine{00153 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{sequence_8h_aa3a75eb56628c4275848f0895d39ed10}\label{sequence_8h_aa3a75eb56628c4275848f0895d39ed10}} 
+\index{sequence.h@{sequence.h}!gkn\_ntindex@{gkn\_ntindex}}
+\index{gkn\_ntindex@{gkn\_ntindex}!sequence.h@{sequence.h}}
+\doxysubsubsection{\texorpdfstring{gkn\_ntindex()}{gkn\_ntindex()}}
+{\footnotesize\ttfamily int gkn\+\_\+ntindex (\begin{DoxyParamCaption}\item[{const char $\ast$}]{seq,  }\item[{int}]{off,  }\item[{int}]{k }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{sequence_8c_source_l00013}{13}} of file \mbox{\hyperlink{sequence_8c_source}{sequence.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00013                                                  \{}
+\DoxyCodeLine{00014     \textcolor{keywordtype}{int} idx = 0;}
+\DoxyCodeLine{00015     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < k; i++) \{}
+\DoxyCodeLine{00016         \textcolor{keywordflow}{switch} (seq[off+i]) \{}
+\DoxyCodeLine{00017             \textcolor{keywordflow}{case} \textcolor{charliteral}{'A'}: \textcolor{keywordflow}{case} \textcolor{charliteral}{'a'}: idx += pow(4, (k -\/i -\/1)) * 0; \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00018             \textcolor{keywordflow}{case} \textcolor{charliteral}{'C'}: \textcolor{keywordflow}{case} \textcolor{charliteral}{'c'}: idx += pow(4, (k -\/i -\/1)) * 1; \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00019             \textcolor{keywordflow}{case} \textcolor{charliteral}{'G'}: \textcolor{keywordflow}{case} \textcolor{charliteral}{'g'}: idx += pow(4, (k -\/i -\/1)) * 2; \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00020             \textcolor{keywordflow}{case} \textcolor{charliteral}{'T'}: \textcolor{keywordflow}{case} \textcolor{charliteral}{'t'}: idx += pow(4, (k -\/i -\/1)) * 3; \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00021             \textcolor{keywordflow}{default}: \textcolor{keywordflow}{return} -\/1;}
+\DoxyCodeLine{00022         \}}
+\DoxyCodeLine{00023     \}}
+\DoxyCodeLine{00024     \textcolor{keywordflow}{return} idx;}
+\DoxyCodeLine{00025 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{sequence_8h_a5121f5d5ff188e27ad65e5295100962c}\label{sequence_8h_a5121f5d5ff188e27ad65e5295100962c}} 
+\index{sequence.h@{sequence.h}!gkn\_revcomp@{gkn\_revcomp}}
+\index{gkn\_revcomp@{gkn\_revcomp}!sequence.h@{sequence.h}}
+\doxysubsubsection{\texorpdfstring{gkn\_revcomp()}{gkn\_revcomp()}}
+{\footnotesize\ttfamily char $\ast$ gkn\+\_\+revcomp (\begin{DoxyParamCaption}\item[{const char $\ast$}]{seq }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{sequence_8c_source_l00027}{27}} of file \mbox{\hyperlink{sequence_8c_source}{sequence.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00027                                      \{}
+\DoxyCodeLine{00028     \textcolor{keywordtype}{int} length = strlen(seq);}
+\DoxyCodeLine{00029     \textcolor{keywordtype}{char} *str = \mbox{\hyperlink{toolbox_8c_a615441eab38bc9f6edb874295a11cf3f}{gkn\_malloc}}(length +1);}
+\DoxyCodeLine{00030     str[strlen(seq)] = \textcolor{charliteral}{'\(\backslash\)0'};}
+\DoxyCodeLine{00031 }
+\DoxyCodeLine{00032     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 1; i <= length; i++) \{}
+\DoxyCodeLine{00033         \textcolor{keywordflow}{switch} (seq[i-\/1]) \{}
+\DoxyCodeLine{00034             \textcolor{keywordflow}{case} \textcolor{charliteral}{'A'}: str[length -\/i] = \textcolor{charliteral}{'T'}; \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00035             \textcolor{keywordflow}{case} \textcolor{charliteral}{'a'}: str[length -\/i] = \textcolor{charliteral}{'t'}; \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00036             \textcolor{keywordflow}{case} \textcolor{charliteral}{'C'}: str[length -\/i] = \textcolor{charliteral}{'G'}; \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00037             \textcolor{keywordflow}{case} \textcolor{charliteral}{'c'}: str[length -\/i] = \textcolor{charliteral}{'g'}; \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00038             \textcolor{keywordflow}{case} \textcolor{charliteral}{'G'}: str[length -\/i] = \textcolor{charliteral}{'C'}; \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00039             \textcolor{keywordflow}{case} \textcolor{charliteral}{'g'}: str[length -\/i] = \textcolor{charliteral}{'c'}; \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00040             \textcolor{keywordflow}{case} \textcolor{charliteral}{'T'}: str[length -\/i] = \textcolor{charliteral}{'A'}; \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00041             \textcolor{keywordflow}{case} \textcolor{charliteral}{'t'}: str[length -\/i] = \textcolor{charliteral}{'a'}; \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00042             \textcolor{keywordflow}{case} \textcolor{charliteral}{'N'}: str[length -\/i] = \textcolor{charliteral}{'N'}; \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00043             \textcolor{keywordflow}{case} \textcolor{charliteral}{'n'}: str[length -\/i] = \textcolor{charliteral}{'n'}; \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00044             \textcolor{keywordflow}{case} \textcolor{charliteral}{'R'}: str[length -\/i] = \textcolor{charliteral}{'Y'}; \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00045             \textcolor{keywordflow}{case} \textcolor{charliteral}{'r'}: str[length -\/i] = \textcolor{charliteral}{'y'}; \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00046             \textcolor{keywordflow}{case} \textcolor{charliteral}{'Y'}: str[length -\/i] = \textcolor{charliteral}{'R'}; \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00047             \textcolor{keywordflow}{case} \textcolor{charliteral}{'y'}: str[length -\/i] = \textcolor{charliteral}{'r'}; \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00048             \textcolor{keywordflow}{case} \textcolor{charliteral}{'W'}: str[length -\/i] = \textcolor{charliteral}{'S'}; \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00049             \textcolor{keywordflow}{case} \textcolor{charliteral}{'w'}: str[length -\/i] = \textcolor{charliteral}{'s'}; \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00050             \textcolor{keywordflow}{case} \textcolor{charliteral}{'S'}: str[length -\/i] = \textcolor{charliteral}{'W'}; \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00051             \textcolor{keywordflow}{case} \textcolor{charliteral}{'s'}: str[length -\/i] = \textcolor{charliteral}{'w'}; \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00052             \textcolor{keywordflow}{case} \textcolor{charliteral}{'K'}: str[length -\/i] = \textcolor{charliteral}{'M'}; \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00053             \textcolor{keywordflow}{case} \textcolor{charliteral}{'k'}: str[length -\/i] = \textcolor{charliteral}{'m'}; \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00054             \textcolor{keywordflow}{case} \textcolor{charliteral}{'M'}: str[length -\/i] = \textcolor{charliteral}{'K'}; \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00055             \textcolor{keywordflow}{case} \textcolor{charliteral}{'m'}: str[length -\/i] = \textcolor{charliteral}{'k'}; \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00056             \textcolor{keywordflow}{case} \textcolor{charliteral}{'B'}: str[length -\/i] = \textcolor{charliteral}{'V'}; \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00057             \textcolor{keywordflow}{case} \textcolor{charliteral}{'b'}: str[length -\/i] = \textcolor{charliteral}{'v'}; \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00058             \textcolor{keywordflow}{case} \textcolor{charliteral}{'D'}: str[length -\/i] = \textcolor{charliteral}{'H'}; \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00059             \textcolor{keywordflow}{case} \textcolor{charliteral}{'d'}: str[length -\/i] = \textcolor{charliteral}{'h'}; \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00060             \textcolor{keywordflow}{case} \textcolor{charliteral}{'H'}: str[length -\/i] = \textcolor{charliteral}{'D'}; \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00061             \textcolor{keywordflow}{case} \textcolor{charliteral}{'h'}: str[length -\/i] = \textcolor{charliteral}{'d'}; \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00062             \textcolor{keywordflow}{case} \textcolor{charliteral}{'V'}: str[length -\/i] = \textcolor{charliteral}{'B'}; \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00063             \textcolor{keywordflow}{case} \textcolor{charliteral}{'v'}: str[length -\/i] = \textcolor{charliteral}{'b'}; \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00064             \textcolor{keywordflow}{default}:  \mbox{\hyperlink{toolbox_8c_afc3a337fdac9b2ac6bb3135b0cc5789b}{gkn\_exit}}(\textcolor{stringliteral}{"{}alphabet error \%c"{}}, seq[i-\/1]);}
+\DoxyCodeLine{00065         \}}
+\DoxyCodeLine{00066     \}}
+\DoxyCodeLine{00067 }
+\DoxyCodeLine{00068     \textcolor{keywordflow}{return} str;}
+\DoxyCodeLine{00069 \}}
+
+\end{DoxyCode}

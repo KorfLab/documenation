@@ -1,0 +1,164 @@
+\hypertarget{sequence_8c_source}{}\doxysection{sequence.\+c}
+\mbox{\hyperlink{sequence_8c}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00001}00001 \textcolor{comment}{/******************************************************************************\(\backslash\)}}
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00002}00002 \textcolor{comment}{ sequence.c}}
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00003}00003 \textcolor{comment}{ Copyright (C) Ian Korf}}
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00004}00004 \textcolor{comment}{\(\backslash\)******************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00005}00005 }
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00006}00006 \textcolor{preprocessor}{\#ifndef GENOMIKON\_SEQUENCE\_C}}
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00007}\mbox{\hyperlink{sequence_8c_a125febc905c3a7d0a8a28f61939fefab}{00007}} \textcolor{preprocessor}{\#define GENOMIKON\_SEQUENCE\_C}}
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00008}00008 }
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00009}00009 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{sequence_8h}{sequence.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00010}00010 }
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00011}00011 \textcolor{comment}{// Utilities}}
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00012}00012 }
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00013}\mbox{\hyperlink{sequence_8c_a35f042ed2c8bf230cbbc50bb5e1fcd7a}{00013}} \textcolor{keywordtype}{int} \mbox{\hyperlink{sequence_8c_a35f042ed2c8bf230cbbc50bb5e1fcd7a}{gkn\_ntindex}}(\textcolor{keyword}{const} \textcolor{keywordtype}{char} *seq, \textcolor{keywordtype}{int} off, \textcolor{keywordtype}{int} k) \{}
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00014}00014     \textcolor{keywordtype}{int} idx = 0;}
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00015}00015     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < k; i++) \{}
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00016}00016         \textcolor{keywordflow}{switch} (seq[off+i]) \{}
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00017}00017             \textcolor{keywordflow}{case} \textcolor{charliteral}{'A'}: \textcolor{keywordflow}{case} \textcolor{charliteral}{'a'}: idx += pow(4, (k -\/i -\/1)) * 0; \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00018}00018             \textcolor{keywordflow}{case} \textcolor{charliteral}{'C'}: \textcolor{keywordflow}{case} \textcolor{charliteral}{'c'}: idx += pow(4, (k -\/i -\/1)) * 1; \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00019}00019             \textcolor{keywordflow}{case} \textcolor{charliteral}{'G'}: \textcolor{keywordflow}{case} \textcolor{charliteral}{'g'}: idx += pow(4, (k -\/i -\/1)) * 2; \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00020}00020             \textcolor{keywordflow}{case} \textcolor{charliteral}{'T'}: \textcolor{keywordflow}{case} \textcolor{charliteral}{'t'}: idx += pow(4, (k -\/i -\/1)) * 3; \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00021}00021             \textcolor{keywordflow}{default}: \textcolor{keywordflow}{return} -\/1;}
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00022}00022         \}}
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00023}00023     \}}
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00024}00024     \textcolor{keywordflow}{return} idx;}
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00025}00025 \}}
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00026}00026 }
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00027}\mbox{\hyperlink{sequence_8c_a14fbc5b4f5a337cc027a1bff7d308d6b}{00027}} \textcolor{keywordtype}{char} * \mbox{\hyperlink{sequence_8c_a14fbc5b4f5a337cc027a1bff7d308d6b}{gkn\_revcomp}} (\textcolor{keyword}{const} \textcolor{keywordtype}{char} *seq) \{}
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00028}00028     \textcolor{keywordtype}{int} length = strlen(seq);}
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00029}00029     \textcolor{keywordtype}{char} *str = \mbox{\hyperlink{toolbox_8c_a615441eab38bc9f6edb874295a11cf3f}{gkn\_malloc}}(length +1);}
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00030}00030     str[strlen(seq)] = \textcolor{charliteral}{'\(\backslash\)0'};}
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00031}00031 }
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00032}00032     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 1; i <= length; i++) \{}
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00033}00033         \textcolor{keywordflow}{switch} (seq[i-\/1]) \{}
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00034}00034             \textcolor{keywordflow}{case} \textcolor{charliteral}{'A'}: str[length -\/i] = \textcolor{charliteral}{'T'}; \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00035}00035             \textcolor{keywordflow}{case} \textcolor{charliteral}{'a'}: str[length -\/i] = \textcolor{charliteral}{'t'}; \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00036}00036             \textcolor{keywordflow}{case} \textcolor{charliteral}{'C'}: str[length -\/i] = \textcolor{charliteral}{'G'}; \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00037}00037             \textcolor{keywordflow}{case} \textcolor{charliteral}{'c'}: str[length -\/i] = \textcolor{charliteral}{'g'}; \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00038}00038             \textcolor{keywordflow}{case} \textcolor{charliteral}{'G'}: str[length -\/i] = \textcolor{charliteral}{'C'}; \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00039}00039             \textcolor{keywordflow}{case} \textcolor{charliteral}{'g'}: str[length -\/i] = \textcolor{charliteral}{'c'}; \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00040}00040             \textcolor{keywordflow}{case} \textcolor{charliteral}{'T'}: str[length -\/i] = \textcolor{charliteral}{'A'}; \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00041}00041             \textcolor{keywordflow}{case} \textcolor{charliteral}{'t'}: str[length -\/i] = \textcolor{charliteral}{'a'}; \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00042}00042             \textcolor{keywordflow}{case} \textcolor{charliteral}{'N'}: str[length -\/i] = \textcolor{charliteral}{'N'}; \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00043}00043             \textcolor{keywordflow}{case} \textcolor{charliteral}{'n'}: str[length -\/i] = \textcolor{charliteral}{'n'}; \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00044}00044             \textcolor{keywordflow}{case} \textcolor{charliteral}{'R'}: str[length -\/i] = \textcolor{charliteral}{'Y'}; \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00045}00045             \textcolor{keywordflow}{case} \textcolor{charliteral}{'r'}: str[length -\/i] = \textcolor{charliteral}{'y'}; \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00046}00046             \textcolor{keywordflow}{case} \textcolor{charliteral}{'Y'}: str[length -\/i] = \textcolor{charliteral}{'R'}; \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00047}00047             \textcolor{keywordflow}{case} \textcolor{charliteral}{'y'}: str[length -\/i] = \textcolor{charliteral}{'r'}; \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00048}00048             \textcolor{keywordflow}{case} \textcolor{charliteral}{'W'}: str[length -\/i] = \textcolor{charliteral}{'S'}; \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00049}00049             \textcolor{keywordflow}{case} \textcolor{charliteral}{'w'}: str[length -\/i] = \textcolor{charliteral}{'s'}; \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00050}00050             \textcolor{keywordflow}{case} \textcolor{charliteral}{'S'}: str[length -\/i] = \textcolor{charliteral}{'W'}; \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00051}00051             \textcolor{keywordflow}{case} \textcolor{charliteral}{'s'}: str[length -\/i] = \textcolor{charliteral}{'w'}; \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00052}00052             \textcolor{keywordflow}{case} \textcolor{charliteral}{'K'}: str[length -\/i] = \textcolor{charliteral}{'M'}; \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00053}00053             \textcolor{keywordflow}{case} \textcolor{charliteral}{'k'}: str[length -\/i] = \textcolor{charliteral}{'m'}; \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00054}00054             \textcolor{keywordflow}{case} \textcolor{charliteral}{'M'}: str[length -\/i] = \textcolor{charliteral}{'K'}; \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00055}00055             \textcolor{keywordflow}{case} \textcolor{charliteral}{'m'}: str[length -\/i] = \textcolor{charliteral}{'k'}; \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00056}00056             \textcolor{keywordflow}{case} \textcolor{charliteral}{'B'}: str[length -\/i] = \textcolor{charliteral}{'V'}; \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00057}00057             \textcolor{keywordflow}{case} \textcolor{charliteral}{'b'}: str[length -\/i] = \textcolor{charliteral}{'v'}; \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00058}00058             \textcolor{keywordflow}{case} \textcolor{charliteral}{'D'}: str[length -\/i] = \textcolor{charliteral}{'H'}; \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00059}00059             \textcolor{keywordflow}{case} \textcolor{charliteral}{'d'}: str[length -\/i] = \textcolor{charliteral}{'h'}; \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00060}00060             \textcolor{keywordflow}{case} \textcolor{charliteral}{'H'}: str[length -\/i] = \textcolor{charliteral}{'D'}; \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00061}00061             \textcolor{keywordflow}{case} \textcolor{charliteral}{'h'}: str[length -\/i] = \textcolor{charliteral}{'d'}; \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00062}00062             \textcolor{keywordflow}{case} \textcolor{charliteral}{'V'}: str[length -\/i] = \textcolor{charliteral}{'B'}; \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00063}00063             \textcolor{keywordflow}{case} \textcolor{charliteral}{'v'}: str[length -\/i] = \textcolor{charliteral}{'b'}; \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00064}00064             \textcolor{keywordflow}{default}:  \mbox{\hyperlink{toolbox_8c_afc3a337fdac9b2ac6bb3135b0cc5789b}{gkn\_exit}}(\textcolor{stringliteral}{"{}alphabet error \%c"{}}, seq[i-\/1]);}
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00065}00065         \}}
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00066}00066     \}}
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00067}00067 }
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00068}00068     \textcolor{keywordflow}{return} str;}
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00069}00069 \}}
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00070}00070 }
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00071}00071 \textcolor{comment}{// FASTA file}}
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00072}00072 }
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00073}\mbox{\hyperlink{sequence_8c_a66ea3a41c0d744c055d59ab37b81861e}{00073}} \textcolor{keywordtype}{void} \mbox{\hyperlink{sequence_8c_a66ea3a41c0d744c055d59ab37b81861e}{gkn\_fasta\_free}}(\mbox{\hyperlink{structgkn__FASTA}{gkn\_fasta}} ff) \{}
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00074}00074     free(ff-\/>\mbox{\hyperlink{structgkn__FASTA_a69c8b85db932e42edeb6f9214a72c1be}{def}});}
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00075}00075     free(ff-\/>\mbox{\hyperlink{structgkn__FASTA_addc6dea3219927f99433030834b3c911}{seq}});}
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00076}00076     free(ff);}
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00077}00077 \}}
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00078}00078 }
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00079}\mbox{\hyperlink{sequence_8c_ad755f2211cef68df4138efc55443ad3f}{00079}} \mbox{\hyperlink{structgkn__FASTA}{gkn\_fasta}} \mbox{\hyperlink{sequence_8c_ad755f2211cef68df4138efc55443ad3f}{gkn\_fasta\_new}} (\textcolor{keyword}{const} \textcolor{keywordtype}{char} *def, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *seq) \{}
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00080}00080     \mbox{\hyperlink{structgkn__FASTA}{gkn\_fasta}} ff = \mbox{\hyperlink{toolbox_8c_a615441eab38bc9f6edb874295a11cf3f}{gkn\_malloc}}(\textcolor{keyword}{sizeof}(\textcolor{keyword}{struct} \mbox{\hyperlink{structgkn__FASTA}{gkn\_FASTA}}));}
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00081}00081     ff-\/>\mbox{\hyperlink{structgkn__FASTA_a69c8b85db932e42edeb6f9214a72c1be}{def}}  = \mbox{\hyperlink{toolbox_8c_a615441eab38bc9f6edb874295a11cf3f}{gkn\_malloc}}(strlen(def) +1);}
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00082}00082     ff-\/>\mbox{\hyperlink{structgkn__FASTA_addc6dea3219927f99433030834b3c911}{seq}}  = \mbox{\hyperlink{toolbox_8c_a615441eab38bc9f6edb874295a11cf3f}{gkn\_malloc}}(strlen(seq) +1);}
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00083}00083     ff-\/>\mbox{\hyperlink{structgkn__FASTA_a9ffb745a0ad337fa4438f29466ea9b3e}{length}} = strlen(seq);}
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00084}00084     strcpy(ff-\/>\mbox{\hyperlink{structgkn__FASTA_a69c8b85db932e42edeb6f9214a72c1be}{def}}, def);}
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00085}00085     strcpy(ff-\/>\mbox{\hyperlink{structgkn__FASTA_addc6dea3219927f99433030834b3c911}{seq}}, seq);}
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00086}00086     \textcolor{keywordflow}{return} ff;}
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00087}00087 \}}
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00088}00088 }
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00089}\mbox{\hyperlink{sequence_8c_a850c0e62d7c0f653604e7a38c03f0647}{00089}} \mbox{\hyperlink{structgkn__FASTA}{gkn\_fasta}} \mbox{\hyperlink{sequence_8c_a850c0e62d7c0f653604e7a38c03f0647}{gkn\_fasta\_read}}(\mbox{\hyperlink{structgkn__PIPE}{gkn\_pipe}} io) \{}
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00090}00090 }
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00091}00091     \textcolor{comment}{// check for fasta header}}
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00092}00092     \textcolor{keywordtype}{char} c = fgetc(io-\/>\mbox{\hyperlink{structgkn__PIPE_a70cf373460970197d589c81ee35b09d3}{stream}});}
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00093}00093     ungetc(c, io-\/>\mbox{\hyperlink{structgkn__PIPE_a70cf373460970197d589c81ee35b09d3}{stream}});}
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00094}00094     \textcolor{keywordflow}{if} (c == EOF || (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char})c == 255) \textcolor{keywordflow}{return} NULL;}
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00095}00095     \textcolor{keywordflow}{if} (c != \textcolor{charliteral}{'>'}) \mbox{\hyperlink{toolbox_8c_afc3a337fdac9b2ac6bb3135b0cc5789b}{gkn\_exit}}(\textcolor{stringliteral}{"{}fasta? \%c \%d"{}}, c, (\textcolor{keywordtype}{int})c);}
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00096}00096 }
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00097}00097     \textcolor{comment}{// def}}
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00098}00098     \textcolor{keywordtype}{char} *def = \mbox{\hyperlink{toolbox_8c_a5eb43545be45c926be046bcff9049e76}{gkn\_readline}}(io);}
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00099}00099 }
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00100}00100     \textcolor{comment}{// seq}}
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00101}00101     \mbox{\hyperlink{structgkn__VEC}{gkn\_vec}} lines = \mbox{\hyperlink{toolbox_8c_a36f281202cd2c19564cab711eb676e2e}{gkn\_vec\_new}}();}
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00102}00102     \textcolor{keywordflow}{while} (1) \{}
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00103}00103         \textcolor{keywordtype}{char} c = fgetc(io-\/>\mbox{\hyperlink{structgkn__PIPE_a70cf373460970197d589c81ee35b09d3}{stream}});}
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00104}00104         ungetc(c, io-\/>\mbox{\hyperlink{structgkn__PIPE_a70cf373460970197d589c81ee35b09d3}{stream}});}
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00105}00105         \textcolor{keywordflow}{if} (c == EOF || (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char})c == 255 || c == \textcolor{charliteral}{'>'} ) \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00106}00106         \textcolor{keywordtype}{char} *line = \mbox{\hyperlink{toolbox_8c_a5eb43545be45c926be046bcff9049e76}{gkn\_readline}}(io);}
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00107}00107         \textcolor{keywordflow}{if} (line == NULL) \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00108}00108         \mbox{\hyperlink{toolbox_8c_a678ed9ec14381e2cb1b932bb81a99f16}{gkn\_vec\_push}}(lines, line);}
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00109}00109     \}}
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00110}00110 }
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00111}00111     \textcolor{keywordtype}{int} letters = 0;}
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00112}00112     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < lines-\/>\mbox{\hyperlink{structgkn__VEC_a888441c54cf7085fd338e80a0553d098}{size}}; i++) \{}
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00113}00113         \textcolor{keywordtype}{char} *line = lines-\/>\mbox{\hyperlink{structgkn__VEC_a67c9dce69b4a112228cc5ca451f2cf0b}{elem}}[i];}
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00114}00114         letters += strlen(line);}
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00115}00115     \}}
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00116}00116 }
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00117}00117     \textcolor{keywordtype}{char} *seq = malloc(letters + 1);}
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00118}00118     \textcolor{keywordtype}{int} off = 0;}
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00119}00119     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < lines-\/>\mbox{\hyperlink{structgkn__VEC_a888441c54cf7085fd338e80a0553d098}{size}}; i++) \{}
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00120}00120         \textcolor{keywordtype}{char} *line = lines-\/>\mbox{\hyperlink{structgkn__VEC_a67c9dce69b4a112228cc5ca451f2cf0b}{elem}}[i];}
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00121}00121         strcpy(seq + off, line);}
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00122}00122         off += strlen(line);}
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00123}00123     \}}
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00124}00124 }
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00125}00125     \textcolor{comment}{// clean up}}
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00126}00126     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < lines-\/>\mbox{\hyperlink{structgkn__VEC_a888441c54cf7085fd338e80a0553d098}{size}}; i++) \{}
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00127}00127         free(lines-\/>\mbox{\hyperlink{structgkn__VEC_a67c9dce69b4a112228cc5ca451f2cf0b}{elem}}[i]);}
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00128}00128     \}}
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00129}00129     \mbox{\hyperlink{toolbox_8c_af5bad93f51fdf2738a5b02322774c32d}{gkn\_vec\_free}}(lines);}
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00130}00130 }
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00131}00131     \textcolor{comment}{// return object}}
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00132}00132     \mbox{\hyperlink{structgkn__FASTA}{gkn\_fasta}} ff = malloc(\textcolor{keyword}{sizeof}(\textcolor{keyword}{struct} \mbox{\hyperlink{structgkn__FASTA}{gkn\_FASTA}}));}
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00133}00133     ff-\/>\mbox{\hyperlink{structgkn__FASTA_a69c8b85db932e42edeb6f9214a72c1be}{def}} = def;}
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00134}00134     ff-\/>\mbox{\hyperlink{structgkn__FASTA_addc6dea3219927f99433030834b3c911}{seq}} = seq;}
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00135}00135     ff-\/>\mbox{\hyperlink{structgkn__FASTA_a9ffb745a0ad337fa4438f29466ea9b3e}{length}} = strlen(seq);}
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00136}00136 }
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00137}00137     \textcolor{keywordflow}{return} ff;}
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00138}00138 \}}
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00139}00139 }
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00140}00140 \textcolor{keyword}{static} \textcolor{keywordtype}{int} FASTA\_LINE\_LENGTH = 80;}
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00141}00141 }
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00142}\mbox{\hyperlink{sequence_8c_a6888f967de9e155ec335aefcec19364e}{00142}} \textcolor{keywordtype}{void} \mbox{\hyperlink{sequence_8c_a6888f967de9e155ec335aefcec19364e}{gkn\_fasta\_write}}(FILE *stream, \textcolor{keyword}{const} \mbox{\hyperlink{structgkn__FASTA}{gkn\_fasta}} ff) \{}
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00143}00143     \textcolor{keywordflow}{if} (ff-\/>\mbox{\hyperlink{structgkn__FASTA_a69c8b85db932e42edeb6f9214a72c1be}{def}}[0] != \textcolor{charliteral}{'>'}) fprintf(stream, \textcolor{stringliteral}{"{}>"{}});}
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00144}00144     fprintf(stream, \textcolor{stringliteral}{"{}\%s"{}}, ff-\/>\mbox{\hyperlink{structgkn__FASTA_a69c8b85db932e42edeb6f9214a72c1be}{def}});}
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00145}00145     \textcolor{keywordflow}{if} (ff-\/>\mbox{\hyperlink{structgkn__FASTA_a69c8b85db932e42edeb6f9214a72c1be}{def}}[strlen(ff-\/>\mbox{\hyperlink{structgkn__FASTA_a69c8b85db932e42edeb6f9214a72c1be}{def}}) -\/1] != \textcolor{charliteral}{'\(\backslash\)n'}) fprintf(stream, \textcolor{stringliteral}{"{}\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00146}00146 }
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00147}00147     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < ff-\/>\mbox{\hyperlink{structgkn__FASTA_a9ffb745a0ad337fa4438f29466ea9b3e}{length}}; i++) \{}
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00148}00148         fputc(ff-\/>\mbox{\hyperlink{structgkn__FASTA_addc6dea3219927f99433030834b3c911}{seq}}[i], stream);}
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00149}00149         \textcolor{keywordflow}{if} ((i+1) \% FASTA\_LINE\_LENGTH == 0) fprintf(stream, \textcolor{stringliteral}{"{}\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00150}00150     \}}
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00151}00151 }
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00152}00152     fprintf(stream, \textcolor{stringliteral}{"{}\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00153}00153 \}}
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00154}00154 }
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00155}\mbox{\hyperlink{sequence_8c_a0b37cacdd5c42e3450e79b734e3bf524}{00155}} \textcolor{keywordtype}{void} \mbox{\hyperlink{sequence_8c_a0b37cacdd5c42e3450e79b734e3bf524}{gkn\_fasta\_set\_line\_length}} (\textcolor{keywordtype}{int} length) \{}
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00156}00156     FASTA\_LINE\_LENGTH = length;}
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00157}00157 \}}
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00158}00158 }
+\DoxyCodeLine{\Hypertarget{sequence_8c_source_l00159}00159 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

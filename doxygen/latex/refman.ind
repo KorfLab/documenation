@@ -1,0 +1,174 @@
+\begin{theindex}
+
+  \item {alloc}
+    \subitem {gkn\_xtree}, \hyperpage{20}
+
+  \indexspace
+
+  \item {c}
+    \subitem {gkn\_XNODE}, \hyperpage{19}
+  \item {children}
+    \subitem {gkn\_XNODE}, \hyperpage{20}
+
+  \indexspace
+
+  \item {data}
+    \subitem {gkn\_XNODE}, \hyperpage{20}
+  \item {def}
+    \subitem {gkn\_FASTA}, \hyperpage{7}
+
+  \indexspace
+
+  \item {elem}
+    \subitem {gkn\_FVEC}, \hyperpage{8}
+    \subitem {gkn\_IVEC}, \hyperpage{9}
+    \subitem {gkn\_TVEC}, \hyperpage{17}
+    \subitem {gkn\_VEC}, \hyperpage{18}
+
+  \indexspace
+
+  \item {gkn\_FASTA}, \hyperpage{7}
+    \subitem {def}, \hyperpage{7}
+    \subitem {length}, \hyperpage{7}
+    \subitem {seq}, \hyperpage{8}
+  \item {gkn\_FVEC}, \hyperpage{8}
+    \subitem {elem}, \hyperpage{8}
+    \subitem {last}, \hyperpage{8}
+    \subitem {limit}, \hyperpage{9}
+    \subitem {size}, \hyperpage{9}
+  \item {gkn\_IVEC}, \hyperpage{9}
+    \subitem {elem}, \hyperpage{9}
+    \subitem {last}, \hyperpage{10}
+    \subitem {limit}, \hyperpage{10}
+    \subitem {size}, \hyperpage{10}
+  \item {gkn\_LEN}, \hyperpage{10}
+    \subitem {name}, \hyperpage{11}
+    \subitem {score}, \hyperpage{11}
+    \subitem {size}, \hyperpage{11}
+    \subitem {tail}, \hyperpage{11}
+  \item {gkn\_MAP}, \hyperpage{11}
+    \subitem {key}, \hyperpage{12}
+    \subitem {keys}, \hyperpage{12}
+    \subitem {level}, \hyperpage{12}
+    \subitem {slots}, \hyperpage{12}
+    \subitem {val}, \hyperpage{12}
+    \subitem {vals}, \hyperpage{12}
+  \item {gkn\_MM}, \hyperpage{13}
+    \subitem {k}, \hyperpage{13}
+    \subitem {name}, \hyperpage{13}
+    \subitem {score}, \hyperpage{13}
+    \subitem {size}, \hyperpage{14}
+  \item {gkn\_PIPE}, \hyperpage{14}
+    \subitem {gzip}, \hyperpage{14}
+    \subitem {mode}, \hyperpage{14}
+    \subitem {name}, \hyperpage{15}
+    \subitem {stream}, \hyperpage{15}
+  \item {gkn\_PWM}, \hyperpage{15}
+    \subitem {name}, \hyperpage{15}
+    \subitem {score}, \hyperpage{16}
+    \subitem {size}, \hyperpage{16}
+  \item {gkn\_TMAP}, \hyperpage{16}
+    \subitem {hash}, \hyperpage{16}
+    \subitem {tvec}, \hyperpage{16}
+  \item {gkn\_TVEC}, \hyperpage{17}
+    \subitem {elem}, \hyperpage{17}
+    \subitem {last}, \hyperpage{17}
+    \subitem {limit}, \hyperpage{17}
+    \subitem {size}, \hyperpage{18}
+  \item {gkn\_VEC}, \hyperpage{18}
+    \subitem {elem}, \hyperpage{18}
+    \subitem {last}, \hyperpage{18}
+    \subitem {limit}, \hyperpage{19}
+    \subitem {size}, \hyperpage{19}
+  \item {gkn\_XNODE}, \hyperpage{19}
+    \subitem {c}, \hyperpage{19}
+    \subitem {children}, \hyperpage{20}
+    \subitem {data}, \hyperpage{20}
+  \item {gkn\_xtree}, \hyperpage{20}
+    \subitem {alloc}, \hyperpage{20}
+    \subitem {head}, \hyperpage{20}
+  \item {gzip}
+    \subitem {gkn\_PIPE}, \hyperpage{14}
+
+  \indexspace
+
+  \item {hash}
+    \subitem {gkn\_TMAP}, \hyperpage{16}
+  \item {head}
+    \subitem {gkn\_xtree}, \hyperpage{20}
+
+  \indexspace
+
+  \item {k}
+    \subitem {gkn\_MM}, \hyperpage{13}
+  \item {key}
+    \subitem {gkn\_MAP}, \hyperpage{12}
+  \item {keys}
+    \subitem {gkn\_MAP}, \hyperpage{12}
+
+  \indexspace
+
+  \item {last}
+    \subitem {gkn\_FVEC}, \hyperpage{8}
+    \subitem {gkn\_IVEC}, \hyperpage{10}
+    \subitem {gkn\_TVEC}, \hyperpage{17}
+    \subitem {gkn\_VEC}, \hyperpage{18}
+  \item {length}
+    \subitem {gkn\_FASTA}, \hyperpage{7}
+  \item {level}
+    \subitem {gkn\_MAP}, \hyperpage{12}
+  \item {limit}
+    \subitem {gkn\_FVEC}, \hyperpage{9}
+    \subitem {gkn\_IVEC}, \hyperpage{10}
+    \subitem {gkn\_TVEC}, \hyperpage{17}
+    \subitem {gkn\_VEC}, \hyperpage{19}
+
+  \indexspace
+
+  \item {mode}
+    \subitem {gkn\_PIPE}, \hyperpage{14}
+
+  \indexspace
+
+  \item {name}
+    \subitem {gkn\_LEN}, \hyperpage{11}
+    \subitem {gkn\_MM}, \hyperpage{13}
+    \subitem {gkn\_PIPE}, \hyperpage{15}
+    \subitem {gkn\_PWM}, \hyperpage{15}
+
+  \indexspace
+
+  \item {score}
+    \subitem {gkn\_LEN}, \hyperpage{11}
+    \subitem {gkn\_MM}, \hyperpage{13}
+    \subitem {gkn\_PWM}, \hyperpage{16}
+  \item {seq}
+    \subitem {gkn\_FASTA}, \hyperpage{8}
+  \item {size}
+    \subitem {gkn\_FVEC}, \hyperpage{9}
+    \subitem {gkn\_IVEC}, \hyperpage{10}
+    \subitem {gkn\_LEN}, \hyperpage{11}
+    \subitem {gkn\_MM}, \hyperpage{14}
+    \subitem {gkn\_PWM}, \hyperpage{16}
+    \subitem {gkn\_TVEC}, \hyperpage{18}
+    \subitem {gkn\_VEC}, \hyperpage{19}
+  \item {slots}
+    \subitem {gkn\_MAP}, \hyperpage{12}
+  \item {stream}
+    \subitem {gkn\_PIPE}, \hyperpage{15}
+
+  \indexspace
+
+  \item {tail}
+    \subitem {gkn\_LEN}, \hyperpage{11}
+  \item {tvec}
+    \subitem {gkn\_TMAP}, \hyperpage{16}
+
+  \indexspace
+
+  \item {val}
+    \subitem {gkn\_MAP}, \hyperpage{12}
+  \item {vals}
+    \subitem {gkn\_MAP}, \hyperpage{12}
+
+\end{theindex}

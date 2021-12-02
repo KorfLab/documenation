@@ -1,0 +1,34 @@
+\hypertarget{sequence_8h_source}{}\doxysection{sequence.\+h}
+\mbox{\hyperlink{sequence_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{sequence_8h_source_l00001}00001 \textcolor{comment}{/******************************************************************************\(\backslash\)}}
+\DoxyCodeLine{\Hypertarget{sequence_8h_source_l00002}00002 \textcolor{comment}{ sequence.h}}
+\DoxyCodeLine{\Hypertarget{sequence_8h_source_l00003}00003 \textcolor{comment}{ Copyright (C) Ian Korf}}
+\DoxyCodeLine{\Hypertarget{sequence_8h_source_l00004}00004 \textcolor{comment}{\(\backslash\)******************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{sequence_8h_source_l00005}00005 }
+\DoxyCodeLine{\Hypertarget{sequence_8h_source_l00006}00006 \textcolor{preprocessor}{\#ifndef GENOMIKON\_SEQUENCE\_H}}
+\DoxyCodeLine{\Hypertarget{sequence_8h_source_l00007}00007 \textcolor{preprocessor}{\#define GENOMIKON\_SEQUENCE\_H}}
+\DoxyCodeLine{\Hypertarget{sequence_8h_source_l00008}00008 }
+\DoxyCodeLine{\Hypertarget{sequence_8h_source_l00009}00009 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{model_8h}{model.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{sequence_8h_source_l00010}00010 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{toolbox_8h}{toolbox.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{sequence_8h_source_l00011}00011 }
+\DoxyCodeLine{\Hypertarget{sequence_8h_source_l00012}00012 \textcolor{comment}{// Utilities}}
+\DoxyCodeLine{\Hypertarget{sequence_8h_source_l00013}00013 \textcolor{keywordtype}{int}    \mbox{\hyperlink{sequence_8h_aa3a75eb56628c4275848f0895d39ed10}{gkn\_ntindex}}(\textcolor{keyword}{const} \textcolor{keywordtype}{char} *, \textcolor{keywordtype}{int}, \textcolor{keywordtype}{int});}
+\DoxyCodeLine{\Hypertarget{sequence_8h_source_l00014}00014 \textcolor{keywordtype}{char} * \mbox{\hyperlink{sequence_8h_a5121f5d5ff188e27ad65e5295100962c}{gkn\_revcomp}}(\textcolor{keyword}{const} \textcolor{keywordtype}{char}*);}
+\DoxyCodeLine{\Hypertarget{sequence_8h_source_l00015}00015 }
+\DoxyCodeLine{\Hypertarget{sequence_8h_source_l00017}\mbox{\hyperlink{structgkn__FASTA}{00017}} \textcolor{keyword}{struct }\mbox{\hyperlink{structgkn__FASTA}{gkn\_FASTA}} \{}
+\DoxyCodeLine{\Hypertarget{sequence_8h_source_l00019}\mbox{\hyperlink{structgkn__FASTA_a9ffb745a0ad337fa4438f29466ea9b3e}{00019}}     \textcolor{keywordtype}{int}    \mbox{\hyperlink{structgkn__FASTA_a9ffb745a0ad337fa4438f29466ea9b3e}{length}};}
+\DoxyCodeLine{\Hypertarget{sequence_8h_source_l00021}\mbox{\hyperlink{structgkn__FASTA_a69c8b85db932e42edeb6f9214a72c1be}{00021}}     \textcolor{keywordtype}{char} * \mbox{\hyperlink{structgkn__FASTA_a69c8b85db932e42edeb6f9214a72c1be}{def}};}
+\DoxyCodeLine{\Hypertarget{sequence_8h_source_l00023}\mbox{\hyperlink{structgkn__FASTA_addc6dea3219927f99433030834b3c911}{00023}}     \textcolor{keywordtype}{char} * \mbox{\hyperlink{structgkn__FASTA_addc6dea3219927f99433030834b3c911}{seq}}; }
+\DoxyCodeLine{\Hypertarget{sequence_8h_source_l00024}00024 \};}
+\DoxyCodeLine{\Hypertarget{sequence_8h_source_l00025}\mbox{\hyperlink{sequence_8h_a7f4838662ec4fa20fdb539a6e84cd130}{00025}} \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{structgkn__FASTA}{gkn\_FASTA}} * \mbox{\hyperlink{sequence_8h_a7f4838662ec4fa20fdb539a6e84cd130}{gkn\_fasta}};}
+\DoxyCodeLine{\Hypertarget{sequence_8h_source_l00026}00026 }
+\DoxyCodeLine{\Hypertarget{sequence_8h_source_l00028}00028 \textcolor{keywordtype}{void}      \mbox{\hyperlink{sequence_8h_a8f7c418f3227af7abbe6211634e38861}{gkn\_fasta\_free}}(\mbox{\hyperlink{structgkn__FASTA}{gkn\_fasta}});}
+\DoxyCodeLine{\Hypertarget{sequence_8h_source_l00030}00030 \mbox{\hyperlink{structgkn__FASTA}{gkn\_fasta}} \mbox{\hyperlink{sequence_8h_a1a4644a5cafb7931f963a9da85e08c81}{gkn\_fasta\_new}}(\textcolor{keyword}{const} \textcolor{keywordtype}{char} *, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *);}
+\DoxyCodeLine{\Hypertarget{sequence_8h_source_l00032}00032 \mbox{\hyperlink{structgkn__FASTA}{gkn\_fasta}} \mbox{\hyperlink{sequence_8h_ab520a768fc1b900b2cd094529e810c71}{gkn\_fasta\_read}}(\mbox{\hyperlink{structgkn__PIPE}{gkn\_pipe}});}
+\DoxyCodeLine{\Hypertarget{sequence_8h_source_l00033}00033 \textcolor{keywordtype}{void}      \mbox{\hyperlink{sequence_8h_a47a712fdbc735b58c3a3e816f484cb95}{gkn\_fasta\_write}}(FILE *, \textcolor{keyword}{const} \mbox{\hyperlink{structgkn__FASTA}{gkn\_fasta}});}
+\DoxyCodeLine{\Hypertarget{sequence_8h_source_l00034}00034 \textcolor{keywordtype}{void}      \mbox{\hyperlink{sequence_8h_a1f181f7a801ebe5b88252226781235c8}{gkn\_fasta\_set\_line\_length}}(\textcolor{keywordtype}{int});}
+\DoxyCodeLine{\Hypertarget{sequence_8h_source_l00035}00035 }
+\DoxyCodeLine{\Hypertarget{sequence_8h_source_l00036}00036 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

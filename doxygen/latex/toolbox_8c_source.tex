@@ -1,0 +1,632 @@
+\hypertarget{toolbox_8c_source}{}\doxysection{toolbox.\+c}
+\mbox{\hyperlink{toolbox_8c}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00001}00001 \textcolor{comment}{/******************************************************************************\(\backslash\)}}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00002}00002 \textcolor{comment}{ toolbox.c}}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00003}00003 \textcolor{comment}{ Copyright (C) Ian Korf}}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00004}00004 \textcolor{comment}{\(\backslash\)******************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00005}00005 }
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00006}00006 \textcolor{preprocessor}{\#ifndef GENOMIKON\_TOOLBOX\_C}}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00007}\mbox{\hyperlink{toolbox_8c_aa73206d57e5e9cf2ec86754934725c7b}{00007}} \textcolor{preprocessor}{\#define GENOMIKON\_TOOLBOX\_C}}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00008}00008 }
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00009}00009 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{toolbox_8h}{toolbox.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00010}00010 }
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00011}00011 \textcolor{keyword}{static} \textcolor{keywordtype}{char} gkn\_version\_number[] = \textcolor{stringliteral}{"{}genomikon-\/2021"{}};}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00012}00012 \textcolor{keyword}{static} \textcolor{keywordtype}{char} gkn\_program\_name[256] = \textcolor{stringliteral}{"{}name not set"{}};}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00013}00013 }
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00014}\mbox{\hyperlink{toolbox_8c_a545230a46903d703d2d9206500cb5533}{00014}} \textcolor{keywordtype}{char} * \mbox{\hyperlink{toolbox_8c_a545230a46903d703d2d9206500cb5533}{gkn\_get\_version\_number}} (\textcolor{keywordtype}{void}) \{\textcolor{keywordflow}{return} gkn\_version\_number;\}}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00015}\mbox{\hyperlink{toolbox_8c_a9b8bc9f8a6bfd61e9ab9e8872c3f8016}{00015}} \textcolor{keywordtype}{void}   \mbox{\hyperlink{toolbox_8c_a9b8bc9f8a6bfd61e9ab9e8872c3f8016}{gkn\_set\_program\_name}} (\textcolor{keyword}{const} \textcolor{keywordtype}{char} *s) \{strcpy(gkn\_program\_name, s);\}}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00016}\mbox{\hyperlink{toolbox_8c_a7a3975f547595b72958f7dd9783b9cfe}{00016}} \textcolor{keywordtype}{char} * \mbox{\hyperlink{toolbox_8c_a7a3975f547595b72958f7dd9783b9cfe}{gkn\_get\_program\_name}} (\textcolor{keywordtype}{void}) \{\textcolor{keywordflow}{return} gkn\_program\_name;\}}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00017}00017 }
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00018}\mbox{\hyperlink{toolbox_8c_a615441eab38bc9f6edb874295a11cf3f}{00018}} \textcolor{keywordtype}{void} * \mbox{\hyperlink{toolbox_8c_a615441eab38bc9f6edb874295a11cf3f}{gkn\_malloc}}(\textcolor{keywordtype}{size\_t} size) \{}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00019}00019     \textcolor{keywordtype}{void} *mem = malloc(size);}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00020}00020     \textcolor{keywordflow}{if} (mem == NULL) \mbox{\hyperlink{toolbox_8c_afc3a337fdac9b2ac6bb3135b0cc5789b}{gkn\_exit}}(\textcolor{stringliteral}{"{}gkn\_malloc \%d"{}}, size);}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00021}00021     \textcolor{keywordflow}{return} mem;}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00022}00022 \}}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00023}00023 }
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00024}\mbox{\hyperlink{toolbox_8c_a2d10fbc0944e53b454df5b1a7dd36062}{00024}} \textcolor{keywordtype}{void} * \mbox{\hyperlink{toolbox_8c_a2d10fbc0944e53b454df5b1a7dd36062}{gkn\_calloc}}(\textcolor{keywordtype}{size\_t} count, \textcolor{keywordtype}{size\_t} size) \{}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00025}00025     \textcolor{keywordtype}{void} *mem = calloc(count, size);}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00026}00026     \textcolor{keywordflow}{if} (mem == NULL) \mbox{\hyperlink{toolbox_8c_afc3a337fdac9b2ac6bb3135b0cc5789b}{gkn\_exit}}(\textcolor{stringliteral}{"{}gkn\_calloc \%d \%d"{}}, count, size);}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00027}00027     \textcolor{keywordflow}{return} mem;}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00028}00028 \}}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00029}00029 }
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00030}\mbox{\hyperlink{toolbox_8c_a4fe6745ca293d0fa8641b14bd1b86aec}{00030}} \textcolor{keywordtype}{void} * \mbox{\hyperlink{toolbox_8c_a4fe6745ca293d0fa8641b14bd1b86aec}{gkn\_realloc}}(\textcolor{keywordtype}{void} *p, \textcolor{keywordtype}{size\_t} size) \{}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00031}00031     \textcolor{keywordtype}{void} *mem = realloc(p, size);}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00032}00032     \textcolor{keywordflow}{if} (mem == NULL) \mbox{\hyperlink{toolbox_8c_afc3a337fdac9b2ac6bb3135b0cc5789b}{gkn\_exit}}(\textcolor{stringliteral}{"{}gkn\_realloc \%d"{}}, size);}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00033}00033     \textcolor{keywordflow}{return} mem;}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00034}00034 \}}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00035}00035 }
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00036}\mbox{\hyperlink{toolbox_8c_ad1174d85a92653c3edbc49a3fc775292}{00036}} \textcolor{keywordtype}{void} \mbox{\hyperlink{toolbox_8c_ad1174d85a92653c3edbc49a3fc775292}{gkn\_ivec\_free}}(\mbox{\hyperlink{structgkn__IVEC}{gkn\_ivec}} vec) \{}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00037}00037     \textcolor{keywordflow}{if} (vec == NULL) \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00038}00038     \textcolor{keywordflow}{if} (vec-\/>\mbox{\hyperlink{structgkn__IVEC_adb4d6fa4ed7f6b4b666ba080d14f4c27}{elem}}) free(vec-\/>\mbox{\hyperlink{structgkn__IVEC_adb4d6fa4ed7f6b4b666ba080d14f4c27}{elem}});}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00039}00039     free(vec);}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00040}00040 \}}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00041}00041 }
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00042}\mbox{\hyperlink{toolbox_8c_a90d4d0e46edf1471f8bea2394bca2561}{00042}} \mbox{\hyperlink{structgkn__IVEC}{gkn\_ivec}} \mbox{\hyperlink{toolbox_8c_a90d4d0e46edf1471f8bea2394bca2561}{gkn\_ivec\_new}}(\textcolor{keywordtype}{void}) \{}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00043}00043     \mbox{\hyperlink{structgkn__IVEC}{gkn\_ivec}} vec = \mbox{\hyperlink{toolbox_8c_a615441eab38bc9f6edb874295a11cf3f}{gkn\_malloc}}(\textcolor{keyword}{sizeof}(\textcolor{keyword}{struct} \mbox{\hyperlink{structgkn__IVEC}{gkn\_IVEC}}));}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00044}00044     vec-\/>\mbox{\hyperlink{structgkn__IVEC_a842fce6f95f145674af5ae4419aa3e45}{size}}  = 0;}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00045}00045     vec-\/>\mbox{\hyperlink{structgkn__IVEC_a478eacfb42ec3436c97a48e0a33e7870}{limit}} = 0;}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00046}00046     vec-\/>\mbox{\hyperlink{structgkn__IVEC_adb4d6fa4ed7f6b4b666ba080d14f4c27}{elem}}  = NULL;}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00047}00047     \textcolor{keywordflow}{return} vec;}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00048}00048 \}}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00049}00049 }
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00050}\mbox{\hyperlink{toolbox_8c_af7a2137317b362dbd6d4cacd07316ac8}{00050}} \textcolor{keywordtype}{void} \mbox{\hyperlink{toolbox_8c_af7a2137317b362dbd6d4cacd07316ac8}{gkn\_ivec\_push}}(\mbox{\hyperlink{structgkn__IVEC}{gkn\_ivec}} vec, \textcolor{keywordtype}{int} val) \{}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00051}00051     \textcolor{keywordflow}{if} (vec-\/>\mbox{\hyperlink{structgkn__IVEC_a478eacfb42ec3436c97a48e0a33e7870}{limit}} == vec-\/>\mbox{\hyperlink{structgkn__IVEC_a842fce6f95f145674af5ae4419aa3e45}{size}}) \{}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00052}00052         \textcolor{keywordflow}{if} (vec-\/>\mbox{\hyperlink{structgkn__IVEC_a478eacfb42ec3436c97a48e0a33e7870}{limit}} == 0) vec-\/>\mbox{\hyperlink{structgkn__IVEC_a478eacfb42ec3436c97a48e0a33e7870}{limit}}    = 1;}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00053}00053         \textcolor{keywordflow}{else}                 vec-\/>\mbox{\hyperlink{structgkn__IVEC_a478eacfb42ec3436c97a48e0a33e7870}{limit}} *= 2;}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00054}00054         vec-\/>\mbox{\hyperlink{structgkn__IVEC_adb4d6fa4ed7f6b4b666ba080d14f4c27}{elem}} = \mbox{\hyperlink{toolbox_8c_a4fe6745ca293d0fa8641b14bd1b86aec}{gkn\_realloc}}(vec-\/>\mbox{\hyperlink{structgkn__IVEC_adb4d6fa4ed7f6b4b666ba080d14f4c27}{elem}}, vec-\/>\mbox{\hyperlink{structgkn__IVEC_a478eacfb42ec3436c97a48e0a33e7870}{limit}} * \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{int}));}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00055}00055     \}}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00056}00056     vec-\/>\mbox{\hyperlink{structgkn__IVEC_adb4d6fa4ed7f6b4b666ba080d14f4c27}{elem}}[vec-\/>\mbox{\hyperlink{structgkn__IVEC_a842fce6f95f145674af5ae4419aa3e45}{size}}] = val;}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00057}00057     vec-\/>\mbox{\hyperlink{structgkn__IVEC_a1b2627d6e6e2f37ba935e194f8c5ec54}{last}} = val;}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00058}00058     vec-\/>\mbox{\hyperlink{structgkn__IVEC_a842fce6f95f145674af5ae4419aa3e45}{size}}++;}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00059}00059 \}}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00060}00060 }
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00061}\mbox{\hyperlink{toolbox_8c_a932e3779fa1fde410989bbddaf42c8b1}{00061}} \textcolor{keywordtype}{int} \mbox{\hyperlink{toolbox_8c_a932e3779fa1fde410989bbddaf42c8b1}{gkn\_ivec\_pop}}(\mbox{\hyperlink{structgkn__IVEC}{gkn\_ivec}} vec) \{}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00062}00062     \textcolor{keywordflow}{if} (vec-\/>\mbox{\hyperlink{structgkn__IVEC_a842fce6f95f145674af5ae4419aa3e45}{size}} == 0) \mbox{\hyperlink{toolbox_8c_afc3a337fdac9b2ac6bb3135b0cc5789b}{gkn\_exit}}(\textcolor{stringliteral}{"{}can't pop a zero-\/length vector"{}});}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00063}00063     vec-\/>\mbox{\hyperlink{structgkn__IVEC_a842fce6f95f145674af5ae4419aa3e45}{size}}-\/-\/;}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00064}00064     \textcolor{keywordflow}{return} vec-\/>\mbox{\hyperlink{structgkn__IVEC_adb4d6fa4ed7f6b4b666ba080d14f4c27}{elem}}[vec-\/>\mbox{\hyperlink{structgkn__IVEC_a842fce6f95f145674af5ae4419aa3e45}{size}}];}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00065}00065 \}}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00066}00066 }
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00067}\mbox{\hyperlink{toolbox_8c_a014c88db16fbc93a4b6697248d2a9297}{00067}} \textcolor{keywordtype}{void} \mbox{\hyperlink{toolbox_8c_a014c88db16fbc93a4b6697248d2a9297}{gkn\_fvec\_free}}(\mbox{\hyperlink{structgkn__FVEC}{gkn\_fvec}} vec) \{}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00068}00068     \textcolor{keywordflow}{if} (vec == NULL) \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00069}00069     \textcolor{keywordflow}{if} (vec-\/>\mbox{\hyperlink{structgkn__FVEC_a632981460f72cc34523866ab471584d3}{elem}}) free(vec-\/>\mbox{\hyperlink{structgkn__FVEC_a632981460f72cc34523866ab471584d3}{elem}});}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00070}00070     free(vec);}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00071}00071 \}}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00072}00072 }
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00073}\mbox{\hyperlink{toolbox_8c_abf0dad2c126248bd7aaf8ac2381e932d}{00073}} \mbox{\hyperlink{structgkn__FVEC}{gkn\_fvec}} \mbox{\hyperlink{toolbox_8c_abf0dad2c126248bd7aaf8ac2381e932d}{gkn\_fvec\_new}}(\textcolor{keywordtype}{void}) \{}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00074}00074     \mbox{\hyperlink{structgkn__FVEC}{gkn\_fvec}} vec = \mbox{\hyperlink{toolbox_8c_a615441eab38bc9f6edb874295a11cf3f}{gkn\_malloc}}(\textcolor{keyword}{sizeof}(\textcolor{keyword}{struct} \mbox{\hyperlink{structgkn__FVEC}{gkn\_FVEC}}));}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00075}00075     vec-\/>\mbox{\hyperlink{structgkn__FVEC_a17643cae16a8495d89e28db718ed844c}{size}}  = 0;}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00076}00076     vec-\/>\mbox{\hyperlink{structgkn__FVEC_abcead3008dd0412cef134fc86bc71357}{limit}} = 0;}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00077}00077     vec-\/>\mbox{\hyperlink{structgkn__FVEC_a632981460f72cc34523866ab471584d3}{elem}}  = NULL;}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00078}00078     \textcolor{keywordflow}{return} vec;}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00079}00079 \}}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00080}00080 }
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00081}\mbox{\hyperlink{toolbox_8c_a5165a4fa04232addc8b910afcf4ced20}{00081}} \textcolor{keywordtype}{void} \mbox{\hyperlink{toolbox_8c_a5165a4fa04232addc8b910afcf4ced20}{gkn\_fvec\_push}}(\mbox{\hyperlink{structgkn__FVEC}{gkn\_fvec}} vec, \textcolor{keywordtype}{double} val) \{}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00082}00082     \textcolor{keywordflow}{if} (vec-\/>\mbox{\hyperlink{structgkn__FVEC_abcead3008dd0412cef134fc86bc71357}{limit}} == vec-\/>\mbox{\hyperlink{structgkn__FVEC_a17643cae16a8495d89e28db718ed844c}{size}}) \{}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00083}00083         \textcolor{keywordflow}{if} (vec-\/>\mbox{\hyperlink{structgkn__FVEC_abcead3008dd0412cef134fc86bc71357}{limit}} == 0) vec-\/>\mbox{\hyperlink{structgkn__FVEC_abcead3008dd0412cef134fc86bc71357}{limit}}    = 1;}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00084}00084         \textcolor{keywordflow}{else}                 vec-\/>\mbox{\hyperlink{structgkn__FVEC_abcead3008dd0412cef134fc86bc71357}{limit}} *= 2;}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00085}00085         vec-\/>\mbox{\hyperlink{structgkn__FVEC_a632981460f72cc34523866ab471584d3}{elem}} = \mbox{\hyperlink{toolbox_8c_a4fe6745ca293d0fa8641b14bd1b86aec}{gkn\_realloc}}(vec-\/>\mbox{\hyperlink{structgkn__FVEC_a632981460f72cc34523866ab471584d3}{elem}}, vec-\/>\mbox{\hyperlink{structgkn__FVEC_abcead3008dd0412cef134fc86bc71357}{limit}} * \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{double}));}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00086}00086     \}}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00087}00087     vec-\/>\mbox{\hyperlink{structgkn__FVEC_a632981460f72cc34523866ab471584d3}{elem}}[vec-\/>\mbox{\hyperlink{structgkn__FVEC_a17643cae16a8495d89e28db718ed844c}{size}}] = val;}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00088}00088     vec-\/>\mbox{\hyperlink{structgkn__FVEC_a4a12af1b60bb413b0df9094c19648996}{last}} = val;}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00089}00089     vec-\/>\mbox{\hyperlink{structgkn__FVEC_a17643cae16a8495d89e28db718ed844c}{size}}++;}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00090}00090 \}}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00091}00091 }
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00092}\mbox{\hyperlink{toolbox_8c_a1397e6487c5a9b5dd916965927a49d5f}{00092}} \textcolor{keywordtype}{double} \mbox{\hyperlink{toolbox_8c_a1397e6487c5a9b5dd916965927a49d5f}{gkn\_fvec\_pop}}(\mbox{\hyperlink{structgkn__FVEC}{gkn\_fvec}} vec) \{}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00093}00093     \textcolor{keywordflow}{if} (vec-\/>\mbox{\hyperlink{structgkn__FVEC_a17643cae16a8495d89e28db718ed844c}{size}} == 0) \mbox{\hyperlink{toolbox_8c_afc3a337fdac9b2ac6bb3135b0cc5789b}{gkn\_exit}}(\textcolor{stringliteral}{"{}can't pop a zero-\/length vector"{}});}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00094}00094     vec-\/>\mbox{\hyperlink{structgkn__FVEC_a17643cae16a8495d89e28db718ed844c}{size}}-\/-\/;}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00095}00095     \textcolor{keywordflow}{return} vec-\/>\mbox{\hyperlink{structgkn__FVEC_a632981460f72cc34523866ab471584d3}{elem}}[vec-\/>\mbox{\hyperlink{structgkn__FVEC_a17643cae16a8495d89e28db718ed844c}{size}}];}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00096}00096 \}}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00097}00097 }
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00098}\mbox{\hyperlink{toolbox_8c_a698c8bd13027f68932db974ba79a768b}{00098}} \textcolor{keywordtype}{void} \mbox{\hyperlink{toolbox_8c_a698c8bd13027f68932db974ba79a768b}{gkn\_tvec\_free}}(\mbox{\hyperlink{structgkn__TVEC}{gkn\_tvec}} vec) \{}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00099}00099     \textcolor{keywordflow}{if} (vec == NULL) \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00100}00100     \textcolor{keywordflow}{if} (vec-\/>\mbox{\hyperlink{structgkn__TVEC_aa2efc4387dc92af21bb746872d0863df}{elem}}) \{}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00101}00101         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < vec-\/>\mbox{\hyperlink{structgkn__TVEC_a30fe9aa087e75d03828bb891986a80ee}{size}}; i++) free(vec-\/>\mbox{\hyperlink{structgkn__TVEC_aa2efc4387dc92af21bb746872d0863df}{elem}}[i]);}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00102}00102         free(vec-\/>\mbox{\hyperlink{structgkn__TVEC_aa2efc4387dc92af21bb746872d0863df}{elem}});}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00103}00103     \}}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00104}00104     free(vec);}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00105}00105 \}}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00106}00106 }
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00107}\mbox{\hyperlink{toolbox_8c_acbe3324adee70e6e3cba788e8c8f3c57}{00107}} \mbox{\hyperlink{structgkn__TVEC}{gkn\_tvec}} \mbox{\hyperlink{toolbox_8c_acbe3324adee70e6e3cba788e8c8f3c57}{gkn\_tvec\_new}}(\textcolor{keywordtype}{void}) \{}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00108}00108     \mbox{\hyperlink{structgkn__TVEC}{gkn\_tvec}} vec = \mbox{\hyperlink{toolbox_8c_a615441eab38bc9f6edb874295a11cf3f}{gkn\_malloc}}(\textcolor{keyword}{sizeof}(\textcolor{keyword}{struct} \mbox{\hyperlink{structgkn__TVEC}{gkn\_TVEC}}));}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00109}00109     vec-\/>\mbox{\hyperlink{structgkn__TVEC_a30fe9aa087e75d03828bb891986a80ee}{size}}  = 0;}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00110}00110     vec-\/>\mbox{\hyperlink{structgkn__TVEC_a2b187cbb5302378b99932dbdbc50dc95}{limit}} = 0;}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00111}00111     vec-\/>\mbox{\hyperlink{structgkn__TVEC_aa2efc4387dc92af21bb746872d0863df}{elem}}  = NULL;}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00112}00112     \textcolor{keywordflow}{return} vec;}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00113}00113 \}}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00114}00114 }
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00115}\mbox{\hyperlink{toolbox_8c_acea6523d1b7c245a7159436bda596a0b}{00115}} \textcolor{keywordtype}{void} \mbox{\hyperlink{toolbox_8c_acea6523d1b7c245a7159436bda596a0b}{gkn\_tvec\_push}}(\mbox{\hyperlink{structgkn__TVEC}{gkn\_tvec}} vec, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *text) \{}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00116}00116     \textcolor{keywordflow}{if} (vec-\/>\mbox{\hyperlink{structgkn__TVEC_a2b187cbb5302378b99932dbdbc50dc95}{limit}} == vec-\/>\mbox{\hyperlink{structgkn__TVEC_a30fe9aa087e75d03828bb891986a80ee}{size}}) \{}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00117}00117         \textcolor{keywordflow}{if} (vec-\/>\mbox{\hyperlink{structgkn__TVEC_a2b187cbb5302378b99932dbdbc50dc95}{limit}} == 0) vec-\/>\mbox{\hyperlink{structgkn__TVEC_a2b187cbb5302378b99932dbdbc50dc95}{limit}}    = 1;}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00118}00118         \textcolor{keywordflow}{else}                 vec-\/>\mbox{\hyperlink{structgkn__TVEC_a2b187cbb5302378b99932dbdbc50dc95}{limit}} *= 2;}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00119}00119         vec-\/>\mbox{\hyperlink{structgkn__TVEC_aa2efc4387dc92af21bb746872d0863df}{elem}} = \mbox{\hyperlink{toolbox_8c_a4fe6745ca293d0fa8641b14bd1b86aec}{gkn\_realloc}}(vec-\/>\mbox{\hyperlink{structgkn__TVEC_aa2efc4387dc92af21bb746872d0863df}{elem}}, vec-\/>\mbox{\hyperlink{structgkn__TVEC_a2b187cbb5302378b99932dbdbc50dc95}{limit}} * \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{char} *));}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00120}00120     \}}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00121}00121     vec-\/>\mbox{\hyperlink{structgkn__TVEC_aa2efc4387dc92af21bb746872d0863df}{elem}}[vec-\/>\mbox{\hyperlink{structgkn__TVEC_a30fe9aa087e75d03828bb891986a80ee}{size}}] = \mbox{\hyperlink{toolbox_8c_a615441eab38bc9f6edb874295a11cf3f}{gkn\_malloc}}(strlen(text) + 1);}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00122}00122     strcpy(vec-\/>\mbox{\hyperlink{structgkn__TVEC_aa2efc4387dc92af21bb746872d0863df}{elem}}[vec-\/>\mbox{\hyperlink{structgkn__TVEC_a30fe9aa087e75d03828bb891986a80ee}{size}}], text);}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00123}00123     vec-\/>\mbox{\hyperlink{structgkn__TVEC_aebb397efa028e1af8991b795dad61e02}{last}} = vec-\/>\mbox{\hyperlink{structgkn__TVEC_aa2efc4387dc92af21bb746872d0863df}{elem}}[vec-\/>\mbox{\hyperlink{structgkn__TVEC_a30fe9aa087e75d03828bb891986a80ee}{size}}];}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00124}00124     vec-\/>\mbox{\hyperlink{structgkn__TVEC_a30fe9aa087e75d03828bb891986a80ee}{size}}++;}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00125}00125 \}}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00126}00126 }
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00127}\mbox{\hyperlink{toolbox_8c_ae1e3b2d03088a5356bae738120ec8194}{00127}} \textcolor{keywordtype}{char} * \mbox{\hyperlink{toolbox_8c_ae1e3b2d03088a5356bae738120ec8194}{gkn\_tvec\_pop}}(\mbox{\hyperlink{structgkn__TVEC}{gkn\_tvec}} vec) \{}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00128}00128     \textcolor{keywordflow}{if} (vec-\/>\mbox{\hyperlink{structgkn__TVEC_a30fe9aa087e75d03828bb891986a80ee}{size}} == 0) \mbox{\hyperlink{toolbox_8c_afc3a337fdac9b2ac6bb3135b0cc5789b}{gkn\_exit}}(\textcolor{stringliteral}{"{}can't pop a zero-\/length vector"{}});}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00129}00129     vec-\/>\mbox{\hyperlink{structgkn__TVEC_a30fe9aa087e75d03828bb891986a80ee}{size}}-\/-\/;}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00130}00130     \textcolor{keywordflow}{return} vec-\/>\mbox{\hyperlink{structgkn__TVEC_aa2efc4387dc92af21bb746872d0863df}{elem}}[vec-\/>\mbox{\hyperlink{structgkn__TVEC_a30fe9aa087e75d03828bb891986a80ee}{size}}];}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00131}00131 \}}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00132}00132 }
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00133}\mbox{\hyperlink{toolbox_8c_af5bad93f51fdf2738a5b02322774c32d}{00133}} \textcolor{keywordtype}{void} \mbox{\hyperlink{toolbox_8c_af5bad93f51fdf2738a5b02322774c32d}{gkn\_vec\_free}}(\mbox{\hyperlink{structgkn__VEC}{gkn\_vec}} vec) \{}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00134}00134     \textcolor{keywordflow}{if} (vec == NULL) \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00135}00135     \textcolor{keywordflow}{if} (vec-\/>\mbox{\hyperlink{structgkn__VEC_a67c9dce69b4a112228cc5ca451f2cf0b}{elem}}) free(vec-\/>\mbox{\hyperlink{structgkn__VEC_a67c9dce69b4a112228cc5ca451f2cf0b}{elem}});}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00136}00136     free(vec);}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00137}00137 \}}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00138}00138 }
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00139}\mbox{\hyperlink{toolbox_8c_a36f281202cd2c19564cab711eb676e2e}{00139}} \mbox{\hyperlink{structgkn__VEC}{gkn\_vec}} \mbox{\hyperlink{toolbox_8c_a36f281202cd2c19564cab711eb676e2e}{gkn\_vec\_new}}(\textcolor{keywordtype}{void}) \{}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00140}00140     \mbox{\hyperlink{structgkn__VEC}{gkn\_vec}} vec = \mbox{\hyperlink{toolbox_8c_a615441eab38bc9f6edb874295a11cf3f}{gkn\_malloc}}(\textcolor{keyword}{sizeof}(\textcolor{keyword}{struct} \mbox{\hyperlink{structgkn__VEC}{gkn\_VEC}}));}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00141}00141     vec-\/>\mbox{\hyperlink{structgkn__VEC_a888441c54cf7085fd338e80a0553d098}{size}}  = 0;}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00142}00142     vec-\/>\mbox{\hyperlink{structgkn__VEC_ae5f23384d9dc6b7785743efc7b926f4e}{limit}} = 0;}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00143}00143     vec-\/>\mbox{\hyperlink{structgkn__VEC_a67c9dce69b4a112228cc5ca451f2cf0b}{elem}}  = NULL;}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00144}00144     \textcolor{keywordflow}{return} vec;}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00145}00145 \}}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00146}00146 }
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00147}\mbox{\hyperlink{toolbox_8c_a678ed9ec14381e2cb1b932bb81a99f16}{00147}} \textcolor{keywordtype}{void} \mbox{\hyperlink{toolbox_8c_a678ed9ec14381e2cb1b932bb81a99f16}{gkn\_vec\_push}}(\mbox{\hyperlink{structgkn__VEC}{gkn\_vec}} vec, \textcolor{keywordtype}{void} *p) \{}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00148}00148     \textcolor{keywordflow}{if} (vec-\/>\mbox{\hyperlink{structgkn__VEC_ae5f23384d9dc6b7785743efc7b926f4e}{limit}} == vec-\/>\mbox{\hyperlink{structgkn__VEC_a888441c54cf7085fd338e80a0553d098}{size}}) \{}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00149}00149         \textcolor{keywordflow}{if} (vec-\/>\mbox{\hyperlink{structgkn__VEC_ae5f23384d9dc6b7785743efc7b926f4e}{limit}} == 0) vec-\/>\mbox{\hyperlink{structgkn__VEC_ae5f23384d9dc6b7785743efc7b926f4e}{limit}}    = 1;}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00150}00150         \textcolor{keywordflow}{else}                 vec-\/>\mbox{\hyperlink{structgkn__VEC_ae5f23384d9dc6b7785743efc7b926f4e}{limit}} *= 2;}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00151}00151         vec-\/>\mbox{\hyperlink{structgkn__VEC_a67c9dce69b4a112228cc5ca451f2cf0b}{elem}} = \mbox{\hyperlink{toolbox_8c_a4fe6745ca293d0fa8641b14bd1b86aec}{gkn\_realloc}}(vec-\/>\mbox{\hyperlink{structgkn__VEC_a67c9dce69b4a112228cc5ca451f2cf0b}{elem}}, vec-\/>\mbox{\hyperlink{structgkn__VEC_ae5f23384d9dc6b7785743efc7b926f4e}{limit}} * \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{void} *));}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00152}00152     \}}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00153}00153     vec-\/>\mbox{\hyperlink{structgkn__VEC_a67c9dce69b4a112228cc5ca451f2cf0b}{elem}}[vec-\/>\mbox{\hyperlink{structgkn__VEC_a888441c54cf7085fd338e80a0553d098}{size}}] = p;}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00154}00154     vec-\/>\mbox{\hyperlink{structgkn__VEC_a952c3af3042ad04f89f5b2d40aac8014}{last}} = vec-\/>\mbox{\hyperlink{structgkn__VEC_a67c9dce69b4a112228cc5ca451f2cf0b}{elem}}[vec-\/>\mbox{\hyperlink{structgkn__VEC_a888441c54cf7085fd338e80a0553d098}{size}}];}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00155}00155     vec-\/>\mbox{\hyperlink{structgkn__VEC_a888441c54cf7085fd338e80a0553d098}{size}}++;}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00156}00156 \}}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00157}00157 }
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00158}\mbox{\hyperlink{toolbox_8c_a6f2b5a1785826ad4d1d7f13772a114c0}{00158}} \textcolor{keywordtype}{void} * \mbox{\hyperlink{toolbox_8c_a6f2b5a1785826ad4d1d7f13772a114c0}{gkn\_vec\_pop}}(\mbox{\hyperlink{structgkn__VEC}{gkn\_vec}} vec) \{}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00159}00159     \textcolor{keywordflow}{if} (vec-\/>\mbox{\hyperlink{structgkn__VEC_a888441c54cf7085fd338e80a0553d098}{size}} == 0) \mbox{\hyperlink{toolbox_8c_afc3a337fdac9b2ac6bb3135b0cc5789b}{gkn\_exit}}(\textcolor{stringliteral}{"{}can't pop a zero-\/length vector"{}});}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00160}00160     vec-\/>\mbox{\hyperlink{structgkn__VEC_a888441c54cf7085fd338e80a0553d098}{size}}-\/-\/;}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00161}00161     \textcolor{keywordflow}{return} vec-\/>\mbox{\hyperlink{structgkn__VEC_a67c9dce69b4a112228cc5ca451f2cf0b}{elem}}[vec-\/>\mbox{\hyperlink{structgkn__VEC_a888441c54cf7085fd338e80a0553d098}{size}}];}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00162}00162 \}}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00163}00163 }
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00164}00164 \textcolor{comment}{// hashing materials}}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00165}00165 \textcolor{keyword}{static} \textcolor{keywordtype}{double} HASH\_MULTIPLIER[7] = \{}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00166}00166     3.1415926536, \textcolor{comment}{// PI}}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00167}00167     2.7182818285, \textcolor{comment}{// e}}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00168}00168     1.6180339887, \textcolor{comment}{// golden mean}}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00169}00169     1.7320508076, \textcolor{comment}{// square root of 3}}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00170}00170     2.2360679775, \textcolor{comment}{// square root of 5}}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00171}00171     2.6457513111, \textcolor{comment}{// square root of 7}}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00172}00172     3.3166247904  \textcolor{comment}{// square root of 11}}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00173}00173 \};}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00174}00174 \textcolor{keyword}{static} \textcolor{keywordtype}{double} MAX\_HASH\_DEPTH = 2.0;}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00175}00175 \textcolor{keyword}{static} \textcolor{keywordtype}{int} HashLevelToSlots(\textcolor{keywordtype}{int} level) \{\textcolor{keywordflow}{return} pow(4, level);\}}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00176}00176 \textcolor{keyword}{static} \textcolor{keywordtype}{int} HashFunc(\textcolor{keyword}{const} \mbox{\hyperlink{structgkn__MAP}{gkn\_map}} hash, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *key) \{}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00177}00177     \textcolor{keywordtype}{double} sum = 0;}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00178}00178     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < strlen(key); i++)}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00179}00179         sum += key[i] * HASH\_MULTIPLIER[i \% 7];}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00180}00180     \textcolor{keywordflow}{return} (\textcolor{keywordtype}{int}) (hash-\/>\mbox{\hyperlink{structgkn__MAP_a49f4997426f0602d54af21e9d429ecd1}{slots}} * (sum -\/ floor(sum)));}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00181}00181 \}}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00182}00182 }
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00183}00183 \textcolor{keyword}{static} \textcolor{keywordtype}{void} ExpandHash(\mbox{\hyperlink{structgkn__MAP}{gkn\_map}} hash) \{}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00184}00184     \textcolor{keywordtype}{int}      oldslots = hash-\/>\mbox{\hyperlink{structgkn__MAP_a49f4997426f0602d54af21e9d429ecd1}{slots}};}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00185}00185     \mbox{\hyperlink{structgkn__VEC}{gkn\_vec}} *oldkey = hash-\/>\mbox{\hyperlink{structgkn__MAP_a3bc7aab449242126e6d210cbb986132e}{key}};}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00186}00186     \mbox{\hyperlink{structgkn__VEC}{gkn\_vec}} *oldval = hash-\/>\mbox{\hyperlink{structgkn__MAP_a96b6c4be49afc5bd8fd6e1cb0b57bc17}{val}};}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00187}00187     \mbox{\hyperlink{structgkn__VEC}{gkn\_vec}}   kvec;}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00188}00188     \mbox{\hyperlink{structgkn__VEC}{gkn\_vec}}   vvec;}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00189}00189     \mbox{\hyperlink{structgkn__TVEC}{gkn\_tvec}} keys;}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00190}00190 }
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00191}00191     \textcolor{comment}{// create the new hash}}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00192}00192     hash-\/>\mbox{\hyperlink{structgkn__MAP_a3c5ab709b359d969c101fa8545797a9d}{level}} = hash-\/>\mbox{\hyperlink{structgkn__MAP_a3c5ab709b359d969c101fa8545797a9d}{level}} +1;}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00193}00193     hash-\/>\mbox{\hyperlink{structgkn__MAP_a49f4997426f0602d54af21e9d429ecd1}{slots}} = HashLevelToSlots(hash-\/>\mbox{\hyperlink{structgkn__MAP_a3c5ab709b359d969c101fa8545797a9d}{level}});}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00194}00194     hash-\/>\mbox{\hyperlink{structgkn__MAP_a3bc7aab449242126e6d210cbb986132e}{key}}    = \mbox{\hyperlink{toolbox_8c_a615441eab38bc9f6edb874295a11cf3f}{gkn\_malloc}}(hash-\/>\mbox{\hyperlink{structgkn__MAP_a49f4997426f0602d54af21e9d429ecd1}{slots}} * \textcolor{keyword}{sizeof}(\textcolor{keyword}{struct} \mbox{\hyperlink{structgkn__VEC}{gkn\_VEC}}));}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00195}00195     hash-\/>\mbox{\hyperlink{structgkn__MAP_a96b6c4be49afc5bd8fd6e1cb0b57bc17}{val}}    = \mbox{\hyperlink{toolbox_8c_a615441eab38bc9f6edb874295a11cf3f}{gkn\_malloc}}(hash-\/>\mbox{\hyperlink{structgkn__MAP_a49f4997426f0602d54af21e9d429ecd1}{slots}} * \textcolor{keyword}{sizeof}(\textcolor{keyword}{struct} \mbox{\hyperlink{structgkn__VEC}{gkn\_VEC}}));}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00196}00196     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < hash-\/>\mbox{\hyperlink{structgkn__MAP_a49f4997426f0602d54af21e9d429ecd1}{slots}}; i++) \{}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00197}00197         hash-\/>\mbox{\hyperlink{structgkn__MAP_a3bc7aab449242126e6d210cbb986132e}{key}}[i] = \mbox{\hyperlink{toolbox_8c_a36f281202cd2c19564cab711eb676e2e}{gkn\_vec\_new}}();}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00198}00198         hash-\/>\mbox{\hyperlink{structgkn__MAP_a96b6c4be49afc5bd8fd6e1cb0b57bc17}{val}}[i] = \mbox{\hyperlink{toolbox_8c_a36f281202cd2c19564cab711eb676e2e}{gkn\_vec\_new}}();}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00199}00199     \}}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00200}00200 }
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00201}00201     \textcolor{comment}{// brand new hash?}}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00202}00202     \textcolor{keywordflow}{if} (hash-\/>\mbox{\hyperlink{structgkn__MAP_a68b9c05e6e96f2c4301b8f275840ae8f}{keys}}-\/>\mbox{\hyperlink{structgkn__TVEC_a30fe9aa087e75d03828bb891986a80ee}{size}} == 0) \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00203}00203 }
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00204}00204     keys = hash-\/>\mbox{\hyperlink{structgkn__MAP_a68b9c05e6e96f2c4301b8f275840ae8f}{keys}};}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00205}00205     hash-\/>\mbox{\hyperlink{structgkn__MAP_a68b9c05e6e96f2c4301b8f275840ae8f}{keys}} = \mbox{\hyperlink{toolbox_8c_acbe3324adee70e6e3cba788e8c8f3c57}{gkn\_tvec\_new}}();}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00206}00206 }
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00207}00207     \textcolor{comment}{// transfer old stuff to new hash}}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00208}00208     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < oldslots; i++) \{}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00209}00209         kvec = oldkey[i];}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00210}00210         vvec = oldval[i];}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00211}00211         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} j = 0; j < kvec-\/>\mbox{\hyperlink{structgkn__VEC_a888441c54cf7085fd338e80a0553d098}{size}}; j++) \{}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00212}00212             \textcolor{keywordtype}{char} *key = kvec-\/>\mbox{\hyperlink{structgkn__VEC_a67c9dce69b4a112228cc5ca451f2cf0b}{elem}}[j];}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00213}00213             \textcolor{keywordtype}{char} *val = vvec-\/>\mbox{\hyperlink{structgkn__VEC_a67c9dce69b4a112228cc5ca451f2cf0b}{elem}}[j];}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00214}00214             \mbox{\hyperlink{toolbox_8c_ad0af1fe7ed400ce428113e32a3f32fc7}{gkn\_map\_set}}(hash, key, val);}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00215}00215         \}}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00216}00216     \}}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00217}00217 }
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00218}00218     \textcolor{comment}{// free old stuff}}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00219}00219     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < oldslots; i++) \{}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00220}00220         kvec = oldkey[i];}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00221}00221         vvec = oldval[i];}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00222}00222         \mbox{\hyperlink{toolbox_8c_af5bad93f51fdf2738a5b02322774c32d}{gkn\_vec\_free}}(kvec);}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00223}00223         \mbox{\hyperlink{toolbox_8c_af5bad93f51fdf2738a5b02322774c32d}{gkn\_vec\_free}}(vvec);}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00224}00224     \}}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00225}00225     free(oldkey);}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00226}00226     free(oldval);}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00227}00227     \mbox{\hyperlink{toolbox_8c_a698c8bd13027f68932db974ba79a768b}{gkn\_tvec\_free}}(keys);}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00228}00228 \}}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00229}00229 }
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00230}\mbox{\hyperlink{toolbox_8c_a7336a575558ee24efcad68bac2180217}{00230}} \textcolor{keywordtype}{void} \mbox{\hyperlink{toolbox_8c_a7336a575558ee24efcad68bac2180217}{gkn\_map\_free}}(\mbox{\hyperlink{structgkn__MAP}{gkn\_map}} hash) \{}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00231}00231     \textcolor{keywordflow}{if} (hash == NULL) \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00232}00232     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < hash-\/>\mbox{\hyperlink{structgkn__MAP_a49f4997426f0602d54af21e9d429ecd1}{slots}}; i++) \{}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00233}00233         \textcolor{keywordflow}{if} (hash-\/>\mbox{\hyperlink{structgkn__MAP_a3bc7aab449242126e6d210cbb986132e}{key}}[i]) \mbox{\hyperlink{toolbox_8c_af5bad93f51fdf2738a5b02322774c32d}{gkn\_vec\_free}}(hash-\/>\mbox{\hyperlink{structgkn__MAP_a3bc7aab449242126e6d210cbb986132e}{key}}[i]);}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00234}00234         \textcolor{keywordflow}{if} (hash-\/>\mbox{\hyperlink{structgkn__MAP_a96b6c4be49afc5bd8fd6e1cb0b57bc17}{val}}[i]) \mbox{\hyperlink{toolbox_8c_af5bad93f51fdf2738a5b02322774c32d}{gkn\_vec\_free}}(hash-\/>\mbox{\hyperlink{structgkn__MAP_a96b6c4be49afc5bd8fd6e1cb0b57bc17}{val}}[i]);}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00235}00235     \}}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00236}00236     \mbox{\hyperlink{toolbox_8c_a698c8bd13027f68932db974ba79a768b}{gkn\_tvec\_free}}(hash-\/>\mbox{\hyperlink{structgkn__MAP_a68b9c05e6e96f2c4301b8f275840ae8f}{keys}});}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00237}00237     \mbox{\hyperlink{toolbox_8c_af5bad93f51fdf2738a5b02322774c32d}{gkn\_vec\_free}}(hash-\/>\mbox{\hyperlink{structgkn__MAP_a4499484ff796b275ebf92e1da2203710}{vals}});}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00238}00238     free(hash-\/>\mbox{\hyperlink{structgkn__MAP_a3bc7aab449242126e6d210cbb986132e}{key}});}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00239}00239     free(hash-\/>\mbox{\hyperlink{structgkn__MAP_a96b6c4be49afc5bd8fd6e1cb0b57bc17}{val}});}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00240}00240     free(hash);}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00241}00241 \}}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00242}00242 }
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00243}\mbox{\hyperlink{toolbox_8c_ab233f0425faaae8cb5244d948cb99f9c}{00243}} \mbox{\hyperlink{structgkn__MAP}{gkn\_map}} \mbox{\hyperlink{toolbox_8c_ab233f0425faaae8cb5244d948cb99f9c}{gkn\_map\_new}}(\textcolor{keywordtype}{void}) \{}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00244}00244     \mbox{\hyperlink{structgkn__MAP}{gkn\_map}} hash = \mbox{\hyperlink{toolbox_8c_a615441eab38bc9f6edb874295a11cf3f}{gkn\_malloc}}(\textcolor{keyword}{sizeof}(\textcolor{keyword}{struct} \mbox{\hyperlink{structgkn__MAP}{gkn\_MAP}}));}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00245}00245     hash-\/>\mbox{\hyperlink{structgkn__MAP_a3c5ab709b359d969c101fa8545797a9d}{level}} = 0;}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00246}00246     hash-\/>\mbox{\hyperlink{structgkn__MAP_a49f4997426f0602d54af21e9d429ecd1}{slots}} = 0;}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00247}00247     hash-\/>\mbox{\hyperlink{structgkn__MAP_a68b9c05e6e96f2c4301b8f275840ae8f}{keys}}  = \mbox{\hyperlink{toolbox_8c_acbe3324adee70e6e3cba788e8c8f3c57}{gkn\_tvec\_new}}();}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00248}00248     hash-\/>\mbox{\hyperlink{structgkn__MAP_a4499484ff796b275ebf92e1da2203710}{vals}}  = \mbox{\hyperlink{toolbox_8c_a36f281202cd2c19564cab711eb676e2e}{gkn\_vec\_new}}();}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00249}00249     hash-\/>\mbox{\hyperlink{structgkn__MAP_a3bc7aab449242126e6d210cbb986132e}{key}}    = NULL;}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00250}00250     hash-\/>\mbox{\hyperlink{structgkn__MAP_a96b6c4be49afc5bd8fd6e1cb0b57bc17}{val}}    = NULL;}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00251}00251     ExpandHash(hash);}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00252}00252     \textcolor{keywordflow}{return} hash;}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00253}00253 \}}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00254}00254 }
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00255}\mbox{\hyperlink{toolbox_8c_ad3d2d38fd2569447b2a1df6516fef500}{00255}} \textcolor{keywordtype}{void} * \mbox{\hyperlink{toolbox_8c_ad3d2d38fd2569447b2a1df6516fef500}{gkn\_map\_get}}(\textcolor{keyword}{const} \mbox{\hyperlink{structgkn__MAP}{gkn\_map}} hash, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *key) \{}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00256}00256     \textcolor{keywordtype}{int} index = HashFunc(hash, key);}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00257}00257 }
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00258}00258     \textcolor{comment}{// resolve collisions}}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00259}00259     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < hash-\/>\mbox{\hyperlink{structgkn__MAP_a3bc7aab449242126e6d210cbb986132e}{key}}[index]-\/>\mbox{\hyperlink{structgkn__VEC_a888441c54cf7085fd338e80a0553d098}{size}}; i++) \{}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00260}00260         \textcolor{keywordtype}{char} *\textcolor{keywordtype}{string} = hash-\/>\mbox{\hyperlink{structgkn__MAP_a3bc7aab449242126e6d210cbb986132e}{key}}[index]-\/>\mbox{\hyperlink{structgkn__VEC_a67c9dce69b4a112228cc5ca451f2cf0b}{elem}}[i];}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00261}00261         \textcolor{keywordflow}{if} (strcmp(key, \textcolor{keywordtype}{string}) == 0) \{}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00262}00262             \textcolor{keywordflow}{return} hash-\/>\mbox{\hyperlink{structgkn__MAP_a96b6c4be49afc5bd8fd6e1cb0b57bc17}{val}}[index]-\/>\mbox{\hyperlink{structgkn__VEC_a67c9dce69b4a112228cc5ca451f2cf0b}{elem}}[i];}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00263}00263         \}}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00264}00264     \}}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00265}00265     \textcolor{keywordflow}{return} NULL; \textcolor{comment}{// return is NULL if not found}}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00266}00266 \}}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00267}00267 }
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00268}\mbox{\hyperlink{toolbox_8c_ad0af1fe7ed400ce428113e32a3f32fc7}{00268}} \textcolor{keywordtype}{void} \mbox{\hyperlink{toolbox_8c_ad0af1fe7ed400ce428113e32a3f32fc7}{gkn\_map\_set}}(\mbox{\hyperlink{structgkn__MAP}{gkn\_map}} hash, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *key, \textcolor{keywordtype}{void} *val) \{}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00269}00269     \textcolor{keywordtype}{int} new\_key = 1;}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00270}00270     \textcolor{keywordtype}{int} index = HashFunc(hash, key);}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00271}00271 }
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00272}00272     \textcolor{comment}{// reassign unless new key}}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00273}00273     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < hash-\/>\mbox{\hyperlink{structgkn__MAP_a3bc7aab449242126e6d210cbb986132e}{key}}[index]-\/>\mbox{\hyperlink{structgkn__VEC_a888441c54cf7085fd338e80a0553d098}{size}}; i++) \{}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00274}00274         \textcolor{keywordtype}{char} *\textcolor{keywordtype}{string} = hash-\/>\mbox{\hyperlink{structgkn__MAP_a3bc7aab449242126e6d210cbb986132e}{key}}[index]-\/>\mbox{\hyperlink{structgkn__VEC_a67c9dce69b4a112228cc5ca451f2cf0b}{elem}}[i];}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00275}00275         \textcolor{keywordflow}{if} (strcmp(key, \textcolor{keywordtype}{string}) == 0) \{}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00276}00276             hash-\/>\mbox{\hyperlink{structgkn__MAP_a96b6c4be49afc5bd8fd6e1cb0b57bc17}{val}}[index]-\/>\mbox{\hyperlink{structgkn__VEC_a67c9dce69b4a112228cc5ca451f2cf0b}{elem}}[i] = val;}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00277}00277             new\_key = 0;}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00278}00278             \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00279}00279         \}}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00280}00280     \}}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00281}00281 }
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00282}00282     \textcolor{keywordflow}{if} (new\_key) \{}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00283}00283         \mbox{\hyperlink{toolbox_8c_acea6523d1b7c245a7159436bda596a0b}{gkn\_tvec\_push}}(hash-\/>\mbox{\hyperlink{structgkn__MAP_a68b9c05e6e96f2c4301b8f275840ae8f}{keys}}, key);}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00284}00284         \mbox{\hyperlink{toolbox_8c_a678ed9ec14381e2cb1b932bb81a99f16}{gkn\_vec\_push}}(hash-\/>\mbox{\hyperlink{structgkn__MAP_a3bc7aab449242126e6d210cbb986132e}{key}}[index], hash-\/>\mbox{\hyperlink{structgkn__MAP_a68b9c05e6e96f2c4301b8f275840ae8f}{keys}}-\/>\mbox{\hyperlink{structgkn__TVEC_aebb397efa028e1af8991b795dad61e02}{last}});}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00285}00285         \mbox{\hyperlink{toolbox_8c_a678ed9ec14381e2cb1b932bb81a99f16}{gkn\_vec\_push}}(hash-\/>\mbox{\hyperlink{structgkn__MAP_a4499484ff796b275ebf92e1da2203710}{vals}}, val);}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00286}00286         \mbox{\hyperlink{toolbox_8c_a678ed9ec14381e2cb1b932bb81a99f16}{gkn\_vec\_push}}(hash-\/>\mbox{\hyperlink{structgkn__MAP_a96b6c4be49afc5bd8fd6e1cb0b57bc17}{val}}[index], hash-\/>\mbox{\hyperlink{structgkn__MAP_a4499484ff796b275ebf92e1da2203710}{vals}}-\/>\mbox{\hyperlink{structgkn__VEC_a952c3af3042ad04f89f5b2d40aac8014}{last}});}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00287}00287     \}}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00288}00288 }
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00289}00289     \textcolor{comment}{// check if we have to expand the hash}}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00290}00290     \textcolor{keywordflow}{if} ((\textcolor{keywordtype}{double})hash-\/>\mbox{\hyperlink{structgkn__MAP_a68b9c05e6e96f2c4301b8f275840ae8f}{keys}}-\/>\mbox{\hyperlink{structgkn__TVEC_a30fe9aa087e75d03828bb891986a80ee}{size}} / (\textcolor{keywordtype}{double})hash-\/>\mbox{\hyperlink{structgkn__MAP_a49f4997426f0602d54af21e9d429ecd1}{slots}} >= MAX\_HASH\_DEPTH) \{}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00291}00291         ExpandHash(hash);}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00292}00292     \}}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00293}00293 \}}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00294}00294 }
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00295}\mbox{\hyperlink{toolbox_8c_a7c348f94b64c6cbb7f002072d4d50586}{00295}} \mbox{\hyperlink{structgkn__TVEC}{gkn\_tvec}} \mbox{\hyperlink{toolbox_8c_a7c348f94b64c6cbb7f002072d4d50586}{gkn\_map\_keys}}(\textcolor{keyword}{const} \mbox{\hyperlink{structgkn__MAP}{gkn\_map}} hash) \{}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00296}00296     \mbox{\hyperlink{structgkn__TVEC}{gkn\_tvec}} vec = \mbox{\hyperlink{toolbox_8c_acbe3324adee70e6e3cba788e8c8f3c57}{gkn\_tvec\_new}}();}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00297}00297     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < hash-\/>\mbox{\hyperlink{structgkn__MAP_a68b9c05e6e96f2c4301b8f275840ae8f}{keys}}-\/>\mbox{\hyperlink{structgkn__TVEC_a30fe9aa087e75d03828bb891986a80ee}{size}}; i++) \mbox{\hyperlink{toolbox_8c_acea6523d1b7c245a7159436bda596a0b}{gkn\_tvec\_push}}(vec, hash-\/>\mbox{\hyperlink{structgkn__MAP_a68b9c05e6e96f2c4301b8f275840ae8f}{keys}}-\/>\mbox{\hyperlink{structgkn__TVEC_aa2efc4387dc92af21bb746872d0863df}{elem}}[i]);}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00298}00298     \textcolor{keywordflow}{return} vec;}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00299}00299 \}}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00300}00300 }
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00301}\mbox{\hyperlink{toolbox_8c_a0d21c6d58d69d6f5f963f878cf7f5b9e}{00301}} \mbox{\hyperlink{structgkn__VEC}{gkn\_vec}} \mbox{\hyperlink{toolbox_8c_a0d21c6d58d69d6f5f963f878cf7f5b9e}{gkn\_map\_vals}}(\textcolor{keyword}{const} \mbox{\hyperlink{structgkn__MAP}{gkn\_map}} hash) \{}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00302}00302     \mbox{\hyperlink{structgkn__VEC}{gkn\_vec}} vec = \mbox{\hyperlink{toolbox_8c_a36f281202cd2c19564cab711eb676e2e}{gkn\_vec\_new}}();}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00303}00303     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < hash-\/>\mbox{\hyperlink{structgkn__MAP_a4499484ff796b275ebf92e1da2203710}{vals}}-\/>\mbox{\hyperlink{structgkn__VEC_a888441c54cf7085fd338e80a0553d098}{size}}; i++) \mbox{\hyperlink{toolbox_8c_a678ed9ec14381e2cb1b932bb81a99f16}{gkn\_vec\_push}}(vec, hash-\/>\mbox{\hyperlink{structgkn__MAP_a4499484ff796b275ebf92e1da2203710}{vals}}-\/>\mbox{\hyperlink{structgkn__VEC_a67c9dce69b4a112228cc5ca451f2cf0b}{elem}}[i]);}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00304}00304     \textcolor{keywordflow}{return} vec;}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00305}00305 \}}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00306}00306 }
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00307}\mbox{\hyperlink{toolbox_8c_ad53d1aec2976e0d8202f85ea8db3b416}{00307}} \textcolor{keywordtype}{void} \mbox{\hyperlink{toolbox_8c_ad53d1aec2976e0d8202f85ea8db3b416}{gkn\_map\_stat}}(\textcolor{keyword}{const} \mbox{\hyperlink{structgkn__MAP}{gkn\_map}} hash) \{}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00308}00308     \textcolor{keywordtype}{int} max = 0;}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00309}00309     \textcolor{keywordtype}{int} min = INT\_MAX;}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00310}00310     \textcolor{keywordtype}{int} total = 0;}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00311}00311     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < hash-\/>\mbox{\hyperlink{structgkn__MAP_a49f4997426f0602d54af21e9d429ecd1}{slots}}; i++) \{}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00312}00312         \textcolor{keywordtype}{int} count = hash-\/>\mbox{\hyperlink{structgkn__MAP_a96b6c4be49afc5bd8fd6e1cb0b57bc17}{val}}[i]-\/>\mbox{\hyperlink{structgkn__VEC_a888441c54cf7085fd338e80a0553d098}{size}};}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00313}00313         total += count;}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00314}00314         \textcolor{keywordflow}{if} (count > max) max = count;}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00315}00315         \textcolor{keywordflow}{if} (count < min) min = count;}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00316}00316     \}}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00317}00317     fprintf(stdout, \textcolor{stringliteral}{"{}HashStats: level=\%d slots=\%d keys=\%d min=\%d max=\%d ave=\%f\(\backslash\)n"{}},}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00318}00318          hash-\/>\mbox{\hyperlink{structgkn__MAP_a3c5ab709b359d969c101fa8545797a9d}{level}}, hash-\/>\mbox{\hyperlink{structgkn__MAP_a49f4997426f0602d54af21e9d429ecd1}{slots}}, hash-\/>\mbox{\hyperlink{structgkn__MAP_a68b9c05e6e96f2c4301b8f275840ae8f}{keys}}-\/>\mbox{\hyperlink{structgkn__TVEC_a30fe9aa087e75d03828bb891986a80ee}{size}}, min, max,}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00319}00319          (\textcolor{keywordtype}{double})total / (\textcolor{keywordtype}{double})hash-\/>\mbox{\hyperlink{structgkn__MAP_a49f4997426f0602d54af21e9d429ecd1}{slots}});}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00320}00320 \}}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00321}00321 }
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00322}00322 \textcolor{comment}{// text map}}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00323}00323 }
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00324}\mbox{\hyperlink{toolbox_8c_a6461f859acf7470816ab0938dd6a68a0}{00324}} \textcolor{keywordtype}{void} \mbox{\hyperlink{toolbox_8c_a6461f859acf7470816ab0938dd6a68a0}{gkn\_tmap\_free}}(\mbox{\hyperlink{structgkn__TMAP}{gkn\_tmap}} t) \{}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00325}00325     \mbox{\hyperlink{toolbox_8c_a7336a575558ee24efcad68bac2180217}{gkn\_map\_free}}(t-\/>\mbox{\hyperlink{structgkn__TMAP_aa3ecac0176b0a1b55a8e009d313d8658}{hash}});}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00326}00326     \mbox{\hyperlink{toolbox_8c_a698c8bd13027f68932db974ba79a768b}{gkn\_tvec\_free}}(t-\/>\mbox{\hyperlink{structgkn__TMAP_ad80d9e3a948906714855e4f8b7ba348c}{tvec}});}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00327}00327     free(t);}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00328}00328 \}}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00329}00329 }
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00330}\mbox{\hyperlink{toolbox_8c_a61c77d03c03dedd23bcb84354f4e1842}{00330}} \mbox{\hyperlink{structgkn__TMAP}{gkn\_tmap}} \mbox{\hyperlink{toolbox_8c_a61c77d03c03dedd23bcb84354f4e1842}{gkn\_tmap\_new}}(\textcolor{keywordtype}{void}) \{}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00331}00331     \mbox{\hyperlink{structgkn__TMAP}{gkn\_tmap}} t = \mbox{\hyperlink{toolbox_8c_a615441eab38bc9f6edb874295a11cf3f}{gkn\_malloc}}(\textcolor{keyword}{sizeof}(\textcolor{keyword}{struct} \mbox{\hyperlink{structgkn__TMAP}{gkn\_TMAP}}));}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00332}00332     t-\/>\mbox{\hyperlink{structgkn__TMAP_aa3ecac0176b0a1b55a8e009d313d8658}{hash}} = \mbox{\hyperlink{toolbox_8c_ab233f0425faaae8cb5244d948cb99f9c}{gkn\_map\_new}}();}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00333}00333     t-\/>\mbox{\hyperlink{structgkn__TMAP_ad80d9e3a948906714855e4f8b7ba348c}{tvec}} = \mbox{\hyperlink{toolbox_8c_acbe3324adee70e6e3cba788e8c8f3c57}{gkn\_tvec\_new}}();}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00334}00334     \textcolor{keywordflow}{return} t;}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00335}00335 \}}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00336}00336 }
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00337}\mbox{\hyperlink{toolbox_8c_a3aa0be127d55e0ca653201cbab6f2dd3}{00337}} \textcolor{keywordtype}{void} \mbox{\hyperlink{toolbox_8c_a3aa0be127d55e0ca653201cbab6f2dd3}{gkn\_tmap\_set}}(\mbox{\hyperlink{structgkn__TMAP}{gkn\_tmap}} t, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *key, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *val) \{}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00338}00338     \mbox{\hyperlink{toolbox_8c_acea6523d1b7c245a7159436bda596a0b}{gkn\_tvec\_push}}(t-\/>\mbox{\hyperlink{structgkn__TMAP_ad80d9e3a948906714855e4f8b7ba348c}{tvec}}, val);}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00339}00339     \mbox{\hyperlink{toolbox_8c_ad0af1fe7ed400ce428113e32a3f32fc7}{gkn\_map\_set}}(t-\/>\mbox{\hyperlink{structgkn__TMAP_aa3ecac0176b0a1b55a8e009d313d8658}{hash}}, key, t-\/>\mbox{\hyperlink{structgkn__TMAP_ad80d9e3a948906714855e4f8b7ba348c}{tvec}}-\/>\mbox{\hyperlink{structgkn__TVEC_aebb397efa028e1af8991b795dad61e02}{last}});}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00340}00340 \}}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00341}00341 }
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00342}\mbox{\hyperlink{toolbox_8c_a44d88a2812cc45d7cd699071184f9004}{00342}} \textcolor{keywordtype}{int} \mbox{\hyperlink{toolbox_8c_a44d88a2812cc45d7cd699071184f9004}{gkn\_tmap\_exists}}(\textcolor{keyword}{const} \mbox{\hyperlink{structgkn__TMAP}{gkn\_tmap}} t, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *key) \{}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00343}00343     \textcolor{keywordtype}{void} *ref = \mbox{\hyperlink{toolbox_8c_ad3d2d38fd2569447b2a1df6516fef500}{gkn\_map\_get}}(t-\/>\mbox{\hyperlink{structgkn__TMAP_aa3ecac0176b0a1b55a8e009d313d8658}{hash}}, key);}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00344}00344     \textcolor{keywordflow}{if} (ref == NULL) \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00345}00345     \textcolor{keywordflow}{return} 1;}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00346}00346 \}}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00347}00347 }
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00348}\mbox{\hyperlink{toolbox_8c_aa4205e627aca37a90091ddd0b06c636f}{00348}} \textcolor{keywordtype}{char} * \mbox{\hyperlink{toolbox_8c_aa4205e627aca37a90091ddd0b06c636f}{gkn\_tmap\_get}}(\textcolor{keyword}{const} \mbox{\hyperlink{structgkn__TMAP}{gkn\_tmap}} t, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *key) \{}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00349}00349     \textcolor{keywordtype}{void} *ref = \mbox{\hyperlink{toolbox_8c_ad3d2d38fd2569447b2a1df6516fef500}{gkn\_map\_get}}(t-\/>\mbox{\hyperlink{structgkn__TMAP_aa3ecac0176b0a1b55a8e009d313d8658}{hash}}, key);}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00350}00350     assert(ref != NULL);}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00351}00351     \textcolor{keywordflow}{return} ref;}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00352}00352 \}}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00353}00353 }
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00354}\mbox{\hyperlink{toolbox_8c_ad887c7881f396cae488fe306887f0d86}{00354}} \mbox{\hyperlink{structgkn__TVEC}{gkn\_tvec}} \mbox{\hyperlink{toolbox_8c_ad887c7881f396cae488fe306887f0d86}{gkn\_tmap\_keys}}(\textcolor{keyword}{const} \mbox{\hyperlink{structgkn__TMAP}{gkn\_tmap}} t) \{}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00355}00355     \textcolor{keywordflow}{return} \mbox{\hyperlink{toolbox_8c_a7c348f94b64c6cbb7f002072d4d50586}{gkn\_map\_keys}}(t-\/>\mbox{\hyperlink{structgkn__TMAP_aa3ecac0176b0a1b55a8e009d313d8658}{hash}});}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00356}00356 \}}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00357}00357 }
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00358}00358 \textcolor{comment}{// suffix tree}}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00359}00359 }
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00360}\mbox{\hyperlink{toolbox_8c_aec7b4994021c554c1761ea31d016b680}{00360}} \textcolor{preprocessor}{\#define MAX\_WORD\_LENGTH 65536}}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00361}00361 }
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00362}\mbox{\hyperlink{toolbox_8c_a029c59077494ca9164d14f92879fb745}{00362}} \textcolor{keywordtype}{void} \mbox{\hyperlink{toolbox_8c_a029c59077494ca9164d14f92879fb745}{gkn\_xnode\_free}}(\mbox{\hyperlink{structgkn__XNODE}{gkn\_xnode}} xn) \{}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00363}00363     \mbox{\hyperlink{toolbox_8c_af5bad93f51fdf2738a5b02322774c32d}{gkn\_vec\_free}}(xn-\/>\mbox{\hyperlink{structgkn__XNODE_a061788aeba306d8ad14325111c22a9f5}{children}});}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00364}00364     free(xn-\/>\mbox{\hyperlink{structgkn__XNODE_aeff402c351fa8245d3b0c9fdc301c167}{data}});}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00365}00365     free(xn);}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00366}00366 \}}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00367}00367 }
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00368}\mbox{\hyperlink{toolbox_8c_a739f9ff973c07171e085e5a88ec10256}{00368}} \mbox{\hyperlink{structgkn__XNODE}{gkn\_xnode}} \mbox{\hyperlink{toolbox_8c_a739f9ff973c07171e085e5a88ec10256}{gkn\_xnode\_new}} (\textcolor{keywordtype}{char} c) \{}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00369}00369     \mbox{\hyperlink{structgkn__XNODE}{gkn\_xnode}} xn = \mbox{\hyperlink{toolbox_8c_a615441eab38bc9f6edb874295a11cf3f}{gkn\_malloc}}(\textcolor{keyword}{sizeof}(\textcolor{keyword}{struct} \mbox{\hyperlink{structgkn__XNODE}{gkn\_XNODE}}));}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00370}00370     xn-\/>\mbox{\hyperlink{structgkn__XNODE_a061788aeba306d8ad14325111c22a9f5}{children}} = \mbox{\hyperlink{toolbox_8c_a36f281202cd2c19564cab711eb676e2e}{gkn\_vec\_new}}();}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00371}00371     xn-\/>\mbox{\hyperlink{structgkn__XNODE_aeff402c351fa8245d3b0c9fdc301c167}{data}}     = NULL;}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00372}00372     xn-\/>\mbox{\hyperlink{structgkn__XNODE_adbcddda7e9465e168e07a69b6a36e3fb}{c}}        = c;}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00373}00373     \textcolor{keywordflow}{return} xn;}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00374}00374 \}}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00375}00375 }
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00376}\mbox{\hyperlink{toolbox_8c_a16108d254d89574167940ed14379555c}{00376}} \mbox{\hyperlink{structgkn__XNODE}{gkn\_xnode}} \mbox{\hyperlink{toolbox_8c_a16108d254d89574167940ed14379555c}{gkn\_xnode\_search}} (\textcolor{keyword}{const} \mbox{\hyperlink{structgkn__XNODE}{gkn\_xnode}} xn, \textcolor{keywordtype}{char} c) \{}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00377}00377     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < xn-\/>\mbox{\hyperlink{structgkn__XNODE_a061788aeba306d8ad14325111c22a9f5}{children}}-\/>\mbox{\hyperlink{structgkn__VEC_a888441c54cf7085fd338e80a0553d098}{size}}; i++) \{}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00378}00378         \mbox{\hyperlink{structgkn__XNODE}{gkn\_xnode}} child = xn-\/>\mbox{\hyperlink{structgkn__XNODE_a061788aeba306d8ad14325111c22a9f5}{children}}-\/>\mbox{\hyperlink{structgkn__VEC_a67c9dce69b4a112228cc5ca451f2cf0b}{elem}}[i];}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00379}00379         \textcolor{keywordflow}{if} (child-\/>\mbox{\hyperlink{structgkn__XNODE_adbcddda7e9465e168e07a69b6a36e3fb}{c}} == c) \textcolor{keywordflow}{return} child;}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00380}00380     \}}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00381}00381     \textcolor{keywordflow}{return} NULL;}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00382}00382 \}}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00383}00383 }
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00384}\mbox{\hyperlink{toolbox_8c_a1689b0c7bc56d71aca7cdf03de726afb}{00384}} \textcolor{keywordtype}{void} \mbox{\hyperlink{toolbox_8c_a1689b0c7bc56d71aca7cdf03de726afb}{gkn\_xtree\_free}} (\mbox{\hyperlink{structgkn__xtree}{gkn\_xtree}} xt) \{}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00385}00385     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < xt-\/>\mbox{\hyperlink{structgkn__xtree_a58ad174017161d8cedd985fce98e814a}{alloc}}-\/>\mbox{\hyperlink{structgkn__VEC_a888441c54cf7085fd338e80a0553d098}{size}}; i++) \{}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00386}00386         \mbox{\hyperlink{structgkn__XNODE}{gkn\_xnode}} node = xt-\/>\mbox{\hyperlink{structgkn__xtree_a58ad174017161d8cedd985fce98e814a}{alloc}}-\/>\mbox{\hyperlink{structgkn__VEC_a67c9dce69b4a112228cc5ca451f2cf0b}{elem}}[i];}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00387}00387         \mbox{\hyperlink{toolbox_8c_a029c59077494ca9164d14f92879fb745}{gkn\_xnode\_free}}(node);}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00388}00388     \}}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00389}00389     \mbox{\hyperlink{toolbox_8c_af5bad93f51fdf2738a5b02322774c32d}{gkn\_vec\_free}}(xt-\/>\mbox{\hyperlink{structgkn__xtree_a58ad174017161d8cedd985fce98e814a}{alloc}});}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00390}00390     \textcolor{keywordflow}{if} (xt-\/>\mbox{\hyperlink{structgkn__xtree_ac8320d3bf23561c0098184329a5e7ccb}{head}}) \mbox{\hyperlink{toolbox_8c_a029c59077494ca9164d14f92879fb745}{gkn\_xnode\_free}}(xt-\/>\mbox{\hyperlink{structgkn__xtree_ac8320d3bf23561c0098184329a5e7ccb}{head}});}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00391}00391     free(xt);}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00392}00392 \}}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00393}00393 }
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00394}\mbox{\hyperlink{toolbox_8c_ac37b73f95e6eb2e1d89addd15f91e585}{00394}} \mbox{\hyperlink{structgkn__xtree}{gkn\_xtree}} \mbox{\hyperlink{toolbox_8c_ac37b73f95e6eb2e1d89addd15f91e585}{gkn\_xtree\_new}} (\textcolor{keywordtype}{void}) \{}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00395}00395     \mbox{\hyperlink{structgkn__xtree}{gkn\_xtree}} xt = \mbox{\hyperlink{toolbox_8c_a615441eab38bc9f6edb874295a11cf3f}{gkn\_malloc}}(\textcolor{keyword}{sizeof}(\textcolor{keyword}{struct} \mbox{\hyperlink{structgkn__xtree}{gkn\_xtree}}));}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00396}00396     xt-\/>\mbox{\hyperlink{structgkn__xtree_ac8320d3bf23561c0098184329a5e7ccb}{head}}  = \mbox{\hyperlink{toolbox_8c_a739f9ff973c07171e085e5a88ec10256}{gkn\_xnode\_new}}(0);}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00397}00397     xt-\/>\mbox{\hyperlink{structgkn__xtree_a58ad174017161d8cedd985fce98e814a}{alloc}} = \mbox{\hyperlink{toolbox_8c_a36f281202cd2c19564cab711eb676e2e}{gkn\_vec\_new}}();}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00398}00398     \textcolor{keywordflow}{return} xt;}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00399}00399 \}}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00400}00400 }
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00401}\mbox{\hyperlink{toolbox_8c_a4b1780adf8d36b8dfdd602ac6d8ca19f}{00401}} \textcolor{keywordtype}{void} \mbox{\hyperlink{toolbox_8c_a4b1780adf8d36b8dfdd602ac6d8ca19f}{gkn\_xtree\_set}} (\mbox{\hyperlink{structgkn__xtree}{gkn\_xtree}} xt, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *\textcolor{keywordtype}{string}, \textcolor{keywordtype}{void} *value) \{}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00402}00402     \textcolor{keywordtype}{int} len = strlen(\textcolor{keywordtype}{string});}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00403}00403     \textcolor{keywordflow}{if} (len < 1) \mbox{\hyperlink{toolbox_8c_afc3a337fdac9b2ac6bb3135b0cc5789b}{gkn\_exit}}(\textcolor{stringliteral}{"{}gkn\_xtree\_set with empty string"{}});}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00404}00404     \textcolor{keywordflow}{if} (len >= \mbox{\hyperlink{toolbox_8c_aec7b4994021c554c1761ea31d016b680}{MAX\_WORD\_LENGTH}})}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00405}00405         \mbox{\hyperlink{toolbox_8c_afc3a337fdac9b2ac6bb3135b0cc5789b}{gkn\_exit}}(\textcolor{stringliteral}{"{}gkn\_xtree word length exceeded (\%d)\(\backslash\)n"{}}, \mbox{\hyperlink{toolbox_8c_aec7b4994021c554c1761ea31d016b680}{MAX\_WORD\_LENGTH}});}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00406}00406 }
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00407}00407     \mbox{\hyperlink{structgkn__XNODE}{gkn\_xnode}} parent = xt-\/>\mbox{\hyperlink{structgkn__xtree_ac8320d3bf23561c0098184329a5e7ccb}{head}};}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00408}00408     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < len; i++) \{}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00409}00409         \textcolor{keywordtype}{char} c = \textcolor{keywordtype}{string}[i];}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00410}00410         \mbox{\hyperlink{structgkn__XNODE}{gkn\_xnode}} child = \mbox{\hyperlink{toolbox_8c_a16108d254d89574167940ed14379555c}{gkn\_xnode\_search}}(parent, c);}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00411}00411         \textcolor{keywordflow}{if} (child == NULL) \{}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00412}00412             child = \mbox{\hyperlink{toolbox_8c_a739f9ff973c07171e085e5a88ec10256}{gkn\_xnode\_new}}(c);}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00413}00413             \mbox{\hyperlink{toolbox_8c_a678ed9ec14381e2cb1b932bb81a99f16}{gkn\_vec\_push}}(parent-\/>\mbox{\hyperlink{structgkn__XNODE_a061788aeba306d8ad14325111c22a9f5}{children}}, child);}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00414}00414             \mbox{\hyperlink{toolbox_8c_a678ed9ec14381e2cb1b932bb81a99f16}{gkn\_vec\_push}}(xt-\/>\mbox{\hyperlink{structgkn__xtree_a58ad174017161d8cedd985fce98e814a}{alloc}}, child);}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00415}00415         \}}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00416}00416         parent = child;}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00417}00417     \}}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00418}00418 }
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00419}00419     parent-\/>\mbox{\hyperlink{structgkn__XNODE_aeff402c351fa8245d3b0c9fdc301c167}{data}} = value;}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00420}00420 \}}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00421}00421 }
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00422}\mbox{\hyperlink{toolbox_8c_a6653ca5f2877e2b6ebd9fa657b12c669}{00422}} \textcolor{keywordtype}{void} * \mbox{\hyperlink{toolbox_8c_a6653ca5f2877e2b6ebd9fa657b12c669}{gkn\_xtree\_get}} (\textcolor{keyword}{const} \mbox{\hyperlink{structgkn__xtree}{gkn\_xtree}} xt, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *\textcolor{keywordtype}{string}) \{}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00423}00423     \textcolor{keywordtype}{int} len = strlen(\textcolor{keywordtype}{string});}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00424}00424     \textcolor{keywordflow}{if} (len < 1) \mbox{\hyperlink{toolbox_8c_afc3a337fdac9b2ac6bb3135b0cc5789b}{gkn\_exit}}(\textcolor{stringliteral}{"{}gkn\_xtree\_get with empty string"{}});}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00425}00425 }
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00426}00426     \mbox{\hyperlink{structgkn__XNODE}{gkn\_xnode}} parent = xt-\/>\mbox{\hyperlink{structgkn__xtree_ac8320d3bf23561c0098184329a5e7ccb}{head}};}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00427}00427     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < len; i++) \{}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00428}00428         \textcolor{keywordtype}{char} c = \textcolor{keywordtype}{string}[i];}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00429}00429         \mbox{\hyperlink{structgkn__XNODE}{gkn\_xnode}} child = \mbox{\hyperlink{toolbox_8c_a16108d254d89574167940ed14379555c}{gkn\_xnode\_search}}(parent, c);}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00430}00430         \textcolor{keywordflow}{if} (child == NULL) \textcolor{keywordflow}{return} NULL;}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00431}00431         parent = child;}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00432}00432     \}}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00433}00433     \textcolor{keywordflow}{return} parent-\/>\mbox{\hyperlink{structgkn__XNODE_aeff402c351fa8245d3b0c9fdc301c167}{data}};}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00434}00434 \}}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00435}00435 }
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00436}\mbox{\hyperlink{toolbox_8c_a69eb7f6589b2c35d9e2ce7d6ed7bcc85}{00436}} \textcolor{keywordtype}{int} \mbox{\hyperlink{toolbox_8c_a69eb7f6589b2c35d9e2ce7d6ed7bcc85}{gkn\_xtree\_check}} (\textcolor{keyword}{const} \mbox{\hyperlink{structgkn__xtree}{gkn\_xtree}} xt, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *\textcolor{keywordtype}{string}) \{}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00437}00437     \textcolor{keywordtype}{int} len = strlen(\textcolor{keywordtype}{string});}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00438}00438     \textcolor{keywordflow}{if} (len < 1) \mbox{\hyperlink{toolbox_8c_afc3a337fdac9b2ac6bb3135b0cc5789b}{gkn\_exit}}(\textcolor{stringliteral}{"{}gkn\_xtree\_check with empty string"{}});}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00439}00439 }
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00440}00440     \mbox{\hyperlink{structgkn__XNODE}{gkn\_xnode}} parent = xt-\/>\mbox{\hyperlink{structgkn__xtree_ac8320d3bf23561c0098184329a5e7ccb}{head}};}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00441}00441     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < len; i++) \{}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00442}00442         \textcolor{keywordtype}{char} c = \textcolor{keywordtype}{string}[i];}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00443}00443         \mbox{\hyperlink{structgkn__XNODE}{gkn\_xnode}} child = \mbox{\hyperlink{toolbox_8c_a16108d254d89574167940ed14379555c}{gkn\_xnode\_search}}(parent, c);}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00444}00444         \textcolor{keywordflow}{if} (child == NULL) \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00445}00445         parent = child;}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00446}00446     \}}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00447}00447     \textcolor{keywordflow}{return} 1;}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00448}00448 \}}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00449}00449 }
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00450}\mbox{\hyperlink{toolbox_8c_aab8743f86e12ee8bef6135284f650d62}{00450}} \mbox{\hyperlink{structgkn__XNODE}{gkn\_xnode}} \mbox{\hyperlink{toolbox_8c_aab8743f86e12ee8bef6135284f650d62}{gkn\_xtree\_node}} (\textcolor{keyword}{const} \mbox{\hyperlink{structgkn__xtree}{gkn\_xtree}} xt, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *\textcolor{keywordtype}{string}) \{}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00451}00451     \textcolor{keywordtype}{int} len = strlen(\textcolor{keywordtype}{string});}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00452}00452     \textcolor{keywordflow}{if} (len < 1) \mbox{\hyperlink{toolbox_8c_afc3a337fdac9b2ac6bb3135b0cc5789b}{gkn\_exit}}(\textcolor{stringliteral}{"{}gkn\_xtree\_node with empty string"{}});}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00453}00453 }
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00454}00454     \mbox{\hyperlink{structgkn__XNODE}{gkn\_xnode}} parent = xt-\/>\mbox{\hyperlink{structgkn__xtree_ac8320d3bf23561c0098184329a5e7ccb}{head}};}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00455}00455     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < len; i++) \{}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00456}00456         \textcolor{keywordtype}{char} c = \textcolor{keywordtype}{string}[i];}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00457}00457         \mbox{\hyperlink{structgkn__XNODE}{gkn\_xnode}} child = \mbox{\hyperlink{toolbox_8c_a16108d254d89574167940ed14379555c}{gkn\_xnode\_search}}(parent, c);}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00458}00458         \textcolor{keywordflow}{if} (child == NULL) \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00459}00459         parent = child;}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00460}00460     \}}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00461}00461     \textcolor{keywordflow}{return} parent;}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00462}00462 \}}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00463}00463 }
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00464}00464 \textcolor{keyword}{static} \textcolor{keywordtype}{void} xtree\_add\_keys (\textcolor{keyword}{const} \mbox{\hyperlink{structgkn__XNODE}{gkn\_xnode}} parent, \mbox{\hyperlink{structgkn__TVEC}{gkn\_tvec}} keys, \textcolor{keywordtype}{char} *key,}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00465}00465     \textcolor{keywordtype}{int} length)}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00466}00466 \{}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00467}00467     \textcolor{keywordflow}{if} (parent-\/>\mbox{\hyperlink{structgkn__XNODE_aeff402c351fa8245d3b0c9fdc301c167}{data}}) \mbox{\hyperlink{toolbox_8c_acea6523d1b7c245a7159436bda596a0b}{gkn\_tvec\_push}}(keys, key);}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00468}00468 }
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00469}00469     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < parent-\/>\mbox{\hyperlink{structgkn__XNODE_a061788aeba306d8ad14325111c22a9f5}{children}}-\/>\mbox{\hyperlink{structgkn__VEC_a888441c54cf7085fd338e80a0553d098}{size}}; i++) \{}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00470}00470         \mbox{\hyperlink{structgkn__XNODE}{gkn\_xnode}} child = parent-\/>\mbox{\hyperlink{structgkn__XNODE_a061788aeba306d8ad14325111c22a9f5}{children}}-\/>\mbox{\hyperlink{structgkn__VEC_a67c9dce69b4a112228cc5ca451f2cf0b}{elem}}[i];}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00471}00471         key[length] = child-\/>\mbox{\hyperlink{structgkn__XNODE_adbcddda7e9465e168e07a69b6a36e3fb}{c}};}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00472}00472         key[length+1] = \textcolor{charliteral}{'\(\backslash\)0'};}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00473}00473         xtree\_add\_keys(parent-\/>\mbox{\hyperlink{structgkn__XNODE_a061788aeba306d8ad14325111c22a9f5}{children}}-\/>\mbox{\hyperlink{structgkn__VEC_a67c9dce69b4a112228cc5ca451f2cf0b}{elem}}[i], keys, key, length+1);}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00474}00474     \}}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00475}00475 \}}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00476}00476 }
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00477}\mbox{\hyperlink{toolbox_8c_a241d4d5d6133861fd189fbc474f922d5}{00477}} \mbox{\hyperlink{structgkn__TVEC}{gkn\_tvec}} \mbox{\hyperlink{toolbox_8c_a241d4d5d6133861fd189fbc474f922d5}{gkn\_xtree\_keys}} (\textcolor{keyword}{const} \mbox{\hyperlink{structgkn__xtree}{gkn\_xtree}} xt) \{}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00478}00478     \textcolor{keywordtype}{char}     key[\mbox{\hyperlink{toolbox_8c_aec7b4994021c554c1761ea31d016b680}{MAX\_WORD\_LENGTH}}];}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00479}00479     \mbox{\hyperlink{structgkn__TVEC}{gkn\_tvec}} keys = \mbox{\hyperlink{toolbox_8c_acbe3324adee70e6e3cba788e8c8f3c57}{gkn\_tvec\_new}}();}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00480}00480 }
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00481}00481     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < xt-\/>\mbox{\hyperlink{structgkn__xtree_ac8320d3bf23561c0098184329a5e7ccb}{head}}-\/>\mbox{\hyperlink{structgkn__XNODE_a061788aeba306d8ad14325111c22a9f5}{children}}-\/>\mbox{\hyperlink{structgkn__VEC_a888441c54cf7085fd338e80a0553d098}{size}}; i++) \{}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00482}00482         \mbox{\hyperlink{structgkn__XNODE}{gkn\_xnode}} parent = xt-\/>\mbox{\hyperlink{structgkn__xtree_ac8320d3bf23561c0098184329a5e7ccb}{head}}-\/>\mbox{\hyperlink{structgkn__XNODE_a061788aeba306d8ad14325111c22a9f5}{children}}-\/>\mbox{\hyperlink{structgkn__VEC_a67c9dce69b4a112228cc5ca451f2cf0b}{elem}}[i];}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00483}00483         key[0] = parent-\/>\mbox{\hyperlink{structgkn__XNODE_adbcddda7e9465e168e07a69b6a36e3fb}{c}};}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00484}00484         key[1] = \textcolor{charliteral}{'\(\backslash\)0'};}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00485}00485         xtree\_add\_keys(parent, keys, key, 1);}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00486}00486     \}}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00487}00487 }
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00488}00488     \textcolor{keywordflow}{return} keys;}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00489}00489 \}}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00490}00490 }
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00491}00491 }
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00492}00492 \textcolor{comment}{// command line options}}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00493}00493 }
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00494}00494 \textcolor{keyword}{static} \mbox{\hyperlink{structgkn__TVEC}{gkn\_tvec}} COMMAND\_LINE = NULL;}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00495}00495 \textcolor{keyword}{static} \mbox{\hyperlink{structgkn__MAP}{gkn\_map}} CL\_REGISTER   = NULL;}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00496}00496 \textcolor{keyword}{static} \mbox{\hyperlink{structgkn__MAP}{gkn\_map}} CL\_OPTIONS    = NULL;}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00497}00497 }
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00498}\mbox{\hyperlink{toolbox_8c_ab3680bca59f34c0582156da924624cc1}{00498}} \textcolor{keywordtype}{void} \mbox{\hyperlink{toolbox_8c_ab3680bca59f34c0582156da924624cc1}{gkn\_register\_option}}(\textcolor{keyword}{const} \textcolor{keywordtype}{char} *name, \textcolor{keywordtype}{int} flag) \{}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00499}00499     \textcolor{keywordflow}{if} (COMMAND\_LINE == NULL) \{}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00500}00500         COMMAND\_LINE = \mbox{\hyperlink{toolbox_8c_acbe3324adee70e6e3cba788e8c8f3c57}{gkn\_tvec\_new}}();}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00501}00501         CL\_REGISTER  = \mbox{\hyperlink{toolbox_8c_ab233f0425faaae8cb5244d948cb99f9c}{gkn\_map\_new}}();}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00502}00502         CL\_OPTIONS   = \mbox{\hyperlink{toolbox_8c_ab233f0425faaae8cb5244d948cb99f9c}{gkn\_map\_new}}();}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00503}00503     \}}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00504}00504 }
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00505}00505     \textcolor{keywordflow}{switch} (flag) \{}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00506}00506         \textcolor{keywordflow}{case} 0: \mbox{\hyperlink{toolbox_8c_ad0af1fe7ed400ce428113e32a3f32fc7}{gkn\_map\_set}}(CL\_REGISTER, name, (\textcolor{keywordtype}{void} *)1); \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00507}00507         \textcolor{keywordflow}{case} 1: \mbox{\hyperlink{toolbox_8c_ad0af1fe7ed400ce428113e32a3f32fc7}{gkn\_map\_set}}(CL\_REGISTER, name, (\textcolor{keywordtype}{void} *)2); \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00508}00508         \textcolor{keywordflow}{default}: \mbox{\hyperlink{toolbox_8c_afc3a337fdac9b2ac6bb3135b0cc5789b}{gkn\_exit}}(\textcolor{stringliteral}{"{}gkn\_register\_option: flag 0 or 1"{}});}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00509}00509     \}}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00510}00510 \}}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00511}00511 }
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00512}\mbox{\hyperlink{toolbox_8c_a91972346ad0712587d80467d11873075}{00512}} \textcolor{keywordtype}{void} \mbox{\hyperlink{toolbox_8c_a91972346ad0712587d80467d11873075}{gkn\_parse\_options}}(\textcolor{keywordtype}{int} *argc, \textcolor{keywordtype}{char} **argv) \{}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00513}00513     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < *argc; i++) \{}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00514}00514         \textcolor{keywordtype}{char} *token = argv[i];}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00515}00515         \textcolor{keywordflow}{if} (token[0] == \textcolor{charliteral}{'-\/'} \&\& strlen(token) > 1) \{}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00516}00516             \textcolor{keywordflow}{switch} ((\textcolor{keywordtype}{size\_t})\mbox{\hyperlink{toolbox_8c_ad3d2d38fd2569447b2a1df6516fef500}{gkn\_map\_get}}(CL\_REGISTER, token)) \{}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00517}00517                 \textcolor{keywordflow}{case} 0:}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00518}00518                     \mbox{\hyperlink{toolbox_8c_afc3a337fdac9b2ac6bb3135b0cc5789b}{gkn\_exit}}(\textcolor{stringliteral}{"{}unknown option (\%s)"{}}, token);}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00519}00519                     \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00520}00520                 \textcolor{keywordflow}{case} 1:}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00521}00521                     \mbox{\hyperlink{toolbox_8c_ad0af1fe7ed400ce428113e32a3f32fc7}{gkn\_map\_set}}(CL\_OPTIONS, token, token);}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00522}00522                     \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00523}00523                 \textcolor{keywordflow}{case} 2:}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00524}00524                     \mbox{\hyperlink{toolbox_8c_ad0af1fe7ed400ce428113e32a3f32fc7}{gkn\_map\_set}}(CL\_OPTIONS, token, argv[i+1]);}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00525}00525                     i++;}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00526}00526                     \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00527}00527                 \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00528}00528                     \mbox{\hyperlink{toolbox_8c_afc3a337fdac9b2ac6bb3135b0cc5789b}{gkn\_exit}}(\textcolor{stringliteral}{"{}not possible"{}});}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00529}00529             \}}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00530}00530         \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00531}00531             \mbox{\hyperlink{toolbox_8c_acea6523d1b7c245a7159436bda596a0b}{gkn\_tvec\_push}}(COMMAND\_LINE, argv[i]);}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00532}00532         \}}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00533}00533     \}}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00534}00534 }
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00535}00535     *argc = COMMAND\_LINE-\/>\mbox{\hyperlink{structgkn__TVEC_a30fe9aa087e75d03828bb891986a80ee}{size}};}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00536}00536     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < COMMAND\_LINE-\/>\mbox{\hyperlink{structgkn__TVEC_a30fe9aa087e75d03828bb891986a80ee}{size}}; i++) \{}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00537}00537         argv[i] = COMMAND\_LINE-\/>\mbox{\hyperlink{structgkn__TVEC_aa2efc4387dc92af21bb746872d0863df}{elem}}[i];}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00538}00538     \}}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00539}00539 \}}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00540}00540 }
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00541}\mbox{\hyperlink{toolbox_8c_ac115ea603d3a99c92e8838ea043624d9}{00541}} \textcolor{keywordtype}{char} * \mbox{\hyperlink{toolbox_8c_ac115ea603d3a99c92e8838ea043624d9}{gkn\_option}}(\textcolor{keyword}{const} \textcolor{keywordtype}{char} *tag) \{}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00542}00542     \textcolor{keywordflow}{return} \mbox{\hyperlink{toolbox_8c_ad3d2d38fd2569447b2a1df6516fef500}{gkn\_map\_get}}(CL\_OPTIONS, tag);}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00543}00543 \}}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00544}00544 }
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00545}00545 \textcolor{comment}{// pipe}}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00546}00546 }
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00547}\mbox{\hyperlink{toolbox_8c_acbe59bece5fb7c1bf32899273c639e4b}{00547}} \textcolor{keywordtype}{void} \mbox{\hyperlink{toolbox_8c_acbe59bece5fb7c1bf32899273c639e4b}{gkn\_pipe\_close}}(\mbox{\hyperlink{structgkn__PIPE}{gkn\_pipe}} pipe) \{}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00548}00548     pipe-\/>\mbox{\hyperlink{structgkn__PIPE_aa6ce1288de7d028d544caa6ad7336f5b}{mode}} = 0;}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00549}00549     free(pipe-\/>\mbox{\hyperlink{structgkn__PIPE_acca08178e91509c04db5e4427b690763}{name}});}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00550}00550     \textcolor{keywordflow}{if} (pipe-\/>\mbox{\hyperlink{structgkn__PIPE_ae01ce257bda6df46bece5ceb99d93416}{gzip}}) pclose(pipe-\/>\mbox{\hyperlink{structgkn__PIPE_a70cf373460970197d589c81ee35b09d3}{stream}});}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00551}00551     \textcolor{keywordflow}{else}            fclose(pipe-\/>\mbox{\hyperlink{structgkn__PIPE_a70cf373460970197d589c81ee35b09d3}{stream}});}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00552}00552     pipe-\/>\mbox{\hyperlink{structgkn__PIPE_ae01ce257bda6df46bece5ceb99d93416}{gzip}} = 0;}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00553}00553     free(pipe);}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00554}00554 \}}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00555}00555 }
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00556}\mbox{\hyperlink{toolbox_8c_acfcb22fe3ed31d1b99a0558112ce35b0}{00556}} \mbox{\hyperlink{structgkn__PIPE}{gkn\_pipe}} \mbox{\hyperlink{toolbox_8c_acfcb22fe3ed31d1b99a0558112ce35b0}{gkn\_pipe\_open}}(\textcolor{keyword}{const} \textcolor{keywordtype}{char} *name, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *mode) \{}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00557}00557     \textcolor{keywordtype}{char}    command[1024];}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00558}00558     \textcolor{keywordtype}{int}     length = strlen(name);}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00559}00559     \mbox{\hyperlink{structgkn__PIPE}{gkn\_pipe}} pipe = \mbox{\hyperlink{toolbox_8c_a615441eab38bc9f6edb874295a11cf3f}{gkn\_malloc}}(\textcolor{keyword}{sizeof}(\textcolor{keyword}{struct} \mbox{\hyperlink{structgkn__PIPE}{gkn\_PIPE}}));}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00560}00560 }
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00561}00561     \textcolor{keywordflow}{if}      (strcmp(mode, \textcolor{stringliteral}{"{}r"{}}) == 0)  pipe-\/>\mbox{\hyperlink{structgkn__PIPE_aa6ce1288de7d028d544caa6ad7336f5b}{mode}} = 0;}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00562}00562     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (strcmp(mode, \textcolor{stringliteral}{"{}w"{}}) == 0)  pipe-\/>\mbox{\hyperlink{structgkn__PIPE_aa6ce1288de7d028d544caa6ad7336f5b}{mode}} = 1;}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00563}00563     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (strcmp(mode, \textcolor{stringliteral}{"{}r+"{}}) == 0) pipe-\/>\mbox{\hyperlink{structgkn__PIPE_aa6ce1288de7d028d544caa6ad7336f5b}{mode}} = 2;}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00564}00564     \textcolor{keywordflow}{else} \mbox{\hyperlink{toolbox_8c_afc3a337fdac9b2ac6bb3135b0cc5789b}{gkn\_exit}}(\textcolor{stringliteral}{"{}r, w, or r+ only in gkn\_pipe"{}});}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00565}00565 }
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00566}00566     pipe-\/>\mbox{\hyperlink{structgkn__PIPE_acca08178e91509c04db5e4427b690763}{name}} = \mbox{\hyperlink{toolbox_8c_a615441eab38bc9f6edb874295a11cf3f}{gkn\_malloc}}(length + 1);}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00567}00567     strcpy(pipe-\/>\mbox{\hyperlink{structgkn__PIPE_acca08178e91509c04db5e4427b690763}{name}}, name);}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00568}00568 }
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00569}00569     pipe-\/>\mbox{\hyperlink{structgkn__PIPE_ae01ce257bda6df46bece5ceb99d93416}{gzip}} = 0;}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00570}00570 }
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00571}00571     \textcolor{keywordflow}{if} (name[length -\/3] == \textcolor{charliteral}{'.'} \&\&}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00572}00572         name[length -\/2] == \textcolor{charliteral}{'g'} \&\&}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00573}00573         name[length -\/1] == \textcolor{charliteral}{'z'}) pipe-\/>\mbox{\hyperlink{structgkn__PIPE_ae01ce257bda6df46bece5ceb99d93416}{gzip}} = 1; \textcolor{comment}{// .gz}}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00574}00574     \textcolor{keywordflow}{if} (name[length -\/2] == \textcolor{charliteral}{'.'} \&\&}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00575}00575         name[length -\/1] == \textcolor{charliteral}{'z'}) pipe-\/>\mbox{\hyperlink{structgkn__PIPE_ae01ce257bda6df46bece5ceb99d93416}{gzip}} = 1; \textcolor{comment}{// .z}}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00576}00576     \textcolor{keywordflow}{if} (name[length -\/2] == \textcolor{charliteral}{'.'} \&\&}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00577}00577         name[length -\/1] == \textcolor{charliteral}{'Z'}) pipe-\/>\mbox{\hyperlink{structgkn__PIPE_ae01ce257bda6df46bece5ceb99d93416}{gzip}} = 1; \textcolor{comment}{// .Z}}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00578}00578 }
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00579}00579     \textcolor{keywordflow}{if} (pipe-\/>\mbox{\hyperlink{structgkn__PIPE_ae01ce257bda6df46bece5ceb99d93416}{gzip}}) \{}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00580}00580         \textcolor{keywordflow}{if} (pipe-\/>\mbox{\hyperlink{structgkn__PIPE_aa6ce1288de7d028d544caa6ad7336f5b}{mode}} != 0) \mbox{\hyperlink{toolbox_8c_afc3a337fdac9b2ac6bb3135b0cc5789b}{gkn\_exit}}(\textcolor{stringliteral}{"{}compressed pipes are read only"{}});}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00581}00581         sprintf(command, \textcolor{stringliteral}{"{}gunzip -\/c \%s"{}}, name);}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00582}00582         pipe-\/>\mbox{\hyperlink{structgkn__PIPE_a70cf373460970197d589c81ee35b09d3}{stream}} = popen(command, \textcolor{stringliteral}{"{}r"{}});}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00583}00583     \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00584}00584         \textcolor{keywordflow}{if} (strcmp(name, \textcolor{stringliteral}{"{}-\/"{}}) == 0) pipe-\/>\mbox{\hyperlink{structgkn__PIPE_a70cf373460970197d589c81ee35b09d3}{stream}} = stdin;}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00585}00585         \textcolor{keywordflow}{else}                        pipe-\/>\mbox{\hyperlink{structgkn__PIPE_a70cf373460970197d589c81ee35b09d3}{stream}} = fopen(name, mode);}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00586}00586     \}}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00587}00587 }
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00588}00588     \textcolor{keywordflow}{if} (pipe-\/>\mbox{\hyperlink{structgkn__PIPE_a70cf373460970197d589c81ee35b09d3}{stream}} == NULL) \{}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00589}00589         \mbox{\hyperlink{toolbox_8c_afc3a337fdac9b2ac6bb3135b0cc5789b}{gkn\_exit}}(\textcolor{stringliteral}{"{}failed to open \%s\(\backslash\)n"{}}, name);}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00590}00590     \}}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00591}00591 }
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00592}00592     \textcolor{keywordflow}{return} pipe;}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00593}00593 \}}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00594}00594 }
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00595}\mbox{\hyperlink{toolbox_8c_a5eb43545be45c926be046bcff9049e76}{00595}} \textcolor{keywordtype}{char} * \mbox{\hyperlink{toolbox_8c_a5eb43545be45c926be046bcff9049e76}{gkn\_readline}}(\mbox{\hyperlink{structgkn__PIPE}{gkn\_pipe}} io) \{}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00596}00596     \textcolor{keywordtype}{char} line[4096];}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00597}00597     \textcolor{keywordtype}{int}  read = 0;}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00598}00598     \textcolor{keywordflow}{while} (fgets(line, \textcolor{keyword}{sizeof}(line), io-\/>\mbox{\hyperlink{structgkn__PIPE_a70cf373460970197d589c81ee35b09d3}{stream}}) != NULL) \{}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00599}00599         \textcolor{keywordflow}{if} (line[0] == \textcolor{charliteral}{'\#'}) \textcolor{keywordflow}{continue}; \textcolor{comment}{// skipping comments}}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00600}00600         \textcolor{keywordflow}{if} (strlen(line) == 0) \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00601}00601         read = 1;}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00602}00602         \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00603}00603     \}}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00604}00604     \textcolor{keywordflow}{if} (read == 0) \textcolor{keywordflow}{return} NULL;}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00605}00605 }
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00606}00606     \textcolor{comment}{// stripping newline}}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00607}00607     \textcolor{keywordflow}{if} (line[strlen(line) -\/1] == \textcolor{charliteral}{'\(\backslash\)n'}) line[strlen(line) -\/1] = \textcolor{charliteral}{'\(\backslash\)0'};}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00608}00608     \textcolor{keywordtype}{char} *out = malloc(strlen(line) + 1);}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00609}00609     strcpy(out, line);}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00610}00610 }
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00611}00611     \textcolor{keywordflow}{return} out;}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00612}00612 \}}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00613}00613 }
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00614}\mbox{\hyperlink{toolbox_8c_afc3a337fdac9b2ac6bb3135b0cc5789b}{00614}} \textcolor{keywordtype}{void} \mbox{\hyperlink{toolbox_8c_afc3a337fdac9b2ac6bb3135b0cc5789b}{gkn\_exit}}(\textcolor{keyword}{const} \textcolor{keywordtype}{char}* format, ...) \{}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00615}00615     va\_list args;}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00616}00616     fflush(stdout);}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00617}00617     fprintf(stderr, \textcolor{stringliteral}{"{}ERROR from program \%s, libarary \%s\(\backslash\)n"{}},}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00618}00618         \mbox{\hyperlink{toolbox_8c_a7a3975f547595b72958f7dd9783b9cfe}{gkn\_get\_program\_name}}(),}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00619}00619         \mbox{\hyperlink{toolbox_8c_a545230a46903d703d2d9206500cb5533}{gkn\_get\_version\_number}}());}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00620}00620     va\_start(args, format);}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00621}00621     vfprintf(stderr, format, args);}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00622}00622     va\_end(args);}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00623}00623     fprintf(stderr, \textcolor{stringliteral}{"{}\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00624}00624     exit(1);}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00625}00625 \}}
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00626}00626 }
+\DoxyCodeLine{\Hypertarget{toolbox_8c_source_l00627}00627 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}
